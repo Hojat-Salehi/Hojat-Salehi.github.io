@@ -1,0 +1,137 @@
+- title: General Information
+  type: map
+  contents:
+    - name: Full Name
+      value: Hojat Allah Salehi
+    - name: Email
+      value: hsalehi@fiu.edu
+    - name: Location
+      value: Miami, FL
+
+- title: Education
+  type: time_table
+  contents:
+    - title: Ph.D., Computer Science
+      institution: Florida International University
+      year: Aug 2023 – 2026 (expected)
+      description:
+        - "Reviewer: NeurIPS, ICML, ICLR, ITW, ISIT, T-IFS"
+        - "Thesis: A Stochastic Approach to Privacy-Preserving Distributed Parameter Estimation"
+    - title: M.Sc., Control Engineering
+      institution: Sharif University of Technology
+      year: Sep 2010 – Sep 2012
+      description:
+        - "Thesis: A Fuzzy Probabilistic Belief Framework for Uncertainty Propagation in Dynamical System Reliability"
+    - title: B.Sc., Control Engineering
+      institution: Tabriz University
+      year: Sep 2006 – Sep 2010
+      description:
+        - "Thesis: Quantitative Application of Non-Cooperative Game Theory Models for Stock Market Prediction"
+
+- title: Experience
+  type: time_table
+  contents:
+    - title: Graduate Research Assistant
+      institution: Florida International University
+      year: Aug 2023 – present
+      description:
+        - title: "Maximally Negatively Correlated Quantizers in Distributed Learning (CorBin-FL)"
+          contents:
+            - "Introduced correlated distributed quantization for federated learning, improving accuracy over prior methods."
+            - "Validated on CIFAR10, FEMNIST, Shakespeare, and Sent140 (CNN, ResNet18, LSTM, Transformer) on multiple A100s, achieving high communication efficiency by transmitting one bit per model weight."
+        - title: "Explanation-Preserving Augmentation for Semi-Supervised Graph Representation Learning"
+          contents:
+            - "Developed a semantics-preserving graph augmentation technique leveraging GNN explainers, with theoretical analysis of its gains over prior methods."
+            - "Validated on MUTAG, Benzene, and PROTEINS, achieving up to 7.83% improvement in classification accuracy."
+        - title: "Discrete Denoising Diffusion Model (DiGress) and Application in Graph Explainability"
+          contents:
+            - "Applied Discrete Denoising Diffusion (DiGress) to ProxyExplainer to improve GNN explainer accuracy."
+            - "Conditioned the diffusion model on explainer subgraphs to enable in-distribution graph generation, preserving explainable structure while reconstructing the rest."
+        - title: "Denoising Diffusion Implicit Model (DDIM) for Time Series Prediction"
+          contents:
+            - "Developed a conditional DDIM with an attention-based UNet for time-series analysis and generation."
+            - "Encoded volume and price movements as multi-channel RGB conditioning to capture temporal dependencies."
+        - title: "Agentic-SysID: Autonomous Multi-Agent System Identification"
+          contents:
+            - "Built a multi-agent pipeline (Intake, Modeler, Estimator, Validation) converting a natural-language plant description into a control-ready model with uncertainty bounds and a validity region, under a constrained budget."
+            - "Designed a physics-first fidelity ladder escalating from white-box to grey-box or black-box surrogate only on validation evidence, routed through a guarded, budget-enforced Plant API; demonstrated on a pendulum-with-friction plant that breaks the white-box model."
+        - title: "Multi-Agent Sports Game Analysis (LangGraph)"
+          contents:
+            - "Built a LangGraph-orchestrated multi-agent pipeline for NBA/MLB game analysis with parallel adversarial debates (win-probability, total-points), each converged by a judge and cross-validated by a head analyst."
+            - "Closed the loop with a post-game accuracy review that writes semantically-retrieved lessons to a ChromaDB memory store per agent role, across a mixed OpenAI/Anthropic LLM routing layer with SQLite persistence."
+    - title: Research and Development Manager
+      institution: Tunnel Sadd Ariana
+      year: Jun 2022 – Jul 2023
+      description:
+        - "AI-driven stock market prediction: web data extraction, feature selection, preprocessing (FFT, LOWESS), and LSTM-based stock-market prediction."
+    - title: Senior Electrical Engineer
+      institution: Tunnel Sadd Ariana
+      year: Sep 2019 – Jun 2022
+      description:
+        - "Managed the implementation of industrial automation: PLC programming and SCADA design for irrigation-system water-flow control and monitoring."
+        - "Supervised electrical and industrial-automation section of two comprehensive World Bank projects."
+    - title: Research Fellow
+      institution: K.N. Toosi University
+      year: Sep 2013 – Mar 2019
+      description:
+        - "Researched gradient-based optimization methods: applied a second-order gradient-based technique to solve optimal control problems in hybrid dynamical systems."
+        - "Developed advanced control strategies for bipedal and monopod robots: extended the hybrid minimum principle (HMP) to control a monopod robot for maximum jumping height."
+
+- title: Projects
+  type: time_table
+  contents:
+    - title: "eBay ML Challenge: NLP-Driven Auto Part Classification"
+      year: May 2024 – Dec 2024
+      description:
+        - "NLP for information extraction: combined Named Entity Recognition and inference-based methods to pair vehicle components from free-text descriptions."
+        - "Data preprocessing: cleaned and filtered text, applied spaCy-based importance summarization, and built augmented, auto-labeled training sets."
+        - "Two-stage BERT fine-tuning: one model extracts initial labels directly; a second infers missing fields from context, improving accuracy and recall."
+    - title: "Detection of DDoS Attacks using SVM and Logistic Regression"
+      year: Jan 2023 – Sep 2023
+      description:
+        - "Built an SVM/Logistic-Regression DDoS classifier on the CIC-DDoS2019 dataset (SMOTE-balanced) and on self-generated traffic captured via hping3/Wireshark."
+        - "Achieved high accuracy and low false-positive rates across both datasets, showing real-world applicability."
+    - title: "A Genetic Algorithm and Tabu Search Method for Supply Chain Problems"
+      year: Mar 2019 – Sep 2019
+      description:
+        - "Developed a Genetic Algorithm and Tabu Search for capacity-constrained location-routing, overcoming exact-method computational limits for large-scale Mixed Integer Programming (MIP) in supply-chain problems; presented at the 2nd International Congress on Engineering Technology and Innovation."
+
+- title: Skills
+  type: nested_list
+  contents:
+    - title: Analytical & Technical
+      items:
+        - Machine Learning
+        - Differential Privacy / Federated Learning
+        - Graph Neural Networks
+        - Graph Representation Learning
+        - Explainable AI (XAI)
+        - Diffusion Models (DDPM/DDIM)
+        - Agentic AI / Multi-Agent Systems
+        - LangGraph
+        - Vector Databases (ChromaDB)
+        - Natural Language Processing
+        - Optimization
+        - Time Series Analysis
+        - Data Science
+        - Industrial Automation
+        - SCADA
+    - title: Programming — Expert
+      items:
+        - Python
+        - PyTorch
+        - Scikit-learn
+        - Keras
+        - TensorFlow
+        - Pandas
+        - NumPy
+    - title: Programming — Proficient
+      items:
+        - SQL
+        - C/C++
+        - Git
+        - MySQL
+        - PowerBI
+        - TIA Portal
+        - SIMULINK
+        - Hping3

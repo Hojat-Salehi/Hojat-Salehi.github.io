@@ -1,0 +1,314 @@
+# -----------------------------------------------------------------------------
+# Site settings
+# -----------------------------------------------------------------------------
+
+title: blank # the website title (if blank, full name will be used instead)
+first_name: Hojat Allah
+last_name: Salehi
+email: hsalehi@fiu.edu
+description: >
+  Hojat Allah Salehi — information-theoretic privacy, explainable ML, and agentic AI systems.
+  PhD candidate, Florida International University.
+footer_text: >
+  © Hojat Allah Salehi. Built with <a href="https://jekyllrb.com/" target="_blank">Jekyll</a>,
+  hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
+keywords: Hojat Salehi, Hojat Allah Salehi, information theory, differential privacy, federated learning, explainable AI, agentic AI, graph neural networks
+
+lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
+icon: assets/img/favicon.png  # placeholder path until a real favicon is supplied — see QUESTIONS.md
+
+url: https://hojat-salehi.github.io # base hostname; swap to https://hojatsalehi.com once the domain is purchased and CNAME set up
+baseurl: # empty: this is a <username>.github.io user site, served at the domain root, not a project subpath
+last_updated: false # set to true if you want to display last updated in the footer
+impressum_path:  # set to path to include impressum link in the footer, use the same path as permalink in a page, helps to conform with EU GDPR
+
+# -----------------------------------------------------------------------------
+# Theme
+# -----------------------------------------------------------------------------
+
+# code highlighter theme
+highlight_theme_light: github   # https://github.com/jwarby/jekyll-pygments-themes
+highlight_theme_dark: native    # https://github.com/jwarby/jekyll-pygments-themes
+
+# repo color theme
+repo_theme_light: default       # https://github.com/anuraghazra/github-readme-stats/blob/master/themes/README.md
+repo_theme_dark: dark           # https://github.com/anuraghazra/github-readme-stats/blob/master/themes/README.md
+repo_trophies:
+  enabled: true
+  theme_light: flat    # https://github.com/ryo-ma/github-profile-trophy
+  theme_dark: gitdimmed  # https://github.com/ryo-ma/github-profile-trophy
+
+# -----------------------------------------------------------------------------
+# RSS Feed
+# -----------------------------------------------------------------------------
+# will use title and url fields
+# Take a look to https://github.com/jekyll/jekyll-feed for more customization
+
+rss_icon: true
+
+# -----------------------------------------------------------------------------
+# Layout
+# -----------------------------------------------------------------------------
+
+navbar_fixed: true
+footer_fixed: true
+
+# Dimensions
+max_width: 800px
+
+# TODO: add layout settings (single page vs. multi-page)
+
+# -----------------------------------------------------------------------------
+# Open Graph & Schema.org
+# -----------------------------------------------------------------------------
+# Display links to the page with a preview object on social media.
+serve_og_meta: true # Include Open Graph meta tags in the HTML head
+serve_schema_org: true # Include Schema.org in the HTML head (JSON-LD Person schema, per brief §8)
+og_image: # site-wide default OG preview image — [TK] pending a real photo/graphic, see QUESTIONS.md
+
+# -----------------------------------------------------------------------------
+# Social integration
+# -----------------------------------------------------------------------------
+
+github_username: Hojat-Salehi
+gitlab_username:
+twitter_username:
+mastodon_username:
+linkedin_username: hojat-salehi-29216736
+telegram_username:
+scholar_userid: qo_yamYAAAAJ
+semanticscholar_id: # [TK] not yet claimed — brief §8 flags this as principal-to-complete
+whatsapp_number:
+orcid_id: # [TK] not yet created — brief §8 flags this as principal-to-complete
+medium_username:
+quora_username:
+publons_id:
+osf_id:
+research_gate_profile:
+blogger_url:
+work_url:
+keybase_username:
+wikidata_id:
+wikipedia_id:
+dblp_url: # [TK] search "Hojat Allah Salehi" on dblp.org and claim/link once available
+stackoverflow_id:
+kaggle_id:
+lastfm_id:
+spotify_id:
+pinterest_id:
+unsplash_id:
+instagram_id:
+facebook_id:
+youtube_id:
+discord_id:
+
+contact_note: >
+  Email is the most reliable way to reach me.
+
+# -----------------------------------------------------------------------------
+# Analytics and search engine verification
+# -----------------------------------------------------------------------------
+
+google_analytics:  # your Google Analytics measurement ID (format: G-XXXXXXXXXX)
+panelbear_analytics:  # panelbear analytics site ID (format: XXXXXXXXX)
+
+google_site_verification:  # your google-site-verification ID (Google Search Console)
+bing_site_verification:  # out your bing-site-verification ID (Bing Webmaster)
+
+# -----------------------------------------------------------------------------
+# Blog
+# -----------------------------------------------------------------------------
+
+blog_name: Notes # displayed in the blog page
+blog_nav_title: # blank on purpose: no nav item until real posts exist — brief §6.5 is Phase 4, principal writes these
+blog_description: Notes on the papers and systems above, in plain language.
+permalink: /blog/:year/:title/
+
+# Pagination
+pagination:
+  enabled: true
+
+related_blog_posts:
+  enabled: true
+  max_related: 5
+
+# Comments disabled for now — al-folio's default Giscus config points at the al-folio repo itself,
+# which must never be left in place. Revisit if/when comments are wanted (not required by the brief).
+giscus:
+  repo:
+  repo_id:
+  category:
+  category_id:
+  mapping: title
+  strict: 1
+  reactions_enabled: 1
+  input_position: bottom
+  theme: preferred_color_scheme
+  emit_metadata: 0
+  lang: en
+
+disqus_shortname: # left blank — deprecated, not used
+
+external_sources:
+
+# -----------------------------------------------------------------------------
+# Collections
+# -----------------------------------------------------------------------------
+
+collections:
+  news:
+    defaults:
+      layout: post
+    output: true
+    permalink: /news/:path/
+  projects:
+    output: true
+    permalink: /projects/:path/
+
+news_scrollable: true # adds a vertical scroll bar if there are more than 3 news items
+news_limit: 5 # leave blank to include all the news in the `_news` folder
+
+# -----------------------------------------------------------------------------
+# Jekyll settings
+# -----------------------------------------------------------------------------
+
+# Markdown and syntax highlight
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter_opts:
+    css_class: 'highlight'
+    span:
+      line_numbers: false
+    block:
+      line_numbers: false
+      start_line: 1
+
+# Includes & excludes
+include: ['_pages']
+exclude:
+  - bin
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+keep_files:
+  - CNAME
+  - .nojekyll
+  - .git
+
+# Plug-ins — trimmed to what this site actually uses (brief: no unneeded bloat)
+plugins:
+  - jekyll-feed        # RSS for the Notes blog, brief §6.5
+  - jekyll/scholar      # BibTeX-driven Publications page, single source of truth per brief §6.1
+  - jekyll-sitemap     # sitemap.xml, brief §8
+  - jekyll-link-attributes # external links open in new tab / rel=noopener automatically
+
+# Sitemap settings
+defaults:
+  - scope:
+      path: "assets/**/*.*"
+    values:
+      sitemap: false
+
+# -----------------------------------------------------------------------------
+# Jekyll Scholar
+# -----------------------------------------------------------------------------
+
+scholar:
+
+  last_name: [Salehi]
+  first_name: [Hojat Allah, Hojat A., H. A.]
+
+  style: apa
+  locale: en
+
+  source: /_bibliography/
+  bibliography: papers.bib
+  bibliography_template: bib
+  # Note: if you have latex math in your bibtex, the latex filter
+  # preprocessing may conflict with MathJAX if the latter is enabled.
+  # See https://github.com/alshedivat/al-folio/issues/357.
+  bibtex_filters: [latex, smallcaps, superscript]
+
+  replace_strings: true
+  join_strings: true
+
+  details_dir: bibliography
+  details_layout: bibtex.html
+  details_link: Details
+
+  query: "@*"
+
+badges: # Display different badges for your pulications
+  altmetric_badge: false # kept quiet per brief §5 — no unnecessary badges/decoration
+  dimensions_badge: false
+
+# Filter out certain bibtex entry keywords used internally from the bib output
+filtered_bibtex_keywords: [abbr, abstract, arxiv, bibtex_show, html, pdf, selected, supp, blog, code, poster, slides, website, preview, altmetric]
+
+# Maximum number of authors to be shown for each publication (more authors are visible on click)
+max_author_limit: 3  # leave blank to always show all authors
+more_authors_animation_delay: 10  # more authors are revealed on click using animation; smaller delay means faster animation
+
+
+# -----------------------------------------------------------------------------
+# Jekyll Link Attributes
+# -----------------------------------------------------------------------------
+
+# These are the defaults
+external_links:
+  enabled: true
+  rel: external nofollow noopener
+  target: _blank
+  exclude:
+
+
+# -----------------------------------------------------------------------------
+# Optional Features
+# -----------------------------------------------------------------------------
+
+enable_google_analytics:    false  # enables google analytics
+enable_panelbear_analytics: false  # enables panelbear analytics
+enable_google_verification: false  # enables google site verification
+enable_bing_verification:   false  # enables bing site verification
+enable_masonry:             false  # not using a project-card grid — brief §5 explicitly avoids the generic card-grid pattern
+enable_math:                true   # MathJax, for information-theory notation on the Research page (Phase 2)
+enable_tooltips:            false
+enable_darkmode:            true   # brief §5: light mode is default and must be the well-designed one; dark mode optional
+enable_navbar_social:       true   # Scholar / GitHub / LinkedIn in the nav, per brief §6.1 home page spec
+enable_project_categories:  false
+enable_medium_zoom:         false  # no image-zoom gimmick — brief §5 wants motion to serve content, not decorate
+enable_progressbar:         false  # no scroll progress bar — same reasoning
+
+# -----------------------------------------------------------------------------
+# Library versions
+# -----------------------------------------------------------------------------
+
+academicons:
+  version: "1.9.1"
+  integrity: "sha256-i1+4qU2G2860dGGIOJscdC30s9beBXjFfzjWLjBRsBg="
+bootstrap:
+  version: "4.6.1"
+  integrity:
+    css: "sha256-DF7Zhf293AJxJNTmh5zhoYYIMs2oXitRfBjY+9L//AY="
+    js: "sha256-fgLAgv7fyCGopR/gBNq2iW3ZKIdqIcyshnUULC4vex8="
+fontawesome:
+  version: "5.15.4"
+  integrity: "sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4="
+jquery:
+  version: "3.6.0"
+  integrity: "sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+mathjax:
+  version: "3.2.0"
+masonry:
+  version: "4.2.2"
+  integrity: "sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI="
+mdb:
+  version: "4.20.0"
+  integrity:
+    css: "sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw="
+    js: "sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA="
+medium_zoom:
+  version: "1.0.8"
+  integrity: "sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8="
