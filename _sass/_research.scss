@@ -1,0 +1,68 @@
+/*******************************************************************************
+ * Research page — four theme sections (AGENT_BRIEF.md §6.2).
+ ******************************************************************************/
+
+.research-intro {
+  color: var(--global-text-color-light);
+  max-width: 640px;
+  margin-bottom: 2.5rem;
+}
+
+.research-themes {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.research-theme {
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid var(--global-divider-color);
+
+  &:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  h2 {
+    margin-top: 0;
+  }
+
+  p {
+    line-height: 1.65;
+  }
+}
+
+.venue-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--global-theme-color);
+  border: 1px solid var(--global-theme-color);
+  border-radius: 3px;
+  padding: 0.1rem 0.4rem;
+  margin-right: 0.5rem;
+  white-space: nowrap;
+}
+
+.theme-papers {
+  list-style: none;
+  padding: 0;
+  margin: 1.25rem 0;
+
+  li {
+    margin-bottom: 0.6rem;
+    line-height: 1.5;
+  }
+}
+
+.theme-system-link {
+  font-size: 0.9rem;
+  color: var(--global-text-color-light);
+  margin-top: 1rem;
+
+  a {
+    color: var(--global-theme-color);
+  }
+}

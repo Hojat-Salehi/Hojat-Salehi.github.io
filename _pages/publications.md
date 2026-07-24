@@ -4,7 +4,7 @@ permalink: /publications/
 title: publications
 description: Generated from one file — _bibliography/papers.bib. Grouped Journal / Conference / Under Review & Preprints, per publication type.
 nav: true
-nav_order: 2
+nav_order: 4
 ---
 <div class="publications">
 
