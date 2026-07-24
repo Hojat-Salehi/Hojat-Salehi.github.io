@@ -1,0 +1,79 @@
+# Systems page data — Problem / Approach / Result / Artifact, per AGENT_BRIEF.md §6.2.
+# Every entry needs a real figure and at least one sourced number, or an explicit
+# [TK] with a matching QUESTIONS.md entry. Never fabricate a number here.
+#
+# Card order = display order on the Systems page.
+
+- key: corbinfl
+  title: "CorBin-FL"
+  tagline: "Differentially private federated learning, one bit per weight"
+  repo: https://github.com/Hojat-Salehi/CorBin-FL
+  paper: https://www.arxiv.org/abs/2409.13133
+
+  problem: >
+    Local differential privacy for federated learning usually means every client adds
+    noise to its update independently. That noise doesn't cancel when the server
+    averages updates across clients, so accuracy drops sharply at the privacy budgets
+    (small ε) that matter in practice.
+
+  approach: >
+    CorBin-FL quantizes each client's update to a single bit per model weight, but
+    draws the quantization noise from a shared source of randomness across clients
+    instead of independent per-client noise. Each client still keeps its individual
+    ε-LDP guarantee, but the noise is now negatively correlated, so it cancels out at
+    the server instead of piling up.
+
+  result: >
+    On CIFAR-10 at ε = 1 (50 clients, 100 rounds, ResNet18), CorBin-FL reaches
+    59.51% ± 0.24 test accuracy versus 44.23% ± 0.29 for the strongest 1-bit LDP
+    baseline (LDPFL) — a 15-point gap at the same privacy budget and same
+    communication cost. On FEMNIST at ε = 1, CorBin-FL reaches 82.82% ± 0.70 versus
+    80.75% ± 0.04 for the strongest baseline (Laplace).
+
+  figures:
+    - image: systems/corbinfl-method-schematic.png
+      alt: >
+        Diagram of one CorBin-FL communication round in four stages: initialization,
+        secure pairwise key exchange, model update with shared PRG seeds, and
+        correlated-quantizer aggregation at the server.
+      caption: >
+        One communication round of CorBin-FL. The server broadcasts the global
+        model and pairs up clients; each pair establishes a shared secret over an
+        encrypted channel the server can't see; each client quantizes its own
+        update to one bit using randomness drawn from that shared secret; the
+        server averages the bits back into the new global model. Distinct pairs
+        use independent shared randomness.
+      source: "CorbinFL_paper/CorbinFL_Method.pdf, adapted from Fig. 1 of the paper"
+    - image: systems/corbinfl-pca.png
+      alt: >
+        PCA projection of per-coordinate quantization error across model weight
+        coordinates, comparing CorBin-FL's correlated binary quantization against
+        independent binary quantization.
+      caption: >
+        PCA of the quantization error added to each weight coordinate. CorBin-FL's
+        shared-randomness noise (left) concentrates tightly around zero and cancels
+        out when the server aggregates client updates; independent per-client noise
+        (right) spreads broadly and only partially cancels.
+      source: "repos/CorBin-FL/README.md"
+
+  table:
+    caption: "1-bit-per-coordinate LDP baselines CorBin-FL is compared against"
+    source: "repos/CorBin-FL/README.md"
+    headers: ["Method", "Privacy", "Bits/coord", "Reference"]
+    rows:
+      - ["LDP-FL", "ε-LDP", "1", "Sun et al. 2020"]
+      - ["I-MVU", "ε-LDP", "1 / 2 / 4", "Guo et al., ICML 2023"]
+      - ["PBM-PLDP", "ε-PLDP", "1 / 2", "Privatized Binomial Mechanism"]
+      - ["RQM", "ε-LDP", "1 / 2", "Youn et al. 2023"]
+      - ["CorQuant", "None", "1", "Suresh et al. 2022"]
+      - ["SignSGD", "None", "1", "Bernstein et al. 2019"]
+      - ["FedAvg", "None", "32", "McMahan et al. 2016"]
+      - ["Gaussian LDP", "ε-LDP", "32", "Balle & Wang 2018"]
+      - ["Gaussian CDP", "ε-CDP", "32", "—"]
+      - ["Laplace LDP", "ε-LDP", "32", "Dwork 2006"]
+
+  artifact_links:
+    - label: "Paper (arXiv)"
+      url: https://www.arxiv.org/abs/2409.13133
+    - label: "Code"
+      url: https://github.com/Hojat-Salehi/CorBin-FL

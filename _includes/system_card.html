@@ -1,0 +1,56 @@
+<!-- system_card.html — Problem / Approach / Result / Artifact card, per AGENT_BRIEF.md §6.2 -->
+<article class="system-card" id="{{ system.key }}">
+  <header class="system-card-header">
+    <h3>{{ system.title }}</h3>
+    {%- if system.tagline %}<p class="system-tagline">{{ system.tagline }}</p>{%- endif %}
+  </header>
+
+  {%- if system.figures %}
+  {%- for fig in system.figures %}
+  <figure class="system-figure">
+    <img src="{{ fig.image | prepend: '/assets/img/' | relative_url }}" alt="{{ fig.alt }}" loading="lazy">
+    {%- if fig.caption %}
+    <figcaption>{{ fig.caption }}</figcaption>
+    {%- endif %}
+  </figure>
+  {%- endfor %}
+  {%- endif %}
+
+  <dl class="system-par">
+    <dt>Problem</dt>
+    <dd>{{ system.problem }}</dd>
+    <dt>Approach</dt>
+    <dd>{{ system.approach }}</dd>
+    <dt>Result</dt>
+    <dd>{{ system.result }}</dd>
+  </dl>
+
+  {%- if system.table %}
+  <div class="system-table-wrap">
+    {%- if system.table.caption %}<p class="system-table-caption">{{ system.table.caption }}</p>{%- endif %}
+    <table class="system-table">
+      <thead>
+        <tr>
+          {%- for h in system.table.headers %}<th>{{ h }}</th>{%- endfor %}
+        </tr>
+      </thead>
+      <tbody>
+        {%- for row in system.table.rows %}
+        <tr>
+          {%- for cell in row %}<td>{{ cell }}</td>{%- endfor %}
+        </tr>
+        {%- endfor %}
+      </tbody>
+    </table>
+  </div>
+  {%- endif %}
+
+  {%- if system.artifact_links %}
+  <div class="system-artifact-links">
+    <span class="system-artifact-label">Artifact</span>
+    {%- for link in system.artifact_links %}
+    <a href="{{ link.url }}" target="_blank" rel="noopener noreferrer">{{ link.label }}</a>{%- unless forloop.last %} · {%- endunless %}
+    {%- endfor %}
+  </div>
+  {%- endif %}
+</article>
