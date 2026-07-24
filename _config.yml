@@ -3,11 +3,12 @@
 # -----------------------------------------------------------------------------
 
 title: blank # the website title (if blank, full name will be used instead)
-first_name: Hojat Allah
+first_name: Hojat Allah   # canonical name — matches publications; used in footer copyright, meta author, JSON-LD schema
 last_name: Salehi
+display_name: Hojat Salehi   # display alias — used in the H1, nav brand, and browser tab title (brief §8 distinguishes these)
 email: hsalehi@fiu.edu
 description: >
-  Hojat Allah Salehi — information-theoretic privacy, explainable ML, and agentic AI systems.
+  Hojat Allah Salehi — information theory in machine learning, explainable AI, and agentic systems.
   PhD candidate, Florida International University.
 footer_text: >
   © Hojat Allah Salehi. Built with <a href="https://jekyllrb.com/" target="_blank">Jekyll</a>,
@@ -15,9 +16,9 @@ footer_text: >
 keywords: Hojat Salehi, Hojat Allah Salehi, information theory, differential privacy, federated learning, explainable AI, agentic AI, graph neural networks
 
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
-icon: assets/img/favicon.png  # placeholder path until a real favicon is supplied — see QUESTIONS.md
+icon: favicon.png  # site.icon gets '/assets/img/' prepended automatically — don't include the folder here
 
-url: https://hojat-salehi.github.io # base hostname; swap to https://hojatsalehi.com once the domain is purchased and CNAME set up
+url: https://hojat-salehi.github.io # base hostname; swap to https://hojatsalehi.com if/when the domain is purchased (principal: staying on github.io for now)
 baseurl: # empty: this is a <username>.github.io user site, served at the domain root, not a project subpath
 last_updated: false # set to true if you want to display last updated in the footer
 impressum_path:  # set to path to include impressum link in the footer, use the same path as permalink in a page, helps to conform with EU GDPR
@@ -44,7 +45,7 @@ repo_trophies:
 # will use title and url fields
 # Take a look to https://github.com/jekyll/jekyll-feed for more customization
 
-rss_icon: true
+rss_icon: false # no Notes blog content yet (Phase 4) — re-enable once there's something to subscribe to
 
 # -----------------------------------------------------------------------------
 # Layout
@@ -54,7 +55,7 @@ navbar_fixed: true
 footer_fixed: true
 
 # Dimensions
-max_width: 800px
+max_width: 1040px # wider on laptop/desktop; this only caps the upper bound, so mobile is unaffected (viewport is always narrower than this anyway)
 
 # TODO: add layout settings (single page vs. multi-page)
 
@@ -64,7 +65,7 @@ max_width: 800px
 # Display links to the page with a preview object on social media.
 serve_og_meta: true # Include Open Graph meta tags in the HTML head
 serve_schema_org: true # Include Schema.org in the HTML head (JSON-LD Person schema, per brief §8)
-og_image: # site-wide default OG preview image — [TK] pending a real photo/graphic, see QUESTIONS.md
+og_image: https://hojat-salehi.github.io/assets/img/og-image.png # must be an absolute URL — og:image isn't relative_url-resolved. Update this if the domain changes.
 
 # -----------------------------------------------------------------------------
 # Social integration
@@ -77,9 +78,9 @@ mastodon_username:
 linkedin_username: hojat-salehi-29216736
 telegram_username:
 scholar_userid: qo_yamYAAAAJ
-semanticscholar_id: # [TK] not yet claimed — brief §8 flags this as principal-to-complete
+semanticscholar_id: # intentionally left blank — principal's call, Scholar profile already covers this (2026-07-24)
 whatsapp_number:
-orcid_id: # [TK] not yet created — brief §8 flags this as principal-to-complete
+orcid_id: 0000-0002-4186-9349
 medium_username:
 quora_username:
 publons_id:
@@ -90,7 +91,7 @@ work_url:
 keybase_username:
 wikidata_id:
 wikipedia_id:
-dblp_url: # [TK] search "Hojat Allah Salehi" on dblp.org and claim/link once available
+dblp_url: # intentionally left blank — principal's call, not worth the extra profile to maintain (2026-07-24)
 stackoverflow_id:
 kaggle_id:
 lastfm_id:

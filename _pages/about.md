@@ -1,16 +1,16 @@
 ---
 layout: about
-title: blank
+title: Home
 permalink: /
-subtitle: Information-theoretic privacy, explainable ML, and agentic AI systems.
+subtitle: Information theory in machine learning, explainable AI, and agentic systems.
 
 profile:
   align: right
-  image:
+  image: profile.jpg
+  image_circular: false
   address: >
-    <p><strong>Currently:</strong> finishing a Ph.D. in Computer Science at Florida International University (expected 2026).</p>
-    <p>Currently authorized to work in the US through OPT with STEM extension, no employer sponsorship required.</p>
-    <p>Looking for: [TK] — exact target roles/timeline pending from principal, see QUESTIONS.md.</p>
+    <p><strong>Currently:</strong> finishing a Ph.D. in Computer Science at Florida International University, 2026.</p>
+    <p>Currently authorized to work in the US through OPT (eligible for STEM extension), no employer sponsorship required.</p>
 
 news: false
 selected_papers: true
