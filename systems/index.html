@@ -207,6 +207,41 @@
     <a href="https://github.com/Hojat-Salehi/CorBin-FL" target="_blank" rel="noopener noreferrer">Code</a>
   </div>
 </article>
+<!-- system_card.html — Problem / Approach / Result / Artifact card, per AGENT_BRIEF.md §6.2 -->
+<article class="system-card" id="agentic-sysid">
+  <header class="system-card-header">
+    <h3>Agentic-SysID</h3><p class="system-tagline">A multi-agent pipeline that identifies control-ready models under an experiment budget</p>
+  </header>
+  <figure class="system-figure">
+    <img src="/assets/img/systems/agentic-sysid-flowchart.png" alt="Architecture diagram of Agentic-SysID: a centralized orchestrator routing between a white-box discovery phase, an adversarial validation phase, and grey-box / black-box escalation sub-orchestrators, all experiment calls passing through a guarded Plant API.
+" loading="lazy" />
+    <figcaption>Centralized coordination (orchestrator, budget manager, experiment registry) routes between four phases: white-box discovery and estimation, adversarial validation, and — only on evidence of a gap — grey-box or black-box escalation. All plant access goes through a single guarded, budgeted API.
+</figcaption>
+  </figure>
+  <figure class="system-figure">
+    <img src="/assets/img/systems/agentic-sysid-demo-frame.png" alt="Final frame of the pendulum demo: actual plant vs. identified white-box model swinging side by side under composite excitation, with an angle tracking plot and a per-parameter true-vs-identified comparison showing 1-3% error.
+" loading="lazy" />
+    <figcaption>Actual pendulum (left) vs. the identified white-box model (right) under composite step/sine/PRBS excitation. Bottom: angle tracking (10.05° RMSE) and per-parameter accuracy against the true, hidden parameter values.
+</figcaption>
+  </figure>
+
+  <dl class="system-par">
+    <dt>Problem</dt>
+    <dd>Turning a physical plant into a control-ready model normally takes a control engineer manually designing experiments, fitting parameters, and validating the result by hand — and every experiment run against a real plant costs time and money, so the process can't just throw data at the problem.
+</dd>
+    <dt>Approach</dt>
+    <dd>Agentic-SysID automates that workflow with a physics-first fidelity ladder of specialized agents. An Intake agent parses the plant description; a Modeler agent proposes the ODE structure and checks identifiability; an Estimator agent runs an excite-then-estimate loop to fit parameters; a Validation agent probes the fitted model adversarially. Only if validation finds the white-box model doesn't hold does the pipeline escalate — to a grey-box model (physics backbone plus a learned correction term) or, if the plant isn't modelable at all, to a black-box surrogate (GP / NARX / Neural ODE / SINDy). Every experiment is routed through a budgeted, safety-gated Plant API, so no agent can overspend or bypass the safety limits.
+</dd>
+    <dt>Result</dt>
+    <dd>On the built-in pendulum benchmark, under composite step / low-frequency-sine / PRBS excitation, the pipeline's white-box model tracks the actual plant to 10.05° RMSE (175 mrad) and identifies all three physical parameters within 1–3% of their true, hidden values (K_u: 20.000 → 20.571, +2.9%; K_d: 0.400 → 0.404, +1.0%; K_s: 29.430 → 29.943, +1.7%). [TK — experiments consumed per run, and how often the fidelity ladder descends past white-box across a broader set of plants: the run logs that would answer this live in a local, gitignored experiment database that isn't in this clone. See QUESTIONS.md.]
+</dd>
+  </dl>
+  <div class="system-artifact-links">
+    <span class="system-artifact-label">Artifact</span>
+    <a href="https://github.com/Hojat-Salehi/Agentic-SysID" target="_blank" rel="noopener noreferrer">Code</a> ·
+    <a href="https://github.com/Hojat-Salehi/Agentic-SysID/blob/main/demo/demo.mp4" target="_blank" rel="noopener noreferrer">Demo video</a>
+  </div>
+</article>
 
 </div>
 
