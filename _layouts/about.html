@@ -11,6 +11,8 @@ layout: default
           <p class="desc">{{ page.subtitle }}</p>
         </header>
 
+        {% include hero.html %}
+
         <article>
           {% if page.profile -%}
           <div class="profile float-{%- if page.profile.align == 'left' -%}left{%- else -%}right{%- endif -%}">
@@ -68,3 +70,5 @@ layout: default
         </article>
 
 </div>
+
+<script src="{{ '/assets/js/hero.js' | relative_url }}"></script>

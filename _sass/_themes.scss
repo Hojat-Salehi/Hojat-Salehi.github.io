@@ -17,6 +17,8 @@
   --global-card-bg-color: #{$white-color};
   --global-ok-color: #{$ok-color};
   --global-dot-color: #{rgba($ink-color, 0.07)};
+  --global-signal-color: #{$signal-color};
+  --global-trace-color: #{$trace-color};
 
   .fa-sun {
     display : none;
@@ -50,6 +52,8 @@ html[data-theme='dark'] {
   --global-card-bg-color: #{lighten($graphite-color, 4%)};
   --global-ok-color: #{$ok-color};
   --global-dot-color: #{rgba($graphite-text-color, 0.05)};
+  --global-signal-color: #{$signal-color-dark};
+  --global-trace-color: #{$trace-color-dark};
 
   .fa-sun {
     padding-left: 10px;
