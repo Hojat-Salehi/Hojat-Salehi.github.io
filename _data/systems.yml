@@ -142,3 +142,57 @@
       url: https://github.com/Hojat-Salehi/Agentic-SysID
     - label: "Demo video"
       url: https://github.com/Hojat-Salehi/Agentic-SysID/blob/main/demo/demo.mp4
+
+- key: game-analyst-multiagent
+  title: "Game Analyst"
+  tagline: "Adversarial multi-agent debate for NBA/MLB game analysis, graded against real outcomes"
+  repo: https://github.com/Hojat-Salehi/game-analyst-multiagent
+
+  problem: >
+    A single LLM asked to predict a game's outcome tends to anchor on whatever
+    narrative it reaches for first, with no mechanism to stress-test that call or
+    check it against what actually happened.
+
+  approach: >
+    Game Analyst runs the question through two parallel adversarial debates — a
+    Win Probability debate (Favorite Case vs. Underdog Case, argued purely from
+    team stats, form, and head-to-head history, with no market odds involved) and a
+    Total Points debate (High Total Case vs. Low Total Case, using the market's
+    total-points number as one input among several) — each converging through a
+    dedicated judge. A Head Analyst cross-validates both judges' reasoning for
+    consistency and writes the final report. Every analysis persists to SQLite and
+    renders to an HTML report; once a game completes, a post-game accuracy review
+    compares the prediction to the real result and writes a lesson per agent role
+    into a ChromaDB memory store, so later analyses of similar situations draw on
+    what past predictions got right or wrong.
+
+  result: >
+    [TK — measured prediction accuracy over N games. The system is built to grade
+    itself: `game_analysis.db` stores every prediction and `review_result` compares
+    it to the actual final score once the game completes (see `database/schema.sql`
+    and the Post-Game Accuracy Review step). But this repo clone has no populated
+    database or `reports/` directory — both are gitignored, runtime-generated, and
+    empty until real games are run through it. This is the biggest gap on this
+    entire site: there's no track record yet. See QUESTIONS.md — the fix is to
+    start running it against real, currently-scheduled games now, so a real number
+    exists here by interview season.]
+
+  figures:
+    - image: systems/game-analyst-architecture.png
+      alt: >
+        Architecture diagram: Home/Away Team Analysts and H2H Analyst feed a Market
+        Reference Analyst, which drives two parallel adversarial debates (Win
+        Probability: Favorite vs. Underdog; Total Points: High vs. Low Total), each
+        resolved by a judge, cross-validated by a Head Analyst into a final report,
+        which after the game completes triggers a Post-Game Accuracy Review.
+      caption: >
+        Two adversarial debates run in parallel — win probability and total
+        points — each resolved by a dedicated judge. The Head Analyst
+        cross-validates both before writing the final report. Re-rendered with
+        Graphviz from the Mermaid diagram in the repo's own README (this site has
+        no server-side Mermaid renderer); structure and labels are unchanged.
+      source: "repos/game-analyst-multiagent/README.md (Mermaid source, re-rendered)"
+
+  artifact_links:
+    - label: "Code"
+      url: https://github.com/Hojat-Salehi/game-analyst-multiagent

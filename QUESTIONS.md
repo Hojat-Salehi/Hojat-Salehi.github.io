@@ -24,4 +24,20 @@ accepting the white-box model?
 **If unanswered:** card ships with those two numbers omitted — the parameter-accuracy
 and RMSE numbers already sourced from the demo stand on their own.
 
+## Q-007 — game-analyst-multiagent: no prediction track record yet
+
+**Blocking:** Systems page card for Game Analyst
+**Placeholder:** `[TK]` in `_data/systems.yml`, `game-analyst-multiagent` entry, `result:` field
+**Question:** The brief calls this out specifically — "measured prediction accuracy
+over N games... this is what separates it from a toy." The repo is built to grade
+itself (`game_analysis.db` + the post-game review step), but `*.db`, `reports/`,
+and `memories_db/` are all gitignored and empty in this clone — there's no run
+history anywhere I can extract from. Same story for a sample HTML report to link
+as an artifact. There isn't a number I can pull here; this needs you to actually
+run `python full_game_analysis.py analyze ...` against real, currently-scheduled
+games (and `review` once they finish) so a track record starts accumulating.
+**If unanswered:** card ships with the architecture and the debate mechanism
+described, no accuracy number and no sample report link, both flagged as the
+system's current biggest weakness rather than glossed over.
+
 No other open questions blocking launch right now.
