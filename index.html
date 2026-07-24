@@ -158,32 +158,6 @@
           <p class="desc">Information theory in machine learning, explainable AI, and agentic systems.</p>
         </header>
 
-        <!-- hero.html — the one signature bold element (AGENT_BRIEF.md §5): the real
-     Agentic-SysID pendulum plant vs. identified model, styled as a two-channel
-     readout in the signal/trace accent pair. prefers-reduced-motion swaps to a
-     static frame; the play/pause control is real, not decorative. -->
-<div class="hero-readout">
-  <div class="hero-readout-frame">
-    <video
-      id="hero-pendulum-video"
-      class="hero-readout-media"
-      poster="/assets/img/systems/agentic-sysid-demo-frame.png"
-      muted loop playsinline
-      aria-label="Animation: the actual pendulum plant swinging alongside the white-box model identified by Agentic-SysID, tracking closely under composite excitation.">
-      <source src="/assets/video/agentic-sysid-demo.mp4" type="video/mp4">
-    </video>
-    <button id="hero-pendulum-toggle" class="hero-readout-toggle" type="button" aria-label="Pause animation">
-      <span aria-hidden="true">❚❚</span>
-    </button>
-  </div>
-  <div class="hero-readout-caption">
-    <span class="hero-channel hero-channel-signal">Actual plant</span>
-    <span class="hero-channel hero-channel-trace">Identified model</span>
-    <span class="hero-readout-note">Agentic-SysID, real run · <a href="/systems/#agentic-sysid">details →</a></span>
-  </div>
-</div>
-
-
         <article>
           <div class="profile float-right">
 
@@ -223,6 +197,26 @@
 <p>I build systems that reason, and then I try to prove something about them.</p>
 
 <p>My research spans information theory (non-interactive source simulation, differentially private distributed learning), explainable graph machine learning, generative models for structured data, and — more recently — agentic AI systems for system identification and multi-agent decision-making. Before the Ph.D., I spent a decade in industrial control engineering and automation, which is where the instinct to actually prove a system does what you claim it does comes from.</p>
+
+<!-- hero.html — the one signature bold element (AGENT_BRIEF.md §5): the real
+     Agentic-SysID pendulum plant vs. identified model, styled as a two-channel
+     readout in the signal/trace accent pair. prefers-reduced-motion swaps to a
+     static frame; the play/pause control is real, not decorative. -->
+<div class="hero-readout">
+  <div class="hero-readout-frame">
+    <video id="hero-pendulum-video" class="hero-readout-media" poster="/assets/img/systems/agentic-sysid-demo-frame.png" muted="" loop="" playsinline="" aria-label="Animation: the actual pendulum plant swinging alongside the white-box model identified by Agentic-SysID, tracking closely under composite excitation.">
+      <source src="/assets/video/agentic-sysid-demo.mp4" type="video/mp4" />
+    </video>
+    <button id="hero-pendulum-toggle" class="hero-readout-toggle" type="button" aria-label="Pause animation">
+      <span aria-hidden="true">❚❚</span>
+    </button>
+  </div>
+  <div class="hero-readout-caption">
+    <span class="hero-channel hero-channel-signal">Actual plant</span>
+    <span class="hero-channel hero-channel-trace">Identified model</span>
+    <span class="hero-readout-note">Agentic-SysID, real run · <a href="/systems/#agentic-sysid">details →</a></span>
+  </div>
+</div>
 
 <!-- DRAFT-COPY -->
 <p>Four themes run through the work below: privacy-preserving distributed learning, explainable and graph ML, agentic systems, and generative models for structured data. Each pairs a theoretical result with a working system — <a href="/publications/">Publications</a> has the papers, <a href="/cv/">CV</a> has the full history.</p>
