@@ -1,0 +1,199 @@
+/*******************************************************************************
+ * Demos page (AGENT_BRIEF.md §6.3). Demo 1: CorBin-FL privacy/accuracy
+ * explorer, hand-rolled SVG, no chart library.
+ ******************************************************************************/
+
+.demo-block {
+  margin-top: 1rem;
+}
+
+.demo-intro {
+  max-width: 680px;
+  color: var(--global-text-color-light);
+  line-height: 1.6;
+}
+
+.demo-source-note {
+  font-size: 0.82rem;
+  color: var(--global-text-color-light);
+  max-width: 680px;
+  margin-top: 1rem;
+
+  code {
+    font-size: 0.78rem;
+  }
+}
+
+.corbin-explorer {
+  border: 1px solid var(--global-divider-color);
+  border-radius: 8px;
+  padding: 1.25rem 1.25rem 1rem 1.25rem;
+  background: var(--global-code-bg-color);
+  max-width: 800px;
+}
+
+.corbin-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.corbin-tab {
+  @include mono-face;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid var(--global-divider-color);
+  background: transparent;
+  color: var(--global-text-color-light);
+  cursor: pointer;
+
+  &.active {
+    color: var(--global-bg-color);
+    background: var(--global-signal-color);
+    border-color: var(--global-signal-color);
+  }
+
+  &:hover:not(.active) {
+    border-color: var(--global-signal-color);
+    color: var(--global-signal-color);
+  }
+}
+
+.corbin-chart-holder {
+  position: relative;
+}
+
+.corbin-chart {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.corbin-axis-label {
+  @include mono-face;
+  font-size: 10px;
+  fill: var(--global-text-color-light);
+}
+
+.corbin-axis-title {
+  @include mono-face;
+  font-size: 10.5px;
+  fill: var(--global-text-color-light);
+  letter-spacing: 0.03em;
+}
+
+.corbin-gridline {
+  stroke: var(--global-divider-color);
+  stroke-width: 1;
+}
+
+.corbin-series {
+  transition: opacity 0.15s ease;
+}
+
+.corbin-series.corbin-hidden {
+  display: none;
+}
+
+.corbin-line {
+  fill: none;
+  stroke-width: 1.75;
+}
+
+.corbin-line-hero {
+  stroke-width: 3;
+}
+
+.corbin-line-flat {
+  stroke-dasharray: 5 4;
+  stroke-width: 1.5;
+}
+
+.corbin-series-hero .corbin-line,
+.corbin-series-hero .corbin-marker-shape {
+  stroke: var(--global-signal-color);
+  fill: var(--global-signal-color);
+}
+
+.corbin-series-baseline .corbin-line,
+.corbin-series-baseline .corbin-marker-shape {
+  stroke: var(--global-trace-color);
+  fill: var(--global-trace-color);
+  opacity: 0.75;
+}
+
+.corbin-series-flat .corbin-line,
+.corbin-series-flat .corbin-marker-shape {
+  stroke: var(--global-text-color-light);
+  fill: var(--global-text-color-light);
+}
+
+.corbin-marker-shape {
+  stroke-width: 1.5;
+}
+
+.corbin-tooltip {
+  position: absolute;
+  pointer-events: none;
+  background: var(--global-footer-bg-color);
+  color: var(--global-footer-text-color);
+  border-radius: 6px;
+  padding: 0.55rem 0.7rem;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  max-width: 200px;
+  opacity: 0;
+  transition: opacity 0.1s ease;
+  z-index: 5;
+}
+
+.corbin-tooltip.visible {
+  opacity: 1;
+}
+
+.corbin-tooltip-source {
+  color: var(--global-text-color-light);
+  font-size: 0.7rem;
+}
+
+.corbin-legend {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.1rem;
+}
+
+.corbin-legend-item {
+  @include mono-face;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.72rem;
+  color: var(--global-text-color);
+  cursor: pointer;
+  user-select: none;
+
+  &.hidden {
+    opacity: 0.35;
+  }
+
+  &.hero {
+    font-weight: 600;
+  }
+}
+
+.corbin-legend-swatch {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.corbin-error {
+  color: var(--global-text-color-light);
+  font-style: italic;
+}

@@ -1,0 +1,446 @@
+{
+  "generated_from": [
+    "repos/CorBin-FL/results.log",
+    "repos/CorBin-FL/README.md"
+  ],
+  "note": "Test accuracy (%) at best-tuned lambda per (method, dataset, epsilon), 50 clients, 100 rounds. Non-private methods (CorQuant, FedAvg) shown as flat reference lines. Shakespeare/Sent140/Reddit and several baselines (SignSGD, GaussianLDP/CDP, AugCorBin-FL) are not yet in an extractable sweep -- see QUESTIONS.md.",
+  "datasets": [
+    {
+      "key": "CIFAR10",
+      "label": "CIFAR-10"
+    },
+    {
+      "key": "MNIST",
+      "label": "MNIST"
+    },
+    {
+      "key": "FEMNIST",
+      "label": "FEMNIST"
+    }
+  ],
+  "methods": {
+    "corbinfl": {
+      "label": "CorBin-FL (ours)",
+      "privacy": "\u03b5-LDP",
+      "bits": 1,
+      "nonPrivate": false
+    },
+    "corquant": {
+      "label": "CorQuant",
+      "privacy": "None",
+      "bits": 1,
+      "nonPrivate": true
+    },
+    "fedavg": {
+      "label": "FedAvg",
+      "privacy": "None",
+      "bits": 32,
+      "nonPrivate": true
+    },
+    "laplace": {
+      "label": "Laplace LDP",
+      "privacy": "\u03b5-LDP",
+      "bits": 32,
+      "nonPrivate": false
+    },
+    "ldpfl": {
+      "label": "LDP-FL",
+      "privacy": "\u03b5-LDP",
+      "bits": 1,
+      "nonPrivate": false
+    },
+    "imvu": {
+      "label": "I-MVU (1-bit)",
+      "privacy": "\u03b5-LDP",
+      "bits": 1,
+      "nonPrivate": false
+    },
+    "pbm_pldp_1bit": {
+      "label": "PBM-PLDP (1-bit)",
+      "privacy": "\u03b5-PLDP",
+      "bits": 1,
+      "nonPrivate": false
+    },
+    "pbm_pldp_2bit": {
+      "label": "PBM-PLDP (2-bit)",
+      "privacy": "\u03b5-PLDP",
+      "bits": 2,
+      "nonPrivate": false
+    },
+    "rqm": {
+      "label": "RQM (1-bit)",
+      "privacy": "\u03b5-LDP",
+      "bits": 1,
+      "nonPrivate": false
+    }
+  },
+  "series": {
+    "CIFAR10": {
+      "corquant": [
+        {
+          "epsilon": null,
+          "acc": 74.16,
+          "std": 1.7707,
+          "source": "results.log"
+        }
+      ],
+      "imvu": [
+        {
+          "epsilon": 1.0,
+          "acc": 41.33,
+          "std": 1.3955,
+          "source": "results.log"
+        },
+        {
+          "epsilon": 3.0,
+          "acc": 64.96,
+          "std": 1.6671,
+          "source": "results.log"
+        },
+        {
+          "epsilon": 5.0,
+          "acc": 68.17,
+          "std": 3.0693,
+          "source": "results.log"
+        },
+        {
+          "epsilon": 7.0,
+          "acc": 68.76,
+          "std": 2.2738,
+          "source": "results.log"
+        }
+      ],
+      "pbm_pldp_1bit": [
+        {
+          "epsilon": 1.0,
+          "acc": 42.33,
+          "std": 0.7648,
+          "source": "results.log"
+        },
+        {
+          "epsilon": 3.0,
+          "acc": 64.89,
+          "std": 1.4084,
+          "source": "results.log"
+        },
+        {
+          "epsilon": 5.0,
+          "acc": 68.77,
+          "std": 1.2226,
+          "source": "results.log"
+        },
+        {
+          "epsilon": 7.0,
+          "acc": 72.38,
+          "std": 1.2397,
+          "source": "results.log"
+        }
+      ],
+      "pbm_pldp_2bit": [
+        {
+          "epsilon": 1.0,
+          "acc": 27.55,
+          "std": 0.645,
+          "source": "results.log",
+          "note": "2/5 seeds completed"
+        },
+        {
+          "epsilon": 3.0,
+          "acc": 61.26,
+          "std": 0.06,
+          "source": "results.log",
+          "note": "2/5 seeds completed"
+        },
+        {
+          "epsilon": 5.0,
+          "acc": 45.3,
+          "std": 0.155,
+          "source": "results.log",
+          "note": "2/5 seeds completed"
+        },
+        {
+          "epsilon": 7.0,
+          "acc": 42.98,
+          "std": 0.0,
+          "source": "results.log",
+          "note": "1/5 seeds completed"
+        }
+      ],
+      "rqm": [
+        {
+          "epsilon": 1.0,
+          "acc": 41.52,
+          "std": 1.2305,
+          "source": "results.log"
+        },
+        {
+          "epsilon": 3.0,
+          "acc": 65.42,
+          "std": 0.6017,
+          "source": "results.log"
+        },
+        {
+          "epsilon": 5.0,
+          "acc": 68.16,
+          "std": 1.8747,
+          "source": "results.log"
+        },
+        {
+          "epsilon": 7.0,
+          "acc": 71.89,
+          "std": 1.0005,
+          "source": "results.log"
+        }
+      ],
+      "laplace": [
+        {
+          "epsilon": 1.0,
+          "acc": 27.9,
+          "std": 3.44,
+          "source": "README.md"
+        },
+        {
+          "epsilon": 5.0,
+          "acc": 67.43,
+          "std": 0.3,
+          "source": "README.md"
+        }
+      ],
+      "ldpfl": [
+        {
+          "epsilon": 1.0,
+          "acc": 44.23,
+          "std": 0.29,
+          "source": "README.md"
+        },
+        {
+          "epsilon": 5.0,
+          "acc": 68.93,
+          "std": 0.51,
+          "source": "README.md"
+        }
+      ],
+      "corbinfl": [
+        {
+          "epsilon": 1.0,
+          "acc": 59.51,
+          "std": 0.24,
+          "source": "README.md"
+        },
+        {
+          "epsilon": 5.0,
+          "acc": 72.69,
+          "std": 0.48,
+          "source": "README.md"
+        }
+      ],
+      "fedavg": [
+        {
+          "epsilon": null,
+          "acc": 78.21,
+          "std": 0.64,
+          "source": "README.md"
+        }
+      ]
+    },
+    "MNIST": {
+      "corquant": [
+        {
+          "epsilon": null,
+          "acc": 98.11,
+          "std": 0.0804,
+          "source": "results.log"
+        }
+      ],
+      "corbinfl": [
+        {
+          "epsilon": 0.1,
+          "acc": 93.13,
+          "std": 0.5266,
+          "source": "results.log"
+        },
+        {
+          "epsilon": 0.3,
+          "acc": 96.5,
+          "std": 0.0845,
+          "source": "results.log"
+        },
+        {
+          "epsilon": 1.0,
+          "acc": 97.52,
+          "std": 0.135,
+          "source": "results.log"
+        },
+        {
+          "epsilon": 3.0,
+          "acc": 97.99,
+          "std": 0.1077,
+          "source": "results.log"
+        }
+      ],
+      "imvu": [
+        {
+          "epsilon": 0.1,
+          "acc": 32.41,
+          "std": 2.9825,
+          "source": "results.log"
+        },
+        {
+          "epsilon": 0.3,
+          "acc": 84.13,
+          "std": 1.4446,
+          "source": "results.log"
+        },
+        {
+          "epsilon": 1.0,
+          "acc": 96.64,
+          "std": 0.1559,
+          "source": "results.log"
+        },
+        {
+          "epsilon": 3.0,
+          "acc": 97.94,
+          "std": 0.1624,
+          "source": "results.log"
+        }
+      ],
+      "pbm_pldp_1bit": [
+        {
+          "epsilon": 0.1,
+          "acc": 29.77,
+          "std": 5.5113,
+          "source": "results.log"
+        },
+        {
+          "epsilon": 0.3,
+          "acc": 85.33,
+          "std": 0.8001,
+          "source": "results.log"
+        },
+        {
+          "epsilon": 1.0,
+          "acc": 96.78,
+          "std": 0.1027,
+          "source": "results.log"
+        },
+        {
+          "epsilon": 3.0,
+          "acc": 97.81,
+          "std": 0.0863,
+          "source": "results.log"
+        }
+      ],
+      "pbm_pldp_2bit": [
+        {
+          "epsilon": 0.1,
+          "acc": 21.53,
+          "std": 3.9175,
+          "source": "results.log"
+        },
+        {
+          "epsilon": 0.3,
+          "acc": 74.28,
+          "std": 3.8989,
+          "source": "results.log"
+        },
+        {
+          "epsilon": 1.0,
+          "acc": 95.94,
+          "std": 0.1515,
+          "source": "results.log"
+        },
+        {
+          "epsilon": 3.0,
+          "acc": 97.57,
+          "std": 0.1052,
+          "source": "results.log"
+        }
+      ],
+      "rqm": [
+        {
+          "epsilon": 0.1,
+          "acc": 32.04,
+          "std": 2.9518,
+          "source": "results.log"
+        },
+        {
+          "epsilon": 0.3,
+          "acc": 84.39,
+          "std": 1.9207,
+          "source": "results.log"
+        },
+        {
+          "epsilon": 0.5,
+          "acc": 93.44,
+          "std": 0.035,
+          "source": "results.log",
+          "note": "2/5 seeds completed"
+        },
+        {
+          "epsilon": 1.0,
+          "acc": 96.62,
+          "std": 0.1416,
+          "source": "results.log"
+        },
+        {
+          "epsilon": 3.0,
+          "acc": 97.85,
+          "std": 0.1017,
+          "source": "results.log"
+        }
+      ]
+    },
+    "FEMNIST": {
+      "laplace": [
+        {
+          "epsilon": 1.0,
+          "acc": 80.75,
+          "std": 0.04,
+          "source": "README.md"
+        },
+        {
+          "epsilon": 5.0,
+          "acc": 84.2,
+          "std": 0.06,
+          "source": "README.md"
+        }
+      ],
+      "ldpfl": [
+        {
+          "epsilon": 1.0,
+          "acc": 79.98,
+          "std": 0.69,
+          "source": "README.md"
+        },
+        {
+          "epsilon": 5.0,
+          "acc": 84.96,
+          "std": 0.46,
+          "source": "README.md"
+        }
+      ],
+      "corbinfl": [
+        {
+          "epsilon": 1.0,
+          "acc": 82.82,
+          "std": 0.7,
+          "source": "README.md"
+        },
+        {
+          "epsilon": 5.0,
+          "acc": 86.08,
+          "std": 0.44,
+          "source": "README.md"
+        }
+      ],
+      "fedavg": [
+        {
+          "epsilon": null,
+          "acc": 87.24,
+          "std": 0.39,
+          "source": "README.md"
+        }
+      ]
+    }
+  }
+}
