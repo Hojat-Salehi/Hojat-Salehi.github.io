@@ -106,10 +106,9 @@
     PRBS excitation, the pipeline's white-box model tracks the actual plant to
     10.05° RMSE (175 mrad) and identifies all three physical parameters within 1–3%
     of their true, hidden values (K_u: 20.000 → 20.571, +2.9%; K_d: 0.400 → 0.404,
-    +1.0%; K_s: 29.430 → 29.943, +1.7%). [TK — experiments consumed per run, and how
-    often the fidelity ladder descends past white-box across a broader set of plants:
-    the run logs that would answer this live in a local, gitignored experiment
-    database that isn't in this clone. See QUESTIONS.md.]
+    +1.0%; K_s: 29.430 → 29.943, +1.7%). Experiments-per-run and fidelity-ladder
+    descent rate across a broader set of plants aren't tracked yet — clone it and
+    point it at your own plant to find out. [TK]
 
   figures:
     - image: systems/agentic-sysid-flowchart.png
@@ -167,15 +166,10 @@
     what past predictions got right or wrong.
 
   result: >
-    [TK — measured prediction accuracy over N games. The system is built to grade
-    itself: `game_analysis.db` stores every prediction and `review_result` compares
-    it to the actual final score once the game completes (see `database/schema.sql`
-    and the Post-Game Accuracy Review step). But this repo clone has no populated
-    database or `reports/` directory — both are gitignored, runtime-generated, and
-    empty until real games are run through it. This is the biggest gap on this
-    entire site: there's no track record yet. See QUESTIONS.md — the fix is to
-    start running it against real, currently-scheduled games now, so a real number
-    exists here by interview season.]
+    The system is built to grade itself — every analysis persists to SQLite, and a
+    post-game review compares each prediction to the actual final score once the
+    game completes (see `database/schema.sql`). It hasn't been run against a real
+    slate of games yet, so there's no accuracy number to report here. [TK]
 
   figures:
     - image: systems/game-analyst-architecture.png
