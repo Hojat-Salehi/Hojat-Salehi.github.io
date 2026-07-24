@@ -202,7 +202,6 @@ plugins:
   - jekyll-feed        # RSS for the Notes blog, brief §6.5
   - jekyll/scholar      # BibTeX-driven Publications page, single source of truth per brief §6.1
   - jekyll-sitemap     # sitemap.xml, brief §8
-  - jekyll-link-attributes # external links open in new tab / rel=noopener automatically
 
 # Sitemap settings
 defaults:
@@ -250,18 +249,6 @@ filtered_bibtex_keywords: [abbr, abstract, arxiv, bibtex_show, html, pdf, select
 # Maximum number of authors to be shown for each publication (more authors are visible on click)
 max_author_limit: 3  # leave blank to always show all authors
 more_authors_animation_delay: 10  # more authors are revealed on click using animation; smaller delay means faster animation
-
-
-# -----------------------------------------------------------------------------
-# Jekyll Link Attributes
-# -----------------------------------------------------------------------------
-
-# These are the defaults
-external_links:
-  enabled: true
-  rel: external nofollow noopener
-  target: _blank
-  exclude:
 
 
 # -----------------------------------------------------------------------------
