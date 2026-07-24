@@ -1,29 +1,11 @@
 # Open questions
 
-## Q-001 — Home page "looking for" line
-**Blocking:** Home page "currently" section
-**Placeholder:** `[TK]` at `_pages/about.md`
-**Question:** What roles/timeline should the "looking for" line state (e.g. "research scientist roles in privacy-preserving ML," "agentic AI engineering roles," a target start date)?
-**If unanswered:** ships with the `[TK]` visible rather than an invented target.
+All items from the first round are resolved as of 2026-07-24:
 
-## Q-002 — Professional photo
-**Blocking:** Home page profile image (currently omitted entirely, not a placeholder)
-**Question:** A professional photo for the Home page profile slot, per brief §7 asset list.
-**If unanswered:** page ships with no photo — text-only, which is a legitimate look, not a broken one.
+- ~~Q-001 (looking for line)~~ — removed entirely, principal's call.
+- ~~Q-002 (photo)~~ — resolved. `PHOTO.jpg` supplied, cropped to `assets/img/profile.jpg` (profile), `assets/img/favicon.png` (favicon), and composited into `assets/img/og-image.png` (social share card). **To replace the photo later:** drop a new photo anywhere in the repo, tell me, and I'll regenerate all three crops the same way — or if doing it yourself, see the crop recipe in `NOTES.md`.
+- ~~Q-003 (favicon/OG image)~~ — resolved, used the photo for both (see above), styled to match the `NOTES.md` palette (paper background, ink text, signal-blue accent).
+- ~~Q-004 (domain)~~ — staying on `hojat-salehi.github.io` until the rest of the site is finalized; principal will reconsider purchasing a domain after that.
+- ~~Q-005 (ORCID/dblp/Semantic Scholar)~~ — ORCID set (`0000-0002-4186-9349`). dblp and Semantic Scholar intentionally left blank permanently — not worth the extra profiles to maintain given Google Scholar already covers this.
 
-## Q-003 — Favicon / OG image
-**Blocking:** `_config.yml` `icon:` and `og_image:` fields currently point at non-existent files
-**Question:** A small square icon/mark for the browser tab favicon, and a social-share preview image.
-**If unanswered:** favicon falls back to Jekyll/browser default; OG preview image is blank when links are shared.
-
-## Q-004 — Domain purchase
-**Blocking:** `url:` in `_config.yml`, CNAME setup, brief §8 checklist
-**Status:** Not purchased yet (confirmed by principal 2026-07-23). Site currently configured against `https://hojat-salehi.github.io`.
-**If unanswered:** stays on the default github.io URL indefinitely — not a blocker to launch.
-
-## Q-005 — Identity/discoverability accounts (brief §8, explicitly principal-to-complete)
-ORCID, dblp claim, Semantic Scholar claim, Google Search Console verification — none of these can be done on the principal's behalf. `_config.yml` has placeholders (`orcid_id`, `dblp_url`, `semanticscholar_id`) ready to fill in once created.
-
----
-
-Always includes an "if unanswered" fallback per brief §7 — every item above is safe to ship without.
+No open questions blocking launch right now.
