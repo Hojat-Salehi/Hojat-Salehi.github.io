@@ -2,31 +2,31 @@
 <html lang="en">
 
   <!-- Head -->
-  <head><meta http-equiv="refresh" content="3; url=/" />    <!-- Metadata, OpenGraph and Schema.org -->
+  <head>    <!-- Metadata, OpenGraph and Schema.org -->
     
 
     <!-- Standard metadata -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page not found | Hojat Salehi</title>
+    <title>demos | Hojat Salehi</title>
     <meta name="author" content="Hojat Allah Salehi" />
-    <meta name="description" content="Looks like there has been a mistake. Nothing exists here." />
+    <meta name="description" content="Interactive demos, built from real experiment data -- no fabricated curves, no live backend." />
     <meta name="keywords" content="Hojat Salehi, Hojat Allah Salehi, information theory, differential privacy, federated learning, explainable AI, agentic AI, graph neural networks" />
 
     <!-- OpenGraph -->
     <meta property="og:site_name" content="Hojat Salehi" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Hojat Salehi | Page not found" />
-    <meta property="og:url" content="https://hojat-salehi.github.io/404.html" />
-    <meta property="og:description" content="Looks like there has been a mistake. Nothing exists here." />
+    <meta property="og:title" content="Hojat Salehi | demos" />
+    <meta property="og:url" content="https://hojat-salehi.github.io/demos/" />
+    <meta property="og:description" content="Interactive demos, built from real experiment data -- no fabricated curves, no live backend." />
     <meta property="og:image" content="https://hojat-salehi.github.io/assets/img/og-image.png" />
     <meta property="og:locale" content="en" />
 
     <!-- Twitter card -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="Page not found" />
-    <meta name="twitter:description" content="Looks like there has been a mistake. Nothing exists here." />
+    <meta name="twitter:title" content="demos" />
+    <meta name="twitter:description" content="Interactive demos, built from real experiment data -- no fabricated curves, no live backend." />
     <meta name="twitter:image" content="https://hojat-salehi.github.io/assets/img/og-image.png" />
     
 
@@ -38,10 +38,10 @@
           "@type": "Person",
           "name": "Hojat Allah Salehi"
         },
-        "url": "https://hojat-salehi.github.io/404.html",
+        "url": "https://hojat-salehi.github.io/demos/",
         "@type": "WebSite",
-        "description": "Looks like there has been a mistake. Nothing exists here.",
-        "headline": "Page not found",
+        "description": "Interactive demos, built from real experiment data -- no fabricated curves, no live backend.",
+        "headline": "demos",
         "sameAs": ["https://orcid.org/0000-0002-4186-9349", "https://scholar.google.com/citations?user=qo_yamYAAAAJ", "https://github.com/Hojat-Salehi", "https://www.linkedin.com/in/hojat-salehi-29216736"],
         "name": "Hojat Allah Salehi",
         "@context": "https://schema.org"
@@ -65,7 +65,7 @@
     <link rel="shortcut icon" href="/assets/img/favicon.png"/>
     
     <link rel="stylesheet" href="/assets/css/main.css">
-    <link rel="canonical" href="https://hojat-salehi.github.io/404.html">
+    <link rel="canonical" href="https://hojat-salehi.github.io/demos/">
     
     <!-- Dark Mode -->
     
@@ -111,8 +111,8 @@
               <li class="nav-item ">
                 <a class="nav-link" href="/systems/">systems</a>
               </li>
-              <li class="nav-item ">
-                <a class="nav-link" href="/demos/">demos</a>
+              <li class="nav-item active">
+                <a class="nav-link" href="/demos/">demos<span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item ">
                 <a class="nav-link" href="/publications/">publications</a>
@@ -142,12 +142,37 @@
         <div class="post">
 
           <header class="post-header">
-            <h1 class="post-title">Page not found</h1>
-            <p class="post-description">Looks like there has been a mistake. Nothing exists here.</p>
+            <h1 class="post-title">demos</h1>
+            <p class="post-description">Interactive demos, built from real experiment data -- no fabricated curves, no live backend.</p>
           </header>
 
           <article>
-            <p>You will be redirected to the main page within 3 seconds. If not redirected, please go back to the <a href="/">home page</a>.</p>
+            <!-- DRAFT-COPY -->
+<p class="systems-intro">Interactive, not decorative -- every number here comes straight from a real experiment log. No backend, no API key, works offline from a fresh clone.</p>
+
+<section class="demo-block" id="corbin-privacy-explorer">
+  <p class="channel-label">DEMO.01</p>
+  <h2>Privacy / accuracy tradeoff — CorBin-FL</h2>
+  <p class="demo-intro">
+    <!-- DRAFT-COPY -->
+    Every point below is a real, tuned run: best test accuracy across a full λ sweep, at a
+    given privacy budget ε. Hover a point for the exact number, bits transmitted per
+    coordinate, and privacy class. Toggle a method in the legend to isolate it.
+  </p>
+
+  <div id="corbin-explorer-root" data-src="/assets/data/corbin_sweep.json"></div>
+
+  <p class="demo-source-note">
+    Data: <a href="https://github.com/Hojat-Salehi/CorBin-FL/blob/main/results.log">results.log</a>
+    and the <a href="https://github.com/Hojat-Salehi/CorBin-FL#results">README results table</a>
+    from the <a href="/systems/#corbinfl">CorBin-FL</a> repo. Shakespeare / Sent140 / Reddit and a
+    few baselines (SignSGD, Gaussian LDP/CDP, Augmented CorBin-FL) aren't in an extractable sweep
+    yet — see <code>QUESTIONS.md</code>.
+  </p>
+</section>
+
+<script src="/assets/js/corbin-explorer.js"></script>
+
 
           </article>
 
