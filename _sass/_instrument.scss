@@ -1,0 +1,32 @@
+/*******************************************************************************
+ * Instrument-panel motif (NOTES.md layout concept): a faint graph-paper
+ * dot-grid across the page, and a thin-rule + mono "channel label" that
+ * frames each theme/section like an oscilloscope channel indicator.
+ ******************************************************************************/
+
+body {
+  background-image: radial-gradient(circle, var(--global-dot-color) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.channel-label {
+  @include mono-face;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--global-text-color-light);
+  margin-bottom: 0.6rem;
+
+  &::before {
+    content: "";
+    display: block;
+    width: 1.75rem;
+    height: 1px;
+    background: var(--global-theme-color);
+    flex-shrink: 0;
+  }
+}

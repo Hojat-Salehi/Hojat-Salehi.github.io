@@ -25,6 +25,7 @@
 
   h2 {
     margin-top: 0;
+    margin-bottom: 1.5rem;
   }
 
   p {
@@ -32,10 +33,48 @@
   }
 }
 
+// Two-column proof format (NOTES.md layout concept): prose left, one real
+// figure right. Collapses to a single column on narrow viewports.
+.research-theme-body {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 2.5rem;
+  align-items: start;
+
+  @media (max-width: 767px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.research-theme-figure {
+  margin: 0;
+  position: sticky;
+  top: 5.5rem;
+
+  @media (max-width: 767px) {
+    position: static;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    border: 1px solid var(--global-divider-color);
+  }
+
+  figcaption {
+    font-size: 0.82rem;
+    color: var(--global-text-color-light);
+    margin-top: 0.5rem;
+    line-height: 1.5;
+  }
+}
+
 .venue-badge {
+  @include mono-face;
   display: inline-block;
   font-size: 0.72rem;
-  font-weight: 700;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   color: var(--global-theme-color);

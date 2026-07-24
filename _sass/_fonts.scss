@@ -1,0 +1,81 @@
+/*******************************************************************************
+ * Self-hosted type system (NOTES.md design tokens). No font CDN calls at
+ * runtime — every file below is vendored in assets/fonts/ under its own SIL
+ * Open Font License (see assets/fonts/LICENSES/).
+ ******************************************************************************/
+
+// Fraunces — display face. Variable (opsz/wght/SOFT/WONK). Used sparingly, at
+// large sizes, dialed toward "literary-but-precise" via SOFT below.
+@font-face {
+  font-family: "Fraunces";
+  src: url("/assets/fonts/fraunces-variable.woff2") format("woff2-variations"),
+       url("/assets/fonts/fraunces-variable.woff2") format("woff2");
+  font-weight: 300 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fraunces";
+  src: url("/assets/fonts/fraunces-italic-variable.woff2") format("woff2-variations"),
+       url("/assets/fonts/fraunces-italic-variable.woff2") format("woff2");
+  font-weight: 300 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+// Source Sans 3 — body face. Variable (wght only). Carries the reading weight
+// of the site.
+@font-face {
+  font-family: "Source Sans 3";
+  src: url("/assets/fonts/sourcesans3-variable.woff2") format("woff2-variations"),
+       url("/assets/fonts/sourcesans3-variable.woff2") format("woff2");
+  font-weight: 200 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Source Sans 3";
+  src: url("/assets/fonts/sourcesans3-italic-variable.woff2") format("woff2-variations"),
+       url("/assets/fonts/sourcesans3-italic-variable.woff2") format("woff2");
+  font-weight: 200 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+// IBM Plex Mono — mono face. Static instances: equations, code, dataset
+// names, axis labels, venue badges, channel labels.
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("/assets/fonts/ibmplexmono-regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("/assets/fonts/ibmplexmono-semibold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+// Stacks
+$font-display: "Fraunces", Georgia, "Times New Roman", serif;
+$font-body: "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+$font-mono: "IBM Plex Mono", "DejaVu Sans Mono", "SF Mono", Consolas, monospace;
+
+// Fraunces axis defaults: SOFT dialed up (literary-but-precise, not fully
+// decorative), WONK off (regular alternates), optical size auto-interpolated
+// from font-size by the browser.
+@mixin display-face {
+  font-family: $font-display;
+  font-optical-sizing: auto;
+  font-variation-settings: "SOFT" 30, "WONK" 0;
+}
+
+@mixin mono-face {
+  font-family: $font-mono;
+}

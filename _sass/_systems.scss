@@ -1,7 +1,7 @@
 /*******************************************************************************
  * Systems page — Problem/Approach/Result/Artifact cards (AGENT_BRIEF.md §6.2).
- * Deliberately not a card-grid-of-icons: one column, full-width figures, dense
- * text. Full visual pass lands with the bespoke Sass system (see NOTES.md).
+ * Deliberately not a card-grid-of-icons: two-column proof format (prose left,
+ * figures in a sticky right rail), per the NOTES.md layout concept.
  ******************************************************************************/
 
 .systems-intro {
@@ -40,8 +40,31 @@
   font-style: italic;
 }
 
+.system-card-body {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 2.5rem;
+  align-items: start;
+
+  @media (max-width: 767px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.system-card-figures {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: sticky;
+  top: 5.5rem;
+
+  @media (max-width: 767px) {
+    position: static;
+  }
+}
+
 .system-figure {
-  margin: 0 0 1.5rem 0;
+  margin: 0;
 
   img {
     width: 100%;

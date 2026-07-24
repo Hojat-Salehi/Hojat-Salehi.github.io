@@ -19,6 +19,16 @@ strong {
   color: var(--global-text-color);
 }
 
+body {
+  font-family: $font-body;
+}
+
+h1, h2, h3,
+.post-title,
+.display-heading {
+  @include display-face;
+}
+
 hr {
   border-top: 1px solid var(--global-divider-color);
 }
@@ -706,6 +716,7 @@ figure.highlight {
 }
 
 pre {
+  @include mono-face;
   color: var(--global-theme-color);
   background-color: var(--global-code-bg-color);
   border-radius: 6px;
@@ -721,6 +732,7 @@ pre {
 }
 
 code {
+  @include mono-face;
   color: var(--global-theme-color);
   background-color: var(--global-code-bg-color);
   border-radius: 3px;

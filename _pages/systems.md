@@ -12,6 +12,6 @@ nav_order: 3
 
 <div class="systems-list">
   {%- for system in site.data.systems %}
-    {%- include system_card.html system=system %}
+    {%- include system_card.html system=system index=forloop.index %}
   {%- endfor %}
 </div>
