@@ -3,7 +3,7 @@ layout: page
 title: systems
 permalink: /systems/
 description: Working systems, each framed as Problem, Approach, Result, Artifact — with a real figure and a sourced number, never a feature list.
-nav: false
+nav: true
 nav_order: 4
 ---
 
