@@ -1,24 +1,79 @@
 @charset "UTF-8";
 /*******************************************************************************
+ * Self-hosted type system (NOTES.md design tokens). No font CDN calls at
+ * runtime — every file below is vendored in assets/fonts/ under its own SIL
+ * Open Font License (see assets/fonts/LICENSES/).
+ ******************************************************************************/
+@font-face {
+  font-family: "Fraunces";
+  src: url("/assets/fonts/fraunces-variable.woff2") format("woff2-variations"), url("/assets/fonts/fraunces-variable.woff2") format("woff2");
+  font-weight: 300 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Fraunces";
+  src: url("/assets/fonts/fraunces-italic-variable.woff2") format("woff2-variations"), url("/assets/fonts/fraunces-italic-variable.woff2") format("woff2");
+  font-weight: 300 800;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Source Sans 3";
+  src: url("/assets/fonts/sourcesans3-variable.woff2") format("woff2-variations"), url("/assets/fonts/sourcesans3-variable.woff2") format("woff2");
+  font-weight: 200 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Source Sans 3";
+  src: url("/assets/fonts/sourcesans3-italic-variable.woff2") format("woff2-variations"), url("/assets/fonts/sourcesans3-italic-variable.woff2") format("woff2");
+  font-weight: 200 900;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("/assets/fonts/ibmplexmono-regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("/assets/fonts/ibmplexmono-semibold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+/*******************************************************************************
  * Variables used throughout the theme.
  * To adjust anything, simply edit the variables below and rebuild the theme.
+ ******************************************************************************/
+/*******************************************************************************
+ * Design tokens (NOTES.md) — the palette that actually drives the site.
+ * Tied to the blue/orange "measured vs. identified" contrast already present
+ * in the principal's own plots (Agentic-SysID, CorBin-FL), not chosen
+ * arbitrarily. See NOTES.md for the full rationale.
  ******************************************************************************/
 /*******************************************************************************
  * Themes
  ******************************************************************************/
 :root {
-  --global-bg-color: #ffffff;
-  --global-code-bg-color: rgba(181, 9, 172, 0.05);
-  --global-text-color: #000000;
-  --global-text-color-light: #828282;
-  --global-theme-color: #B509AC;
-  --global-hover-color: #B509AC;
-  --global-footer-bg-color: #1C1C1D;
-  --global-footer-text-color: #e8e8e8;
-  --global-footer-link-color: #ffffff;
-  --global-distill-app-color: #828282;
-  --global-divider-color: rgba(0,0,0,.1);
+  --global-bg-color: #FAF7F0;
+  --global-code-bg-color: rgb(92.8156862745%, 91.6862745098%, 89.0352941176%);
+  --global-text-color: #1C1B18;
+  --global-text-color-light: #6E6858;
+  --global-theme-color: #1857A4;
+  --global-hover-color: #C4622D;
+  --global-footer-bg-color: #1C1B18;
+  --global-footer-text-color: rgb(67.568627451%, 66.6666666667%, 64.4705882353%);
+  --global-footer-link-color: #FAF7F0;
+  --global-distill-app-color: #6E6858;
+  --global-divider-color: #DAD4C4;
   --global-card-bg-color: #ffffff;
+  --global-ok-color: #3E6B4F;
+  --global-dot-color: rgba(28, 27, 24, 0.07);
 }
 :root .fa-sun {
   display: none;
@@ -36,18 +91,20 @@
 }
 
 html[data-theme=dark] {
-  --global-bg-color: #1C1C1D;
-  --global-code-bg-color: #2c3237;
-  --global-text-color: #e8e8e8;
-  --global-text-color-light: #e8e8e8;
-  --global-theme-color: #2698BA;
-  --global-hover-color: #2698BA;
-  --global-footer-bg-color: #e8e8e8;
-  --global-footer-text-color: #1C1C1D;
-  --global-footer-link-color: #000000;
-  --global-distill-app-color: #e8e8e8;
-  --global-divider-color: #424246;
-  --global-card-bg-color: #212529;
+  --global-bg-color: #16181B;
+  --global-code-bg-color: rgb(14.0152060824%, 15.2893157263%, 17.2004801921%);
+  --global-text-color: #E8E4D9;
+  --global-text-color-light: #948E7C;
+  --global-theme-color: #4A90D9;
+  --global-hover-color: #E08347;
+  --global-footer-bg-color: rgb(95.9215686275%, 94.6274509804%, 91.4117647059%);
+  --global-footer-text-color: #1C1B18;
+  --global-footer-link-color: #1C1B18;
+  --global-distill-app-color: #948E7C;
+  --global-divider-color: #2B2D31;
+  --global-card-bg-color: rgb(12.2192877151%, 13.3301320528%, 14.9963985594%);
+  --global-ok-color: #3E6B4F;
+  --global-dot-color: rgba(232, 228, 217, 0.05);
 }
 html[data-theme=dark] .fa-sun {
   padding-left: 10px;
@@ -114,6 +171,18 @@ li,
 span,
 strong {
   color: var(--global-text-color);
+}
+
+body {
+  font-family: "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+h1, h2, h3,
+.post-title,
+.display-heading {
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
+  font-optical-sizing: auto;
+  font-variation-settings: "SOFT" 30, "WONK" 0;
 }
 
 hr {
@@ -646,6 +715,7 @@ figure.highlight {
 }
 
 pre {
+  font-family: "IBM Plex Mono", "DejaVu Sans Mono", "SF Mono", Consolas, monospace;
   color: var(--global-theme-color);
   background-color: var(--global-code-bg-color);
   border-radius: 6px;
@@ -660,6 +730,7 @@ pre code {
 }
 
 code {
+  font-family: "IBM Plex Mono", "DejaVu Sans Mono", "SF Mono", Consolas, monospace;
   color: var(--global-theme-color);
   background-color: var(--global-code-bg-color);
   border-radius: 3px;
@@ -894,9 +965,40 @@ d-appendix a:hover, d-appendix a.footnote-backlink:hover {
   }
 }
 /*******************************************************************************
+ * Instrument-panel motif (NOTES.md layout concept): a faint graph-paper
+ * dot-grid across the page, and a thin-rule + mono "channel label" that
+ * frames each theme/section like an oscilloscope channel indicator.
+ ******************************************************************************/
+body {
+  background-image: radial-gradient(circle, var(--global-dot-color) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.channel-label {
+  font-family: "IBM Plex Mono", "DejaVu Sans Mono", "SF Mono", Consolas, monospace;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--global-text-color-light);
+  margin-bottom: 0.6rem;
+}
+.channel-label::before {
+  content: "";
+  display: block;
+  width: 1.75rem;
+  height: 1px;
+  background: var(--global-theme-color);
+  flex-shrink: 0;
+}
+
+/*******************************************************************************
  * Systems page — Problem/Approach/Result/Artifact cards (AGENT_BRIEF.md §6.2).
- * Deliberately not a card-grid-of-icons: one column, full-width figures, dense
- * text. Full visual pass lands with the bespoke Sass system (see NOTES.md).
+ * Deliberately not a card-grid-of-icons: two-column proof format (prose left,
+ * figures in a sticky right rail), per the NOTES.md layout concept.
  ******************************************************************************/
 .systems-intro {
   color: var(--global-text-color-light);
@@ -932,8 +1034,33 @@ d-appendix a:hover, d-appendix a.footnote-backlink:hover {
   font-style: italic;
 }
 
+.system-card-body {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+@media (max-width: 767px) {
+  .system-card-body {
+    grid-template-columns: 1fr;
+  }
+}
+
+.system-card-figures {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: sticky;
+  top: 5.5rem;
+}
+@media (max-width: 767px) {
+  .system-card-figures {
+    position: static;
+  }
+}
+
 .system-figure {
-  margin: 0 0 1.5rem 0;
+  margin: 0;
 }
 .system-figure img {
   width: 100%;
@@ -1037,15 +1164,52 @@ d-appendix a:hover, d-appendix a.footnote-backlink:hover {
 }
 .research-theme h2 {
   margin-top: 0;
+  margin-bottom: 1.5rem;
 }
 .research-theme p {
   line-height: 1.65;
 }
 
+.research-theme-body {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+@media (max-width: 767px) {
+  .research-theme-body {
+    grid-template-columns: 1fr;
+  }
+}
+
+.research-theme-figure {
+  margin: 0;
+  position: sticky;
+  top: 5.5rem;
+}
+@media (max-width: 767px) {
+  .research-theme-figure {
+    position: static;
+  }
+}
+.research-theme-figure img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 1px solid var(--global-divider-color);
+}
+.research-theme-figure figcaption {
+  font-size: 0.82rem;
+  color: var(--global-text-color-light);
+  margin-top: 0.5rem;
+  line-height: 1.5;
+}
+
 .venue-badge {
+  font-family: "IBM Plex Mono", "DejaVu Sans Mono", "SF Mono", Consolas, monospace;
   display: inline-block;
   font-size: 0.72rem;
-  font-weight: 700;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   color: var(--global-theme-color);

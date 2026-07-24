@@ -53,10 +53,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-DF7Zhf293AJxJNTmh5zhoYYIMs2oXitRfBjY+9L//AY=" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous" />
 
-    <!-- Fonts & Icons -->
+    <!-- Icons (type is self-hosted -- see assets/fonts/, wired up in main.css) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha256-i1+4qU2G2860dGGIOJscdC30s9beBXjFfzjWLjBRsBg=" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons">
 
     <!-- Code Syntax Highlighting -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/github.css" media="" id="highlight_theme_light" />
@@ -149,165 +148,197 @@
 <p class="systems-intro">Four systems, each paired with a real result. Problem, approach, result, artifact — no feature lists.</p>
 
 <div class="systems-list"><!-- system_card.html — Problem / Approach / Result / Artifact card, per AGENT_BRIEF.md §6.2 -->
+<!-- Two-column proof format (NOTES.md): PARA content left, figures in a sticky right rail. -->
 <article class="system-card" id="corbinfl">
   <header class="system-card-header">
+    <p class="channel-label">SYS.0</p>
     <h3>CorBin-FL</h3><p class="system-tagline">Differentially private federated learning, one bit per weight</p>
   </header>
-  <figure class="system-figure">
-    <img src="/assets/img/systems/corbinfl-method-schematic.png" alt="Diagram of one CorBin-FL communication round in four stages: initialization, secure pairwise key exchange, model update with shared PRG seeds, and correlated-quantizer aggregation at the server.
-" loading="lazy" />
-    <figcaption>One communication round of CorBin-FL. The server broadcasts the global model and pairs up clients; each pair establishes a shared secret over an encrypted channel the server can't see; each client quantizes its own update to one bit using randomness drawn from that shared secret; the server averages the bits back into the new global model. Distinct pairs use independent shared randomness.
-</figcaption>
-  </figure>
-  <figure class="system-figure">
-    <img src="/assets/img/systems/corbinfl-pca.png" alt="PCA projection of per-coordinate quantization error across model weight coordinates, comparing CorBin-FL's correlated binary quantization against independent binary quantization.
-" loading="lazy" />
-    <figcaption>PCA of the quantization error added to each weight coordinate. CorBin-FL's shared-randomness noise (left) concentrates tightly around zero and cancels out when the server aggregates client updates; independent per-client noise (right) spreads broadly and only partially cancels.
-</figcaption>
-  </figure>
 
-  <dl class="system-par">
-    <dt>Problem</dt>
-    <dd>Local differential privacy for federated learning usually means every client adds noise to its update independently. That noise doesn't cancel when the server averages updates across clients, so accuracy drops sharply at the privacy budgets (small ε) that matter in practice.
+  <div class="system-card-body">
+    <div class="system-card-prose">
+      <dl class="system-par">
+        <dt>Problem</dt>
+        <dd>Local differential privacy for federated learning usually means every client adds noise to its update independently. That noise doesn't cancel when the server averages updates across clients, so accuracy drops sharply at the privacy budgets (small ε) that matter in practice.
 </dd>
-    <dt>Approach</dt>
-    <dd>CorBin-FL quantizes each client's update to a single bit per model weight, but draws the quantization noise from a shared source of randomness across clients instead of independent per-client noise. Each client still keeps its individual ε-LDP guarantee, but the noise is now negatively correlated, so it cancels out at the server instead of piling up.
+        <dt>Approach</dt>
+        <dd>CorBin-FL quantizes each client's update to a single bit per model weight, but draws the quantization noise from a shared source of randomness across clients instead of independent per-client noise. Each client still keeps its individual ε-LDP guarantee, but the noise is now negatively correlated, so it cancels out at the server instead of piling up.
 </dd>
-    <dt>Result</dt>
-    <dd>On CIFAR-10 at ε = 1 (50 clients, 100 rounds, ResNet18), CorBin-FL reaches 59.51% ± 0.24 test accuracy versus 44.23% ± 0.29 for the strongest 1-bit LDP baseline (LDPFL) — a 15-point gap at the same privacy budget and same communication cost. On FEMNIST at ε = 1, CorBin-FL reaches 82.82% ± 0.70 versus 80.75% ± 0.04 for the strongest baseline (Laplace).
+        <dt>Result</dt>
+        <dd>On CIFAR-10 at ε = 1 (50 clients, 100 rounds, ResNet18), CorBin-FL reaches 59.51% ± 0.24 test accuracy versus 44.23% ± 0.29 for the strongest 1-bit LDP baseline (LDPFL) — a 15-point gap at the same privacy budget and same communication cost. On FEMNIST at ε = 1, CorBin-FL reaches 82.82% ± 0.70 versus 80.75% ± 0.04 for the strongest baseline (Laplace).
 </dd>
-  </dl>
-  <div class="system-table-wrap"><p class="system-table-caption">1-bit-per-coordinate LDP baselines CorBin-FL is compared against</p>
-    <table class="system-table">
-      <thead>
-        <tr><th>Method</th><th>Privacy</th><th>Bits/coord</th><th>Reference</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>LDP-FL</td><td>ε-LDP</td><td>1</td><td>Sun et al. 2020</td>
-        </tr>
-        <tr><td>I-MVU</td><td>ε-LDP</td><td>1 / 2 / 4</td><td>Guo et al., ICML 2023</td>
-        </tr>
-        <tr><td>PBM-PLDP</td><td>ε-PLDP</td><td>1 / 2</td><td>Privatized Binomial Mechanism</td>
-        </tr>
-        <tr><td>RQM</td><td>ε-LDP</td><td>1 / 2</td><td>Youn et al. 2023</td>
-        </tr>
-        <tr><td>CorQuant</td><td>None</td><td>1</td><td>Suresh et al. 2022</td>
-        </tr>
-        <tr><td>SignSGD</td><td>None</td><td>1</td><td>Bernstein et al. 2019</td>
-        </tr>
-        <tr><td>FedAvg</td><td>None</td><td>32</td><td>McMahan et al. 2016</td>
-        </tr>
-        <tr><td>Gaussian LDP</td><td>ε-LDP</td><td>32</td><td>Balle &amp; Wang 2018</td>
-        </tr>
-        <tr><td>Gaussian CDP</td><td>ε-CDP</td><td>32</td><td>—</td>
-        </tr>
-        <tr><td>Laplace LDP</td><td>ε-LDP</td><td>32</td><td>Dwork 2006</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="system-artifact-links">
-    <span class="system-artifact-label">Artifact</span>
-    <a href="https://www.arxiv.org/abs/2409.13133" target="_blank" rel="noopener noreferrer">Paper (arXiv)</a> ·
-    <a href="https://github.com/Hojat-Salehi/CorBin-FL" target="_blank" rel="noopener noreferrer">Code</a>
+      </dl>
+      <div class="system-table-wrap"><p class="system-table-caption">1-bit-per-coordinate LDP baselines CorBin-FL is compared against</p>
+        <table class="system-table">
+          <thead>
+            <tr><th>Method</th><th>Privacy</th><th>Bits/coord</th><th>Reference</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>LDP-FL</td><td>ε-LDP</td><td>1</td><td>Sun et al. 2020</td>
+            </tr>
+            <tr><td>I-MVU</td><td>ε-LDP</td><td>1 / 2 / 4</td><td>Guo et al., ICML 2023</td>
+            </tr>
+            <tr><td>PBM-PLDP</td><td>ε-PLDP</td><td>1 / 2</td><td>Privatized Binomial Mechanism</td>
+            </tr>
+            <tr><td>RQM</td><td>ε-LDP</td><td>1 / 2</td><td>Youn et al. 2023</td>
+            </tr>
+            <tr><td>CorQuant</td><td>None</td><td>1</td><td>Suresh et al. 2022</td>
+            </tr>
+            <tr><td>SignSGD</td><td>None</td><td>1</td><td>Bernstein et al. 2019</td>
+            </tr>
+            <tr><td>FedAvg</td><td>None</td><td>32</td><td>McMahan et al. 2016</td>
+            </tr>
+            <tr><td>Gaussian LDP</td><td>ε-LDP</td><td>32</td><td>Balle &amp; Wang 2018</td>
+            </tr>
+            <tr><td>Gaussian CDP</td><td>ε-CDP</td><td>32</td><td>—</td>
+            </tr>
+            <tr><td>Laplace LDP</td><td>ε-LDP</td><td>32</td><td>Dwork 2006</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="system-artifact-links">
+        <span class="system-artifact-label">Artifact</span>
+        <a href="https://www.arxiv.org/abs/2409.13133" target="_blank" rel="noopener noreferrer">Paper (arXiv)</a> ·
+        <a href="https://github.com/Hojat-Salehi/CorBin-FL" target="_blank" rel="noopener noreferrer">Code</a>
+      </div>
+    </div>
+    <div class="system-card-figures">
+      <figure class="system-figure">
+        <img src="/assets/img/systems/corbinfl-method-schematic.png" alt="Diagram of one CorBin-FL communication round in four stages: initialization, secure pairwise key exchange, model update with shared PRG seeds, and correlated-quantizer aggregation at the server.
+" loading="lazy" />
+        <figcaption>One communication round of CorBin-FL. The server broadcasts the global model and pairs up clients; each pair establishes a shared secret over an encrypted channel the server can't see; each client quantizes its own update to one bit using randomness drawn from that shared secret; the server averages the bits back into the new global model. Distinct pairs use independent shared randomness.
+</figcaption>
+      </figure>
+      <figure class="system-figure">
+        <img src="/assets/img/systems/corbinfl-pca.png" alt="PCA projection of per-coordinate quantization error across model weight coordinates, comparing CorBin-FL's correlated binary quantization against independent binary quantization.
+" loading="lazy" />
+        <figcaption>PCA of the quantization error added to each weight coordinate. CorBin-FL's shared-randomness noise (left) concentrates tightly around zero and cancels out when the server aggregates client updates; independent per-client noise (right) spreads broadly and only partially cancels.
+</figcaption>
+      </figure>
+    </div>
   </div>
 </article>
 <!-- system_card.html — Problem / Approach / Result / Artifact card, per AGENT_BRIEF.md §6.2 -->
+<!-- Two-column proof format (NOTES.md): PARA content left, figures in a sticky right rail. -->
 <article class="system-card" id="agentic-sysid">
   <header class="system-card-header">
+    <p class="channel-label">SYS.0</p>
     <h3>Agentic-SysID</h3><p class="system-tagline">A multi-agent pipeline that identifies control-ready models under an experiment budget</p>
   </header>
-  <figure class="system-figure">
-    <img src="/assets/img/systems/agentic-sysid-flowchart.png" alt="Architecture diagram of Agentic-SysID: a centralized orchestrator routing between a white-box discovery phase, an adversarial validation phase, and grey-box / black-box escalation sub-orchestrators, all experiment calls passing through a guarded Plant API.
-" loading="lazy" />
-    <figcaption>Centralized coordination (orchestrator, budget manager, experiment registry) routes between four phases: white-box discovery and estimation, adversarial validation, and — only on evidence of a gap — grey-box or black-box escalation. All plant access goes through a single guarded, budgeted API.
-</figcaption>
-  </figure>
-  <figure class="system-figure">
-    <img src="/assets/img/systems/agentic-sysid-demo-frame.png" alt="Final frame of the pendulum demo: actual plant vs. identified white-box model swinging side by side under composite excitation, with an angle tracking plot and a per-parameter true-vs-identified comparison showing 1-3% error.
-" loading="lazy" />
-    <figcaption>Actual pendulum (left) vs. the identified white-box model (right) under composite step/sine/PRBS excitation. Bottom: angle tracking (10.05° RMSE) and per-parameter accuracy against the true, hidden parameter values.
-</figcaption>
-  </figure>
 
-  <dl class="system-par">
-    <dt>Problem</dt>
-    <dd>Turning a physical plant into a control-ready model normally takes a control engineer manually designing experiments, fitting parameters, and validating the result by hand — and every experiment run against a real plant costs time and money, so the process can't just throw data at the problem.
+  <div class="system-card-body">
+    <div class="system-card-prose">
+      <dl class="system-par">
+        <dt>Problem</dt>
+        <dd>Turning a physical plant into a control-ready model normally takes a control engineer manually designing experiments, fitting parameters, and validating the result by hand — and every experiment run against a real plant costs time and money, so the process can't just throw data at the problem.
 </dd>
-    <dt>Approach</dt>
-    <dd>Agentic-SysID automates that workflow with a physics-first fidelity ladder of specialized agents. An Intake agent parses the plant description; a Modeler agent proposes the ODE structure and checks identifiability; an Estimator agent runs an excite-then-estimate loop to fit parameters; a Validation agent probes the fitted model adversarially. Only if validation finds the white-box model doesn't hold does the pipeline escalate — to a grey-box model (physics backbone plus a learned correction term) or, if the plant isn't modelable at all, to a black-box surrogate (GP / NARX / Neural ODE / SINDy). Every experiment is routed through a budgeted, safety-gated Plant API, so no agent can overspend or bypass the safety limits.
+        <dt>Approach</dt>
+        <dd>Agentic-SysID automates that workflow with a physics-first fidelity ladder of specialized agents. An Intake agent parses the plant description; a Modeler agent proposes the ODE structure and checks identifiability; an Estimator agent runs an excite-then-estimate loop to fit parameters; a Validation agent probes the fitted model adversarially. Only if validation finds the white-box model doesn't hold does the pipeline escalate — to a grey-box model (physics backbone plus a learned correction term) or, if the plant isn't modelable at all, to a black-box surrogate (GP / NARX / Neural ODE / SINDy). Every experiment is routed through a budgeted, safety-gated Plant API, so no agent can overspend or bypass the safety limits.
 </dd>
-    <dt>Result</dt>
-    <dd>On the built-in pendulum benchmark, under composite step / low-frequency-sine / PRBS excitation, the pipeline's white-box model tracks the actual plant to 10.05° RMSE (175 mrad) and identifies all three physical parameters within 1–3% of their true, hidden values (K_u: 20.000 → 20.571, +2.9%; K_d: 0.400 → 0.404, +1.0%; K_s: 29.430 → 29.943, +1.7%). Experiments-per-run and fidelity-ladder descent rate across a broader set of plants aren't tracked yet — clone it and point it at your own plant to find out. [TK]
+        <dt>Result</dt>
+        <dd>On the built-in pendulum benchmark, under composite step / low-frequency-sine / PRBS excitation, the pipeline's white-box model tracks the actual plant to 10.05° RMSE (175 mrad) and identifies all three physical parameters within 1–3% of their true, hidden values (K_u: 20.000 → 20.571, +2.9%; K_d: 0.400 → 0.404, +1.0%; K_s: 29.430 → 29.943, +1.7%). Experiments-per-run and fidelity-ladder descent rate across a broader set of plants aren't tracked yet — clone it and point it at your own plant to find out. [TK]
 </dd>
-  </dl>
-  <div class="system-artifact-links">
-    <span class="system-artifact-label">Artifact</span>
-    <a href="https://github.com/Hojat-Salehi/Agentic-SysID" target="_blank" rel="noopener noreferrer">Code</a> ·
-    <a href="https://github.com/Hojat-Salehi/Agentic-SysID/blob/main/demo/demo.mp4" target="_blank" rel="noopener noreferrer">Demo video</a>
+      </dl>
+      <div class="system-artifact-links">
+        <span class="system-artifact-label">Artifact</span>
+        <a href="https://github.com/Hojat-Salehi/Agentic-SysID" target="_blank" rel="noopener noreferrer">Code</a> ·
+        <a href="https://github.com/Hojat-Salehi/Agentic-SysID/blob/main/demo/demo.mp4" target="_blank" rel="noopener noreferrer">Demo video</a>
+      </div>
+    </div>
+    <div class="system-card-figures">
+      <figure class="system-figure">
+        <img src="/assets/img/systems/agentic-sysid-flowchart.png" alt="Architecture diagram of Agentic-SysID: a centralized orchestrator routing between a white-box discovery phase, an adversarial validation phase, and grey-box / black-box escalation sub-orchestrators, all experiment calls passing through a guarded Plant API.
+" loading="lazy" />
+        <figcaption>Centralized coordination (orchestrator, budget manager, experiment registry) routes between four phases: white-box discovery and estimation, adversarial validation, and — only on evidence of a gap — grey-box or black-box escalation. All plant access goes through a single guarded, budgeted API.
+</figcaption>
+      </figure>
+      <figure class="system-figure">
+        <img src="/assets/img/systems/agentic-sysid-demo-frame.png" alt="Final frame of the pendulum demo: actual plant vs. identified white-box model swinging side by side under composite excitation, with an angle tracking plot and a per-parameter true-vs-identified comparison showing 1-3% error.
+" loading="lazy" />
+        <figcaption>Actual pendulum (left) vs. the identified white-box model (right) under composite step/sine/PRBS excitation. Bottom: angle tracking (10.05° RMSE) and per-parameter accuracy against the true, hidden parameter values.
+</figcaption>
+      </figure>
+    </div>
   </div>
 </article>
 <!-- system_card.html — Problem / Approach / Result / Artifact card, per AGENT_BRIEF.md §6.2 -->
+<!-- Two-column proof format (NOTES.md): PARA content left, figures in a sticky right rail. -->
 <article class="system-card" id="game-analyst-multiagent">
   <header class="system-card-header">
+    <p class="channel-label">SYS.0</p>
     <h3>Game Analyst</h3><p class="system-tagline">Adversarial multi-agent debate for NBA/MLB game analysis, graded against real outcomes</p>
   </header>
-  <figure class="system-figure">
-    <img src="/assets/img/systems/game-analyst-architecture.png" alt="Architecture diagram: Home/Away Team Analysts and H2H Analyst feed a Market Reference Analyst, which drives two parallel adversarial debates (Win Probability: Favorite vs. Underdog; Total Points: High vs. Low Total), each resolved by a judge, cross-validated by a Head Analyst into a final report, which after the game completes triggers a Post-Game Accuracy Review.
-" loading="lazy" />
-    <figcaption>Two adversarial debates run in parallel — win probability and total points — each resolved by a dedicated judge. The Head Analyst cross-validates both before writing the final report. Re-rendered with Graphviz from the Mermaid diagram in the repo's own README (this site has no server-side Mermaid renderer); structure and labels are unchanged.
-</figcaption>
-  </figure>
 
-  <dl class="system-par">
-    <dt>Problem</dt>
-    <dd>A single LLM asked to predict a game's outcome tends to anchor on whatever narrative it reaches for first, with no mechanism to stress-test that call or check it against what actually happened.
+  <div class="system-card-body">
+    <div class="system-card-prose">
+      <dl class="system-par">
+        <dt>Problem</dt>
+        <dd>A single LLM asked to predict a game's outcome tends to anchor on whatever narrative it reaches for first, with no mechanism to stress-test that call or check it against what actually happened.
 </dd>
-    <dt>Approach</dt>
-    <dd>Game Analyst runs the question through two parallel adversarial debates — a Win Probability debate (Favorite Case vs. Underdog Case, argued purely from team stats, form, and head-to-head history, with no market odds involved) and a Total Points debate (High Total Case vs. Low Total Case, using the market's total-points number as one input among several) — each converging through a dedicated judge. A Head Analyst cross-validates both judges' reasoning for consistency and writes the final report. Every analysis persists to SQLite and renders to an HTML report; once a game completes, a post-game accuracy review compares the prediction to the real result and writes a lesson per agent role into a ChromaDB memory store, so later analyses of similar situations draw on what past predictions got right or wrong.
+        <dt>Approach</dt>
+        <dd>Game Analyst runs the question through two parallel adversarial debates — a Win Probability debate (Favorite Case vs. Underdog Case, argued purely from team stats, form, and head-to-head history, with no market odds involved) and a Total Points debate (High Total Case vs. Low Total Case, using the market's total-points number as one input among several) — each converging through a dedicated judge. A Head Analyst cross-validates both judges' reasoning for consistency and writes the final report. Every analysis persists to SQLite and renders to an HTML report; once a game completes, a post-game accuracy review compares the prediction to the real result and writes a lesson per agent role into a ChromaDB memory store, so later analyses of similar situations draw on what past predictions got right or wrong.
 </dd>
-    <dt>Result</dt>
-    <dd>The system is built to grade itself — every analysis persists to SQLite, and a post-game review compares each prediction to the actual final score once the game completes (see `database/schema.sql`). It hasn't been run against a real slate of games yet, so there's no accuracy number to report here. [TK]
+        <dt>Result</dt>
+        <dd>The system is built to grade itself — every analysis persists to SQLite, and a post-game review compares each prediction to the actual final score once the game completes (see `database/schema.sql`). It hasn't been run against a real slate of games yet, so there's no accuracy number to report here. [TK]
 </dd>
-  </dl>
-  <div class="system-artifact-links">
-    <span class="system-artifact-label">Artifact</span>
-    <a href="https://github.com/Hojat-Salehi/game-analyst-multiagent" target="_blank" rel="noopener noreferrer">Code</a>
+      </dl>
+      <div class="system-artifact-links">
+        <span class="system-artifact-label">Artifact</span>
+        <a href="https://github.com/Hojat-Salehi/game-analyst-multiagent" target="_blank" rel="noopener noreferrer">Code</a>
+      </div>
+    </div>
+    <div class="system-card-figures">
+      <figure class="system-figure">
+        <img src="/assets/img/systems/game-analyst-architecture.png" alt="Architecture diagram: Home/Away Team Analysts and H2H Analyst feed a Market Reference Analyst, which drives two parallel adversarial debates (Win Probability: Favorite vs. Underdog; Total Points: High vs. Low Total), each resolved by a judge, cross-validated by a Head Analyst into a final report, which after the game completes triggers a Post-Game Accuracy Review.
+" loading="lazy" />
+        <figcaption>Two adversarial debates run in parallel — win probability and total points — each resolved by a dedicated judge. The Head Analyst cross-validates both before writing the final report. Re-rendered with Graphviz from the Mermaid diagram in the repo's own README (this site has no server-side Mermaid renderer); structure and labels are unchanged.
+</figcaption>
+      </figure>
+    </div>
   </div>
 </article>
 <!-- system_card.html — Problem / Approach / Result / Artifact card, per AGENT_BRIEF.md §6.2 -->
+<!-- Two-column proof format (NOTES.md): PARA content left, figures in a sticky right rail. -->
 <article class="system-card" id="ddim-time-series">
   <header class="system-card-header">
+    <p class="channel-label">SYS.0</p>
     <h3>DDIM Time Series</h3><p class="system-tagline">Treating tomorrow's price movement as an image-inpainting problem</p>
   </header>
-  <figure class="system-figure">
-    <img src="/assets/img/systems/ddim-comparison-sample0.png" alt="Side-by-side RGB-encoded trading day: original (red volume, green pre-cutoff price, blue post-cutoff price) versus the DDIM-generated version, where only the blue channel was reconstructed by the model.
-" loading="lazy" />
-    <figcaption>One held-out test day. Left: the true three-channel encoding (red = volume, green = price before the cutoff, blue = price after). Right: the same day with the blue channel regenerated by the diffusion model, conditioned on the red/green channels.
-</figcaption>
-  </figure>
-  <figure class="system-figure">
-    <img src="/assets/img/systems/ddim-denoising-steps.png" alt="Twelve-step denoising trajectory: the blue (post-cutoff price) channel emerging from pure noise across DDIM sampling steps 0 through 11, while the red and green conditioning channels stay fixed throughout.
-" loading="lazy" />
-    <figcaption>The DDIM sampling trajectory for the same test day — the blue channel goes from pure noise (step 0) to the reconstructed price path (step 11) while red/green hold steady as conditioning.
-</figcaption>
-  </figure>
 
-  <dl class="system-par">
-    <dt>Problem</dt>
-    <dd>Standard time-series forecasting models operate directly on numeric sequences. This asks a different question: can a stock's volume and price behavior be represented as an image instead, with each signal as a color channel — and can a diffusion model learn to fill in the missing channel, treating "predict the rest of the day's price movement" as conditional image generation rather than sequence forecasting.
+  <div class="system-card-body">
+    <div class="system-card-prose">
+      <dl class="system-par">
+        <dt>Problem</dt>
+        <dd>Standard time-series forecasting models operate directly on numeric sequences. This asks a different question: can a stock's volume and price behavior be represented as an image instead, with each signal as a color channel — and can a diffusion model learn to fill in the missing channel, treating "predict the rest of the day's price movement" as conditional image generation rather than sequence forecasting.
 </dd>
-    <dt>Approach</dt>
-    <dd>Each trading day is encoded as an RGB image: red is trading volume, green is price movement before a cutoff time (the conditioning signal), blue is price movement after the cutoff (the signal the model has to generate). A conditional UNet — attention blocks, sinusoidal time embeddings, skip connections — is trained as a denoising diffusion implicit model (DDIM). Only the blue channel is noised during training; red and green stay fixed as conditioning input. At inference, DDIM sampling reconstructs the blue channel from pure noise, conditioned on the red/green channels of a held-out test day.
+        <dt>Approach</dt>
+        <dd>Each trading day is encoded as an RGB image: red is trading volume, green is price movement before a cutoff time (the conditioning signal), blue is price movement after the cutoff (the signal the model has to generate). A conditional UNet — attention blocks, sinusoidal time embeddings, skip connections — is trained as a denoising diffusion implicit model (DDIM). Only the blue channel is noised during training; red and green stay fixed as conditioning input. At inference, DDIM sampling reconstructs the blue channel from pure noise, conditioned on the red/green channels of a held-out test day.
 </dd>
-    <dt>Result</dt>
-    <dd>Across the 9 evaluated test samples, the reconstructed post-cutoff (blue) channel reaches a mean squared error of ≈0.21 against the true channel (range ≈0.05–0.30 across samples) — the conditioning channels are reproduced exactly, as expected, and the generated channel lands closer-than-random but still noisy. Read as a proof-of-concept result, not a tuned forecasting benchmark.
+        <dt>Result</dt>
+        <dd>Across the 9 evaluated test samples, the reconstructed post-cutoff (blue) channel reaches a mean squared error of ≈0.21 against the true channel (range ≈0.05–0.30 across samples) — the conditioning channels are reproduced exactly, as expected, and the generated channel lands closer-than-random but still noisy. Read as a proof-of-concept result, not a tuned forecasting benchmark.
 </dd>
-  </dl>
-  <div class="system-artifact-links">
-    <span class="system-artifact-label">Artifact</span>
-    <a href="https://github.com/Hojat-Salehi/DDIM_Time_Series" target="_blank" rel="noopener noreferrer">Code</a>
+      </dl>
+      <div class="system-artifact-links">
+        <span class="system-artifact-label">Artifact</span>
+        <a href="https://github.com/Hojat-Salehi/DDIM_Time_Series" target="_blank" rel="noopener noreferrer">Code</a>
+      </div>
+    </div>
+    <div class="system-card-figures">
+      <figure class="system-figure">
+        <img src="/assets/img/systems/ddim-comparison-sample0.png" alt="Side-by-side RGB-encoded trading day: original (red volume, green pre-cutoff price, blue post-cutoff price) versus the DDIM-generated version, where only the blue channel was reconstructed by the model.
+" loading="lazy" />
+        <figcaption>One held-out test day. Left: the true three-channel encoding (red = volume, green = price before the cutoff, blue = price after). Right: the same day with the blue channel regenerated by the diffusion model, conditioned on the red/green channels.
+</figcaption>
+      </figure>
+      <figure class="system-figure">
+        <img src="/assets/img/systems/ddim-denoising-steps.png" alt="Twelve-step denoising trajectory: the blue (post-cutoff price) channel emerging from pure noise across DDIM sampling steps 0 through 11, while the red and green conditioning channels stay fixed throughout.
+" loading="lazy" />
+        <figcaption>The DDIM sampling trajectory for the same test day — the blue channel goes from pure noise (step 0) to the reconstructed price path (step 11) while red/green hold steady as conditioning.
+</figcaption>
+      </figure>
+    </div>
   </div>
 </article>
 

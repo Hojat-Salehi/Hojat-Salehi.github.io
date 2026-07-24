@@ -53,10 +53,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-DF7Zhf293AJxJNTmh5zhoYYIMs2oXitRfBjY+9L//AY=" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous" />
 
-    <!-- Fonts & Icons -->
+    <!-- Icons (type is self-hosted -- see assets/fonts/, wired up in main.css) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha256-i1+4qU2G2860dGGIOJscdC30s9beBXjFfzjWLjBRsBg=" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons">
 
     <!-- Code Syntax Highlighting -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/github.css" media="" id="highlight_theme_light" />
@@ -151,28 +150,38 @@
 <div class="research-themes">
 
   <section class="research-theme" id="information-theory">
+    <p class="channel-label">CH.1 — Information Theory</p>
     <h2>Information theory of distributed and private learning</h2>
-    <!-- DRAFT-COPY -->
-    <p>
-      How much can two parties learn to coordinate using as little communication as possible,
-      without ever exchanging their private data directly? Non-interactive source simulation
-      asks that in its purest form: two parties see correlated but incomplete signals and must
-      reproduce a joint distribution with no back-and-forth at all. The surprising result here
-      is that letting the two parties share quantum entanglement instead of classical shared
-      randomness gives a genuine, provable advantage — not just a faster way to the same answer.
-      <a href="/systems/#corbinfl">CorBin-FL</a> turns a version of that same idea — correlated
-      randomness instead of independent randomness — into a practical privacy mechanism for
-      federated learning.
-    </p>
-    <ul class="theme-papers">
-      <li><span class="venue-badge">T-IT 2025</span> <a href="https://ieeexplore.ieee.org/document/11121661">On Non-Interactive Simulation of Distributed Sources with Finite Alphabets</a></li>
-      <li><span class="venue-badge">ISIT 2025</span> <a href="https://arxiv.org/abs/2402.00242">Quantum Advantage in Non-Interactive Source Simulation</a></li>
-      <li><span class="venue-badge">Preprint</span> <a href="https://www.arxiv.org/abs/2409.13133">CorBin-FL: A Differentially Private Federated Learning Mechanism using Common Randomness</a></li>
-    </ul>
-    <p class="theme-system-link">System: <a href="/systems/#corbinfl">CorBin-FL →</a></p>
+    <div class="research-theme-body">
+      <div class="research-theme-prose">
+        <!-- DRAFT-COPY -->
+        <p>
+          How much can two parties learn to coordinate using as little communication as possible,
+          without ever exchanging their private data directly? Non-interactive source simulation
+          asks that in its purest form: two parties see correlated but incomplete signals and must
+          reproduce a joint distribution with no back-and-forth at all. The surprising result here
+          is that letting the two parties share quantum entanglement instead of classical shared
+          randomness gives a genuine, provable advantage — not just a faster way to the same answer.
+          <a href="/systems/#corbinfl">CorBin-FL</a> turns a version of that same idea — correlated
+          randomness instead of independent randomness — into a practical privacy mechanism for
+          federated learning.
+        </p>
+        <ul class="theme-papers">
+          <li><span class="venue-badge">T-IT 2025</span> <a href="https://ieeexplore.ieee.org/document/11121661">On Non-Interactive Simulation of Distributed Sources with Finite Alphabets</a></li>
+          <li><span class="venue-badge">ISIT 2025</span> <a href="https://arxiv.org/abs/2402.00242">Quantum Advantage in Non-Interactive Source Simulation</a></li>
+          <li><span class="venue-badge">Preprint</span> <a href="https://www.arxiv.org/abs/2409.13133">CorBin-FL: A Differentially Private Federated Learning Mechanism using Common Randomness</a></li>
+        </ul>
+        <p class="theme-system-link">System: <a href="/systems/#corbinfl">CorBin-FL →</a></p>
+      </div>
+      <figure class="research-theme-figure">
+        <img src="/assets/img/systems/corbinfl-pca.png" alt="PCA projection of per-coordinate quantization error, comparing CorBin-FL's correlated binary quantization against independent binary quantization." loading="lazy" />
+        <figcaption>Correlated quantization noise (left) concentrates near zero and cancels at the server; independent noise (right) doesn't. Same idea as the theory above, applied.</figcaption>
+      </figure>
+    </div>
   </section>
 
   <section class="research-theme" id="explainable-graph-ml">
+    <p class="channel-label">CH.2 — Explainable / Graph ML</p>
     <h2>Explainable and graph ML</h2>
     <!-- DRAFT-COPY -->
     <p>
@@ -192,42 +201,61 @@
       <li><span class="venue-badge">Preprint</span> From Binary to Continuous: Stochastic Re-Weighting for Robust Graph Explanation</li>
       <li><span class="venue-badge">Preprint</span> LM²otifs: An Explainable Framework for Text Authorship Detection</li>
     </ul>
+    <!-- No figure here yet: no repo/paper PDF for this theme in this environment to pull a real one from. Not fabricating a placeholder. -->
   </section>
 
   <section class="research-theme" id="agentic-systems">
+    <p class="channel-label">CH.3 — Agentic Systems</p>
     <h2>Agentic systems</h2>
-    <!-- DRAFT-COPY -->
-    <p>
-      Large language models are good at breaking a problem into steps, worse at knowing when to
-      stop trusting their own steps. This theme is about giving agents explicit escalation
-      logic instead of open-ended autonomy: <a href="/systems/#agentic-sysid">Agentic-SysID</a>
-      only escalates from a physics-based model to a learned one when adversarial validation
-      actually finds evidence the physics doesn't hold; DecoSearch routes text-to-SQL queries by
-      estimated difficulty and repairs failing query plans instead of regenerating from scratch;
-      <a href="/systems/#game-analyst-multiagent">Game Analyst</a> forces two adversarial debates
-      to converge through a judge rather than trusting one model's first answer. TimeRAG,
-      applying retrieval-augmented reasoning to time-series forecasting, is in progress.
-    </p>
-    <ul class="theme-papers">
-      <li><span class="venue-badge">arXiv</span> <a href="https://arxiv.org/abs/2606.17821">DecoSearch: Complexity-Aware Routing and Plan-Level Repair for Text-to-SQL</a></li>
-    </ul>
-    <p class="theme-system-link">Systems: <a href="/systems/#agentic-sysid">Agentic-SysID →</a> · <a href="/systems/#game-analyst-multiagent">Game Analyst →</a></p>
+    <div class="research-theme-body">
+      <div class="research-theme-prose">
+        <!-- DRAFT-COPY -->
+        <p>
+          Large language models are good at breaking a problem into steps, worse at knowing when to
+          stop trusting their own steps. This theme is about giving agents explicit escalation
+          logic instead of open-ended autonomy: <a href="/systems/#agentic-sysid">Agentic-SysID</a>
+          only escalates from a physics-based model to a learned one when adversarial validation
+          actually finds evidence the physics doesn't hold; DecoSearch routes text-to-SQL queries by
+          estimated difficulty and repairs failing query plans instead of regenerating from scratch;
+          <a href="/systems/#game-analyst-multiagent">Game Analyst</a> forces two adversarial debates
+          to converge through a judge rather than trusting one model's first answer. TimeRAG,
+          applying retrieval-augmented reasoning to time-series forecasting, is in progress.
+        </p>
+        <ul class="theme-papers">
+          <li><span class="venue-badge">arXiv</span> <a href="https://arxiv.org/abs/2606.17821">DecoSearch: Complexity-Aware Routing and Plan-Level Repair for Text-to-SQL</a></li>
+        </ul>
+        <p class="theme-system-link">Systems: <a href="/systems/#agentic-sysid">Agentic-SysID →</a> · <a href="/systems/#game-analyst-multiagent">Game Analyst →</a></p>
+      </div>
+      <figure class="research-theme-figure">
+        <img src="/assets/img/systems/agentic-sysid-flowchart.png" alt="Architecture diagram of Agentic-SysID: centralized coordination routing between white-box discovery, adversarial validation, and grey-box/black-box escalation." loading="lazy" />
+        <figcaption>Agentic-SysID's escalation logic: white-box first, grey-box or black-box only on evidence a physics model doesn't hold.</figcaption>
+      </figure>
+    </div>
   </section>
 
   <section class="research-theme" id="generative-structured-data">
+    <p class="channel-label">CH.4 — Generative Models</p>
     <h2>Generative models for structured data</h2>
-    <!-- DRAFT-COPY -->
-    <p>
-      Diffusion models are usually applied to images or audio, but the underlying idea —
-      learning to reverse a noising process — works on any data that can be encoded as a
-      structured tensor. <a href="/systems/#ddim-time-series">DDIM Time Series</a> tests that
-      directly: stock price and volume behavior encoded as a multi-channel image, with a
-      diffusion model learning to generate the missing channel. A separate line of work applies
-      discrete denoising diffusion (<a href="https://arxiv.org/abs/2209.14734">DiGress</a>) to
-      graph explainability, using a generative model to explore the space of plausible
-      explanatory subgraphs instead of searching combinatorially.
-    </p>
-    <p class="theme-system-link">System: <a href="/systems/#ddim-time-series">DDIM Time Series →</a></p>
+    <div class="research-theme-body">
+      <div class="research-theme-prose">
+        <!-- DRAFT-COPY -->
+        <p>
+          Diffusion models are usually applied to images or audio, but the underlying idea —
+          learning to reverse a noising process — works on any data that can be encoded as a
+          structured tensor. <a href="/systems/#ddim-time-series">DDIM Time Series</a> tests that
+          directly: stock price and volume behavior encoded as a multi-channel image, with a
+          diffusion model learning to generate the missing channel. A separate line of work applies
+          discrete denoising diffusion (<a href="https://arxiv.org/abs/2209.14734">DiGress</a>) to
+          graph explainability, using a generative model to explore the space of plausible
+          explanatory subgraphs instead of searching combinatorially.
+        </p>
+        <p class="theme-system-link">System: <a href="/systems/#ddim-time-series">DDIM Time Series →</a></p>
+      </div>
+      <figure class="research-theme-figure">
+        <img src="/assets/img/systems/ddim-comparison-sample0.png" alt="Original vs. DDIM-generated RGB-encoded trading day: red volume, green pre-cutoff price, blue post-cutoff price regenerated by the model." loading="lazy" />
+        <figcaption>One held-out trading day: true encoding (left) vs. the same day with the post-cutoff channel regenerated by the diffusion model (right).</figcaption>
+      </figure>
+    </div>
   </section>
 
 </div>
