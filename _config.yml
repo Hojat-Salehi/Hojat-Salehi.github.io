@@ -189,6 +189,10 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - vendor
+  - NOTES.md
+  - QUESTIONS.md
+  - README.md
+  - LICENSE
 keep_files:
   - CNAME
   - .nojekyll

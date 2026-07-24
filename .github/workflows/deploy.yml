@@ -27,6 +27,8 @@ jobs:
         bundler-cache: true
     - name: Build 🔧
       run: bundle exec jekyll build
+    - name: Disable Jekyll processing on the published output
+      run: touch _site/.nojekyll
     - name: Deploy 🚀
       if: github.event_name != 'pull_request'
       uses: JamesIves/github-pages-deploy-action@v4
