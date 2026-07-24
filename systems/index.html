@@ -11,22 +11,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>systems | Hojat Salehi</title>
     <meta name="author" content="Hojat Allah Salehi" />
-    <meta name="description" content="Reserved for Phase 2 (Research + Systems pages, per AGENT_BRIEF.md). Not live yet — nav disabled until real content lands." />
+    <meta name="description" content="Working systems, each framed as Problem, Approach, Result, Artifact — with a real figure and a sourced number, never a feature list." />
     <meta name="keywords" content="Hojat Salehi, Hojat Allah Salehi, information theory, differential privacy, federated learning, explainable AI, agentic AI, graph neural networks" />
 
     <!-- OpenGraph -->
     <meta property="og:site_name" content="Hojat Salehi" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Hojat Salehi | systems" />
-    <meta property="og:url" content="https://hojat-salehi.github.io/projects/" />
-    <meta property="og:description" content="Reserved for Phase 2 (Research + Systems pages, per AGENT_BRIEF.md). Not live yet — nav disabled until real content lands." />
+    <meta property="og:url" content="https://hojat-salehi.github.io/systems/" />
+    <meta property="og:description" content="Working systems, each framed as Problem, Approach, Result, Artifact — with a real figure and a sourced number, never a feature list." />
     <meta property="og:image" content="https://hojat-salehi.github.io/assets/img/og-image.png" />
     <meta property="og:locale" content="en" />
 
     <!-- Twitter card -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="systems" />
-    <meta name="twitter:description" content="Reserved for Phase 2 (Research + Systems pages, per AGENT_BRIEF.md). Not live yet — nav disabled until real content lands." />
+    <meta name="twitter:description" content="Working systems, each framed as Problem, Approach, Result, Artifact — with a real figure and a sourced number, never a feature list." />
     <meta name="twitter:image" content="https://hojat-salehi.github.io/assets/img/og-image.png" />
     
 
@@ -38,9 +38,9 @@
           "@type": "Person",
           "name": "Hojat Allah Salehi"
         },
-        "url": "https://hojat-salehi.github.io/projects/",
+        "url": "https://hojat-salehi.github.io/systems/",
         "@type": "WebSite",
-        "description": "Reserved for Phase 2 (Research + Systems pages, per AGENT_BRIEF.md). Not live yet — nav disabled until real content lands.",
+        "description": "Working systems, each framed as Problem, Approach, Result, Artifact — with a real figure and a sourced number, never a feature list.",
         "headline": "systems",
         "sameAs": ["https://orcid.org/0000-0002-4186-9349", "https://scholar.google.com/citations?user=qo_yamYAAAAJ", "https://github.com/Hojat-Salehi", "https://www.linkedin.com/in/hojat-salehi-29216736"],
         "name": "Hojat Allah Salehi",
@@ -66,7 +66,7 @@
     <link rel="shortcut icon" href="/assets/img/favicon.png"/>
     
     <link rel="stylesheet" href="/assets/css/main.css">
-    <link rel="canonical" href="https://hojat-salehi.github.io/projects/">
+    <link rel="canonical" href="https://hojat-salehi.github.io/systems/">
     
     <!-- Dark Mode -->
     
@@ -135,14 +135,80 @@
 
           <header class="post-header">
             <h1 class="post-title">systems</h1>
-            <p class="post-description">Reserved for Phase 2 (Research + Systems pages, per AGENT_BRIEF.md). Not live yet — nav disabled until real content lands.</p>
+            <p class="post-description">Working systems, each framed as Problem, Approach, Result, Artifact — with a real figure and a sourced number, never a feature list.</p>
           </header>
 
           <article>
-            <!-- pages/projects.md -->
-<div class="projects"><!-- Display projects without categories --><!-- Generate cards for each project -->
-  <div class="grid">
-  </div></div>
+            <!-- DRAFT-COPY -->
+<p class="systems-intro">Four systems, each paired with a real result. Problem, approach, result, artifact — no feature lists.</p>
+
+<div class="systems-list"><!-- system_card.html — Problem / Approach / Result / Artifact card, per AGENT_BRIEF.md §6.2 -->
+<article class="system-card" id="corbinfl">
+  <header class="system-card-header">
+    <h3>CorBin-FL</h3><p class="system-tagline">Differentially private federated learning, one bit per weight</p>
+  </header>
+  <figure class="system-figure">
+    <img src="/assets/img/systems/corbinfl-method-schematic.png" alt="Diagram of one CorBin-FL communication round in four stages: initialization, secure pairwise key exchange, model update with shared PRG seeds, and correlated-quantizer aggregation at the server.
+" loading="lazy" />
+    <figcaption>One communication round of CorBin-FL. The server broadcasts the global model and pairs up clients; each pair establishes a shared secret over an encrypted channel the server can't see; each client quantizes its own update to one bit using randomness drawn from that shared secret; the server averages the bits back into the new global model. Distinct pairs use independent shared randomness.
+</figcaption>
+  </figure>
+  <figure class="system-figure">
+    <img src="/assets/img/systems/corbinfl-pca.png" alt="PCA projection of per-coordinate quantization error across model weight coordinates, comparing CorBin-FL's correlated binary quantization against independent binary quantization.
+" loading="lazy" />
+    <figcaption>PCA of the quantization error added to each weight coordinate. CorBin-FL's shared-randomness noise (left) concentrates tightly around zero and cancels out when the server aggregates client updates; independent per-client noise (right) spreads broadly and only partially cancels.
+</figcaption>
+  </figure>
+
+  <dl class="system-par">
+    <dt>Problem</dt>
+    <dd>Local differential privacy for federated learning usually means every client adds noise to its update independently. That noise doesn't cancel when the server averages updates across clients, so accuracy drops sharply at the privacy budgets (small ε) that matter in practice.
+</dd>
+    <dt>Approach</dt>
+    <dd>CorBin-FL quantizes each client's update to a single bit per model weight, but draws the quantization noise from a shared source of randomness across clients instead of independent per-client noise. Each client still keeps its individual ε-LDP guarantee, but the noise is now negatively correlated, so it cancels out at the server instead of piling up.
+</dd>
+    <dt>Result</dt>
+    <dd>On CIFAR-10 at ε = 1 (50 clients, 100 rounds, ResNet18), CorBin-FL reaches 59.51% ± 0.24 test accuracy versus 44.23% ± 0.29 for the strongest 1-bit LDP baseline (LDPFL) — a 15-point gap at the same privacy budget and same communication cost. On FEMNIST at ε = 1, CorBin-FL reaches 82.82% ± 0.70 versus 80.75% ± 0.04 for the strongest baseline (Laplace).
+</dd>
+  </dl>
+  <div class="system-table-wrap"><p class="system-table-caption">1-bit-per-coordinate LDP baselines CorBin-FL is compared against</p>
+    <table class="system-table">
+      <thead>
+        <tr><th>Method</th><th>Privacy</th><th>Bits/coord</th><th>Reference</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>LDP-FL</td><td>ε-LDP</td><td>1</td><td>Sun et al. 2020</td>
+        </tr>
+        <tr><td>I-MVU</td><td>ε-LDP</td><td>1 / 2 / 4</td><td>Guo et al., ICML 2023</td>
+        </tr>
+        <tr><td>PBM-PLDP</td><td>ε-PLDP</td><td>1 / 2</td><td>Privatized Binomial Mechanism</td>
+        </tr>
+        <tr><td>RQM</td><td>ε-LDP</td><td>1 / 2</td><td>Youn et al. 2023</td>
+        </tr>
+        <tr><td>CorQuant</td><td>None</td><td>1</td><td>Suresh et al. 2022</td>
+        </tr>
+        <tr><td>SignSGD</td><td>None</td><td>1</td><td>Bernstein et al. 2019</td>
+        </tr>
+        <tr><td>FedAvg</td><td>None</td><td>32</td><td>McMahan et al. 2016</td>
+        </tr>
+        <tr><td>Gaussian LDP</td><td>ε-LDP</td><td>32</td><td>Balle &amp; Wang 2018</td>
+        </tr>
+        <tr><td>Gaussian CDP</td><td>ε-CDP</td><td>32</td><td>—</td>
+        </tr>
+        <tr><td>Laplace LDP</td><td>ε-LDP</td><td>32</td><td>Dwork 2006</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="system-artifact-links">
+    <span class="system-artifact-label">Artifact</span>
+    <a href="https://www.arxiv.org/abs/2409.13133" target="_blank" rel="noopener noreferrer">Paper (arXiv)</a> ·
+    <a href="https://github.com/Hojat-Salehi/CorBin-FL" target="_blank" rel="noopener noreferrer">Code</a>
+  </div>
+</article>
+
+</div>
 
           </article>
 

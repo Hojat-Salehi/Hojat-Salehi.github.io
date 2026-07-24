@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*******************************************************************************
  * Variables used throughout the theme.
  * To adjust anything, simply edit the variables below and rebuild the theme.
@@ -891,6 +892,124 @@ d-appendix a:hover, d-appendix a.footnote-backlink:hover {
   d-article d-contents nav {
     grid-column: none;
   }
+}
+/*******************************************************************************
+ * Systems page — Problem/Approach/Result/Artifact cards (AGENT_BRIEF.md §6.2).
+ * Deliberately not a card-grid-of-icons: one column, full-width figures, dense
+ * text. Full visual pass lands with the bespoke Sass system (see NOTES.md).
+ ******************************************************************************/
+.systems-intro {
+  color: var(--global-text-color-light);
+  max-width: 640px;
+  margin-bottom: 2.5rem;
+}
+
+.systems-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+.system-card {
+  padding-bottom: 3rem;
+  border-bottom: 1px solid var(--global-divider-color);
+}
+.system-card:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.system-card-header {
+  margin-bottom: 1.25rem;
+}
+.system-card-header h3 {
+  margin: 0 0 0.15rem 0;
+}
+
+.system-tagline {
+  color: var(--global-text-color-light);
+  margin: 0;
+  font-style: italic;
+}
+
+.system-figure {
+  margin: 0 0 1.5rem 0;
+}
+.system-figure img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 1px solid var(--global-divider-color);
+}
+.system-figure figcaption {
+  font-size: 0.85rem;
+  color: var(--global-text-color-light);
+  margin-top: 0.5rem;
+  line-height: 1.5;
+}
+
+.system-par {
+  margin: 0 0 1.5rem 0;
+}
+.system-par dt {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  color: var(--global-theme-color);
+  margin-top: 1rem;
+}
+.system-par dt:first-child {
+  margin-top: 0;
+}
+.system-par dd {
+  margin: 0.3rem 0 0 0;
+  line-height: 1.6;
+}
+
+.system-table-wrap {
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+}
+
+.system-table-caption {
+  font-size: 0.85rem;
+  color: var(--global-text-color-light);
+  margin-bottom: 0.5rem;
+}
+
+.system-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+.system-table th, .system-table td {
+  text-align: left;
+  padding: 0.4rem 0.75rem 0.4rem 0;
+  border-bottom: 1px solid var(--global-divider-color);
+  white-space: nowrap;
+}
+.system-table th {
+  font-weight: 700;
+  color: var(--global-text-color-light);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.system-artifact-links {
+  font-size: 0.9rem;
+}
+.system-artifact-links .system-artifact-label {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  color: var(--global-text-color-light);
+  margin-right: 0.75rem;
+}
+.system-artifact-links a {
+  color: var(--global-theme-color);
 }
 
 /*# sourceMappingURL=main.css.map */
