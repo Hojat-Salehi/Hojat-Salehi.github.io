@@ -1,9 +1,8 @@
 {
   "generated_from": [
-    "repos/CorBin-FL/results.log",
-    "repos/CorBin-FL/README.md"
+    "CorbinFL_paper/corbinfl.tex (Table tab:MNIST, tab:FEMNIST, tab:all -- the published paper tables)"
   ],
-  "note": "Test accuracy (%) at best-tuned lambda per (method, dataset, epsilon), 50 clients, 100 rounds. Non-private methods (CorQuant, FedAvg) shown as flat reference lines. Shakespeare/Sent140/Reddit and several baselines (SignSGD, GaussianLDP/CDP, AugCorBin-FL) are not yet in an extractable sweep -- see QUESTIONS.md.",
+  "note": "Test accuracy (%) at best-tuned round/lambda per (method, dataset, epsilon), from the CorBin-FL paper’s own results tables (50 clients, 100 rounds unless noted). Non-private methods (CorQuant, FedAvg) shown as flat reference lines. Shakespeare and Sentiment140 use a different evaluation (accuracy vs. communication round at fixed epsilon, not an epsilon sweep) -- shown separately below as the paper’s own figures. Reddit is not evaluated in the paper.",
   "datasets": [
     {
       "key": "CIFAR10",
@@ -21,7 +20,7 @@
   "methods": {
     "corbinfl": {
       "label": "CorBin-FL (ours)",
-      "privacy": "\u03b5-LDP",
+      "privacy": "ε-PLDP",
       "bits": 1,
       "nonPrivate": false
     },
@@ -38,172 +37,74 @@
       "nonPrivate": true
     },
     "laplace": {
-      "label": "Laplace LDP",
-      "privacy": "\u03b5-LDP",
+      "label": "Laplace",
+      "privacy": "ε-PLDP",
       "bits": 32,
       "nonPrivate": false
     },
     "ldpfl": {
       "label": "LDP-FL",
-      "privacy": "\u03b5-LDP",
+      "privacy": "ε-PLDP",
       "bits": 1,
       "nonPrivate": false
     },
     "imvu": {
       "label": "I-MVU (1-bit)",
-      "privacy": "\u03b5-LDP",
+      "privacy": "ε-PLDP",
       "bits": 1,
       "nonPrivate": false
     },
-    "pbm_pldp_1bit": {
-      "label": "PBM-PLDP (1-bit)",
-      "privacy": "\u03b5-PLDP",
+    "pbm_pldp": {
+      "label": "PBM-PLDP",
+      "privacy": "ε-PLDP",
       "bits": 1,
-      "nonPrivate": false
-    },
-    "pbm_pldp_2bit": {
-      "label": "PBM-PLDP (2-bit)",
-      "privacy": "\u03b5-PLDP",
-      "bits": 2,
       "nonPrivate": false
     },
     "rqm": {
-      "label": "RQM (1-bit)",
-      "privacy": "\u03b5-LDP",
+      "label": "RQM",
+      "privacy": "ε-PLDP",
+      "bits": 1,
+      "nonPrivate": false
+    },
+    "gaussian": {
+      "label": "Gaussian",
+      "privacy": "ε-PLDP",
+      "bits": 32,
+      "nonPrivate": false
+    },
+    "augcorbinfl": {
+      "label": "AugCorBin-FL (ours)",
+      "privacy": "ε-PLDP + CDP",
       "bits": 1,
       "nonPrivate": false
     }
   },
   "series": {
     "CIFAR10": {
-      "corquant": [
-        {
-          "epsilon": null,
-          "acc": 74.16,
-          "std": 1.7707,
-          "source": "results.log"
-        }
-      ],
-      "imvu": [
-        {
-          "epsilon": 1.0,
-          "acc": 41.33,
-          "std": 1.3955,
-          "source": "results.log"
-        },
-        {
-          "epsilon": 3.0,
-          "acc": 64.96,
-          "std": 1.6671,
-          "source": "results.log"
-        },
-        {
-          "epsilon": 5.0,
-          "acc": 68.17,
-          "std": 3.0693,
-          "source": "results.log"
-        },
-        {
-          "epsilon": 7.0,
-          "acc": 68.76,
-          "std": 2.2738,
-          "source": "results.log"
-        }
-      ],
-      "pbm_pldp_1bit": [
-        {
-          "epsilon": 1.0,
-          "acc": 42.33,
-          "std": 0.7648,
-          "source": "results.log"
-        },
-        {
-          "epsilon": 3.0,
-          "acc": 64.89,
-          "std": 1.4084,
-          "source": "results.log"
-        },
-        {
-          "epsilon": 5.0,
-          "acc": 68.77,
-          "std": 1.2226,
-          "source": "results.log"
-        },
-        {
-          "epsilon": 7.0,
-          "acc": 72.38,
-          "std": 1.2397,
-          "source": "results.log"
-        }
-      ],
-      "pbm_pldp_2bit": [
-        {
-          "epsilon": 1.0,
-          "acc": 27.55,
-          "std": 0.645,
-          "source": "results.log",
-          "note": "2/5 seeds completed"
-        },
-        {
-          "epsilon": 3.0,
-          "acc": 61.26,
-          "std": 0.06,
-          "source": "results.log",
-          "note": "2/5 seeds completed"
-        },
-        {
-          "epsilon": 5.0,
-          "acc": 45.3,
-          "std": 0.155,
-          "source": "results.log",
-          "note": "2/5 seeds completed"
-        },
-        {
-          "epsilon": 7.0,
-          "acc": 42.98,
-          "std": 0.0,
-          "source": "results.log",
-          "note": "1/5 seeds completed"
-        }
-      ],
-      "rqm": [
-        {
-          "epsilon": 1.0,
-          "acc": 41.52,
-          "std": 1.2305,
-          "source": "results.log"
-        },
-        {
-          "epsilon": 3.0,
-          "acc": 65.42,
-          "std": 0.6017,
-          "source": "results.log"
-        },
-        {
-          "epsilon": 5.0,
-          "acc": 68.16,
-          "std": 1.8747,
-          "source": "results.log"
-        },
-        {
-          "epsilon": 7.0,
-          "acc": 71.89,
-          "std": 1.0005,
-          "source": "results.log"
-        }
-      ],
       "laplace": [
         {
           "epsilon": 1.0,
           "acc": 27.9,
           "std": 3.44,
-          "source": "README.md"
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
+        },
+        {
+          "epsilon": 3.0,
+          "acc": 63.64,
+          "std": 2.31,
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
         },
         {
           "epsilon": 5.0,
           "acc": 67.43,
           "std": 0.3,
-          "source": "README.md"
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
+        },
+        {
+          "epsilon": 7.0,
+          "acc": 71.38,
+          "std": 0.31,
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
         }
       ],
       "ldpfl": [
@@ -211,13 +112,103 @@
           "epsilon": 1.0,
           "acc": 44.23,
           "std": 0.29,
-          "source": "README.md"
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
+        },
+        {
+          "epsilon": 3.0,
+          "acc": 65.69,
+          "std": 0.73,
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
         },
         {
           "epsilon": 5.0,
           "acc": 68.93,
           "std": 0.51,
-          "source": "README.md"
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
+        },
+        {
+          "epsilon": 7.0,
+          "acc": 73.12,
+          "std": 0.38,
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
+        }
+      ],
+      "imvu": [
+        {
+          "epsilon": 1.0,
+          "acc": 41.33,
+          "std": 1.39,
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
+        },
+        {
+          "epsilon": 3.0,
+          "acc": 64.96,
+          "std": 1.67,
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
+        },
+        {
+          "epsilon": 5.0,
+          "acc": 68.17,
+          "std": 3.07,
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
+        },
+        {
+          "epsilon": 7.0,
+          "acc": 68.76,
+          "std": 2.27,
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
+        }
+      ],
+      "pbm_pldp": [
+        {
+          "epsilon": 1.0,
+          "acc": 42.33,
+          "std": 0.76,
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
+        },
+        {
+          "epsilon": 3.0,
+          "acc": 65.54,
+          "std": 0.39,
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
+        },
+        {
+          "epsilon": 5.0,
+          "acc": 68.77,
+          "std": 1.22,
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
+        },
+        {
+          "epsilon": 7.0,
+          "acc": 72.38,
+          "std": 1.24,
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
+        }
+      ],
+      "rqm": [
+        {
+          "epsilon": 1.0,
+          "acc": 41.52,
+          "std": 1.23,
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
+        },
+        {
+          "epsilon": 3.0,
+          "acc": 65.42,
+          "std": 0.6,
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
+        },
+        {
+          "epsilon": 5.0,
+          "acc": 68.16,
+          "std": 1.87,
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
+        },
+        {
+          "epsilon": 7.0,
+          "acc": 71.89,
+          "std": 1.0,
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
         }
       ],
       "corbinfl": [
@@ -225,13 +216,33 @@
           "epsilon": 1.0,
           "acc": 59.51,
           "std": 0.24,
-          "source": "README.md"
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
+        },
+        {
+          "epsilon": 3.0,
+          "acc": 68.84,
+          "std": 0.62,
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
         },
         {
           "epsilon": 5.0,
           "acc": 72.69,
           "std": 0.48,
-          "source": "README.md"
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
+        },
+        {
+          "epsilon": 7.0,
+          "acc": 73.41,
+          "std": 0.52,
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
+        }
+      ],
+      "corquant": [
+        {
+          "epsilon": null,
+          "acc": 74.16,
+          "std": 1.77,
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
         }
       ],
       "fedavg": [
@@ -239,154 +250,199 @@
           "epsilon": null,
           "acc": 78.21,
           "std": 0.64,
-          "source": "README.md"
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
+        }
+      ],
+      "gaussian": [
+        {
+          "epsilon": 5.0,
+          "acc": 57.01,
+          "std": 0.0,
+          "note": "300-round protocol (Table tab:all), not the 100-round sweep above",
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:all)"
+        }
+      ],
+      "augcorbinfl": [
+        {
+          "epsilon": 5.0,
+          "acc": 75.6,
+          "std": 0.0,
+          "note": "300-round protocol (Table tab:all), not the 100-round sweep above",
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:all)"
         }
       ]
     },
     "MNIST": {
-      "corquant": [
-        {
-          "epsilon": null,
-          "acc": 98.11,
-          "std": 0.0804,
-          "source": "results.log"
-        }
-      ],
-      "corbinfl": [
+      "laplace": [
         {
           "epsilon": 0.1,
-          "acc": 93.13,
-          "std": 0.5266,
-          "source": "results.log"
+          "acc": 25.63,
+          "std": 1.97,
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
         },
         {
           "epsilon": 0.3,
-          "acc": 96.5,
-          "std": 0.0845,
-          "source": "results.log"
+          "acc": 78.01,
+          "std": 0.73,
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
         },
         {
           "epsilon": 1.0,
-          "acc": 97.52,
-          "std": 0.135,
-          "source": "results.log"
+          "acc": 80.28,
+          "std": 0.35,
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
         },
         {
           "epsilon": 3.0,
-          "acc": 97.99,
-          "std": 0.1077,
-          "source": "results.log"
+          "acc": 95.98,
+          "std": 0.05,
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
+        }
+      ],
+      "ldpfl": [
+        {
+          "epsilon": 0.1,
+          "acc": 26.93,
+          "std": 1.51,
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
+        },
+        {
+          "epsilon": 0.3,
+          "acc": 88.27,
+          "std": 0.23,
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
+        },
+        {
+          "epsilon": 1.0,
+          "acc": 87.22,
+          "std": 0.55,
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
+        },
+        {
+          "epsilon": 3.0,
+          "acc": 97.02,
+          "std": 0.02,
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
         }
       ],
       "imvu": [
         {
           "epsilon": 0.1,
           "acc": 32.41,
-          "std": 2.9825,
-          "source": "results.log"
+          "std": 2.98,
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
         },
         {
           "epsilon": 0.3,
           "acc": 84.13,
-          "std": 1.4446,
-          "source": "results.log"
+          "std": 1.44,
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
         },
         {
           "epsilon": 1.0,
           "acc": 96.64,
-          "std": 0.1559,
-          "source": "results.log"
+          "std": 0.16,
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
         },
         {
           "epsilon": 3.0,
           "acc": 97.94,
-          "std": 0.1624,
-          "source": "results.log"
+          "std": 0.16,
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
         }
       ],
-      "pbm_pldp_1bit": [
+      "pbm_pldp": [
         {
           "epsilon": 0.1,
           "acc": 29.77,
-          "std": 5.5113,
-          "source": "results.log"
+          "std": 5.51,
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
         },
         {
           "epsilon": 0.3,
           "acc": 85.33,
-          "std": 0.8001,
-          "source": "results.log"
+          "std": 0.8,
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
         },
         {
           "epsilon": 1.0,
           "acc": 96.78,
-          "std": 0.1027,
-          "source": "results.log"
+          "std": 0.1,
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
         },
         {
           "epsilon": 3.0,
           "acc": 97.81,
-          "std": 0.0863,
-          "source": "results.log"
-        }
-      ],
-      "pbm_pldp_2bit": [
-        {
-          "epsilon": 0.1,
-          "acc": 21.53,
-          "std": 3.9175,
-          "source": "results.log"
-        },
-        {
-          "epsilon": 0.3,
-          "acc": 74.28,
-          "std": 3.8989,
-          "source": "results.log"
-        },
-        {
-          "epsilon": 1.0,
-          "acc": 95.94,
-          "std": 0.1515,
-          "source": "results.log"
-        },
-        {
-          "epsilon": 3.0,
-          "acc": 97.57,
-          "std": 0.1052,
-          "source": "results.log"
+          "std": 0.09,
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
         }
       ],
       "rqm": [
         {
           "epsilon": 0.1,
           "acc": 32.04,
-          "std": 2.9518,
-          "source": "results.log"
+          "std": 2.95,
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
         },
         {
           "epsilon": 0.3,
           "acc": 84.39,
-          "std": 1.9207,
-          "source": "results.log"
-        },
-        {
-          "epsilon": 0.5,
-          "acc": 93.44,
-          "std": 0.035,
-          "source": "results.log",
-          "note": "2/5 seeds completed"
+          "std": 1.92,
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
         },
         {
           "epsilon": 1.0,
           "acc": 96.62,
-          "std": 0.1416,
-          "source": "results.log"
+          "std": 0.14,
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
         },
         {
           "epsilon": 3.0,
           "acc": 97.85,
-          "std": 0.1017,
-          "source": "results.log"
+          "std": 0.1,
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
+        }
+      ],
+      "corbinfl": [
+        {
+          "epsilon": 0.1,
+          "acc": 93.13,
+          "std": 0.53,
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
+        },
+        {
+          "epsilon": 0.3,
+          "acc": 96.5,
+          "std": 0.08,
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
+        },
+        {
+          "epsilon": 1.0,
+          "acc": 97.52,
+          "std": 0.13,
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
+        },
+        {
+          "epsilon": 3.0,
+          "acc": 97.99,
+          "std": 0.11,
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
+        }
+      ],
+      "corquant": [
+        {
+          "epsilon": null,
+          "acc": 98.11,
+          "std": 0.08,
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
+        }
+      ],
+      "fedavg": [
+        {
+          "epsilon": null,
+          "acc": 98.43,
+          "std": 0.04,
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
         }
       ]
     },
@@ -396,13 +452,13 @@
           "epsilon": 1.0,
           "acc": 80.75,
           "std": 0.04,
-          "source": "README.md"
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
         },
         {
           "epsilon": 5.0,
           "acc": 84.2,
           "std": 0.06,
-          "source": "README.md"
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
         }
       ],
       "ldpfl": [
@@ -410,13 +466,13 @@
           "epsilon": 1.0,
           "acc": 79.98,
           "std": 0.69,
-          "source": "README.md"
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
         },
         {
           "epsilon": 5.0,
           "acc": 84.96,
           "std": 0.46,
-          "source": "README.md"
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
         }
       ],
       "corbinfl": [
@@ -424,13 +480,13 @@
           "epsilon": 1.0,
           "acc": 82.82,
           "std": 0.7,
-          "source": "README.md"
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
         },
         {
           "epsilon": 5.0,
           "acc": 86.08,
           "std": 0.44,
-          "source": "README.md"
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
         }
       ],
       "fedavg": [
@@ -438,7 +494,7 @@
           "epsilon": null,
           "acc": 87.24,
           "std": 0.39,
-          "source": "README.md"
+          "source": "CorbinFL_paper/corbinfl.tex (Table tab:MNIST)"
         }
       ]
     }
