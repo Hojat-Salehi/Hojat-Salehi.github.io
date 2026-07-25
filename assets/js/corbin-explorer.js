@@ -164,7 +164,7 @@
         var points = seriesForDataset[key];
         var isHero = key === "corbinfl";
         var isFlat = meta.nonPrivate;
-        var shape = isHero ? "circle" : MARKER_SHAPES[shapeIndex++ % MARKER_SHAPES.length];
+        var shape = (isHero || isFlat) ? "circle" : MARKER_SHAPES[shapeIndex++ % MARKER_SHAPES.length];
         var colorClass = isHero ? "corbin-series-hero" : (isFlat ? "corbin-series-flat" : "corbin-series-baseline");
 
         var g = el("g", { class: "corbin-series " + colorClass + (state.hidden[key] ? " corbin-hidden" : "") }, svg);
@@ -208,7 +208,7 @@
         var meta = data.methods[key];
         var isHero = key === "corbinfl";
         var isFlat = meta.nonPrivate;
-        var shape = isHero ? "circle" : MARKER_SHAPES[shapeIndex++ % MARKER_SHAPES.length];
+        var shape = (isHero || isFlat) ? "circle" : MARKER_SHAPES[shapeIndex++ % MARKER_SHAPES.length];
         var li = document.createElement("li");
         li.className = "corbin-legend-item" + (isHero ? " hero" : "") + (state.hidden[key] ? " hidden" : "");
 
