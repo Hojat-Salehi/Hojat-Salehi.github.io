@@ -1558,4 +1558,159 @@ body {
   margin-top: 0.5rem;
 }
 
+/*******************************************************************************
+ * Demo 2: MNIST saliency
+ ******************************************************************************/
+.saliency-app {
+  border: 1px solid var(--global-divider-color);
+  border-radius: 8px;
+  padding: 1.25rem;
+  background: var(--global-code-bg-color);
+  max-width: 800px;
+}
+
+.saliency-draw-section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.saliency-draw-wrap {
+  flex-shrink: 0;
+}
+
+.saliency-draw-canvas {
+  width: 200px;
+  height: 200px;
+  border-radius: 6px;
+  border: 1px solid var(--global-divider-color);
+  cursor: crosshair;
+  touch-action: none;
+  display: block;
+}
+
+.saliency-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.saliency-frame-toggle {
+  font-family: "IBM Plex Mono", "DejaVu Sans Mono", "SF Mono", Consolas, monospace;
+  font-size: 0.78rem;
+  color: var(--global-text-color-light);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  max-width: 320px;
+  line-height: 1.4;
+}
+.saliency-frame-toggle input {
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+.saliency-panels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+@media (max-width: 620px) {
+  .saliency-panels {
+    grid-template-columns: 1fr;
+  }
+}
+
+.saliency-panel-title {
+  font-family: "IBM Plex Mono", "DejaVu Sans Mono", "SF Mono", Consolas, monospace;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--global-text-color-light);
+  margin-bottom: 0.6rem;
+}
+
+.saliency-canvas-wrap {
+  position: relative;
+  width: 168px;
+  height: 168px;
+  margin-bottom: 0.75rem;
+}
+
+.saliency-digit-canvas,
+.saliency-heat-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 168px;
+  height: 168px;
+  border-radius: 6px;
+}
+
+.saliency-digit-canvas {
+  border: 1px solid var(--global-divider-color);
+}
+
+.saliency-prediction {
+  font-size: 0.95rem;
+  margin: 0 0 0.6rem 0;
+}
+.saliency-prediction strong {
+  color: var(--global-signal-color);
+  font-size: 1.15rem;
+}
+
+.saliency-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.saliency-bar-row {
+  display: grid;
+  grid-template-columns: 1rem 1fr 3rem;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.72rem;
+}
+.saliency-bar-row.top .saliency-bar-fill {
+  background: var(--global-signal-color);
+}
+
+.saliency-bar-label {
+  font-family: "IBM Plex Mono", "DejaVu Sans Mono", "SF Mono", Consolas, monospace;
+  color: var(--global-text-color-light);
+  text-align: right;
+}
+
+.saliency-bar-track {
+  height: 6px;
+  border-radius: 3px;
+  background: var(--global-divider-color);
+  overflow: hidden;
+}
+
+.saliency-bar-fill {
+  height: 100%;
+  background: var(--global-trace-color);
+  opacity: 0.75;
+}
+
+.saliency-bar-pct {
+  font-family: "IBM Plex Mono", "DejaVu Sans Mono", "SF Mono", Consolas, monospace;
+  color: var(--global-text-color-light);
+  font-size: 0.68rem;
+}
+
+.saliency-status {
+  font-family: "IBM Plex Mono", "DejaVu Sans Mono", "SF Mono", Consolas, monospace;
+  font-size: 0.78rem;
+  color: var(--global-text-color-light);
+  margin-top: 1rem;
+}
+
 /*# sourceMappingURL=main.css.map */
