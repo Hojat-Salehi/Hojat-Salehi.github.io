@@ -125,10 +125,6 @@ blog_nav_title: # blank on purpose: no nav item until real posts exist — brief
 blog_description: Notes on the papers and systems above, in plain language.
 permalink: /blog/:year/:title/
 
-# Pagination
-pagination:
-  enabled: true
-
 related_blog_posts:
   enabled: true
   max_related: 5
