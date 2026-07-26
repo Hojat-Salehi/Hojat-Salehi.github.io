@@ -284,7 +284,7 @@
         <dd>Game Analyst runs the question through two parallel adversarial debates — a Win Probability debate (Favorite Case vs. Underdog Case, argued purely from team stats, form, and head-to-head history, with no market odds involved) and a Total Points debate (High Total Case vs. Low Total Case, using the market's total-points number as one input among several) — each converging through a dedicated judge. A Head Analyst cross-validates both judges' reasoning for consistency and writes the final report. Every analysis persists to SQLite and renders to an HTML report; once a game completes, a post-game accuracy review compares the prediction to the real result and writes a lesson per agent role into a ChromaDB memory store, so later analyses of similar situations draw on what past predictions got right or wrong.
 </dd>
         <dt>Result</dt>
-        <dd>The system is built to grade itself — every analysis persists to SQLite, and a post-game review compares each prediction to the actual final score once the game completes (see `database/schema.sql`). It hasn't been run against a real slate of games yet, so there's no accuracy number to report here. [TK]
+        <dd>The system is built to grade itself — every analysis persists to SQLite, and a post-game review compares each prediction to the actual final score once the game completes (see `database/schema.sql`). One real recorded run is up on the <a href="/demos/#game-analyst-replay">Demos</a> page — Royals @ Tigers, MLB, predicted Detroit at 63%, the Royals won 3–2 — but one game isn't a track record. No accuracy number to report until more real runs accumulate. [TK]
 </dd>
       </dl>
       <div class="system-artifact-links">
