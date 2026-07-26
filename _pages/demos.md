@@ -8,7 +8,7 @@ nav_order: 4
 ---
 
 <!-- DRAFT-COPY -->
-<p class="systems-intro">Interactive, not decorative -- every number here comes straight from a real experiment log or the paper's own results tables. No backend, no API key, works offline from a fresh clone.</p>
+<p class="systems-intro">Interactive, not decorative -- every number here comes straight from a real experiment log or the paper's own results tables.</p>
 
 <section class="demo-block" id="corbin-privacy-explorer">
   <p class="channel-label">DEMO.01</p>

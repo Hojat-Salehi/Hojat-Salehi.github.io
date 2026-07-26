@@ -7,9 +7,6 @@ nav: true
 nav_order: 2
 ---
 
-<!-- DRAFT-COPY -->
-<p class="research-intro">Four themes. Each pairs a theoretical result with a working system — the papers are below, the systems are on the <a href="/systems/">Systems</a> page.</p>
-
 <div class="research-themes">
 
   <section class="research-theme" id="information-theory">
