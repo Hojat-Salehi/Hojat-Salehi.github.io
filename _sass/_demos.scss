@@ -383,3 +383,254 @@
   color: var(--global-text-color-light);
   margin-top: 1rem;
 }
+
+/*******************************************************************************
+ * Demo 3: multi-agent debate replay stepper
+ ******************************************************************************/
+
+.game-replay {
+  border: 1px solid var(--global-divider-color);
+  border-radius: 8px;
+  padding: 1.25rem;
+  background: var(--global-code-bg-color);
+  max-width: 800px;
+}
+
+.replay-meta {
+  @include mono-face;
+  font-size: 0.78rem;
+  color: var(--global-text-color-light);
+  margin-bottom: 1rem;
+
+  .replay-meta-sep {
+    margin: 0 0.5rem;
+  }
+}
+
+.replay-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+}
+
+.replay-pill {
+  @include mono-face;
+  width: 1.9rem;
+  height: 1.9rem;
+  border-radius: 50%;
+  border: 1px solid var(--global-divider-color);
+  background: transparent;
+  color: var(--global-text-color-light);
+  font-size: 0.72rem;
+  cursor: pointer;
+
+  &:hover {
+    border-color: var(--global-signal-color);
+    color: var(--global-signal-color);
+  }
+
+  &.active {
+    background: var(--global-signal-color);
+    border-color: var(--global-signal-color);
+    color: var(--global-bg-color);
+  }
+}
+
+.replay-panel {
+  border-top: 1px solid var(--global-divider-color);
+  padding-top: 1.25rem;
+  min-height: 200px;
+}
+
+.replay-panel-header {
+  margin-bottom: 1rem;
+
+  h3 {
+    margin: 0.25rem 0 0 0;
+  }
+}
+
+.replay-prose {
+  line-height: 1.65;
+  max-width: 68ch;
+
+  h3, h4, h5, h6 {
+    margin: 1.25rem 0 0.5rem 0;
+    font-size: 1rem;
+  }
+
+  p {
+    margin: 0 0 0.85rem 0;
+  }
+
+  ul {
+    margin: 0 0 0.85rem 0;
+    padding-left: 1.25rem;
+  }
+
+  li {
+    margin-bottom: 0.3rem;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid var(--global-divider-color);
+    margin: 1.25rem 0;
+  }
+
+  strong {
+    color: var(--global-text-color);
+  }
+}
+
+.replay-debate-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+
+  @media (max-width: 620px) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+.replay-debate-col-label {
+  @include mono-face;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--global-trace-color);
+  margin: 0 0 0.75rem 0;
+
+  .replay-debate-col:first-child & {
+    color: var(--global-signal-color);
+  }
+}
+
+.replay-judge-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.replay-badge {
+  @include mono-face;
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid var(--global-theme-color);
+  color: var(--global-theme-color);
+}
+
+.replay-badge-hero {
+  background: var(--global-signal-color);
+  border-color: var(--global-signal-color);
+  color: var(--global-bg-color);
+}
+
+.replay-badge-muted {
+  border-color: var(--global-divider-color);
+  color: var(--global-text-color-light);
+}
+
+.replay-badge-outcome-correct {
+  border-color: var(--global-ok-color);
+  color: var(--global-ok-color);
+}
+
+.replay-badge-outcome-incorrect {
+  border-color: var(--global-trace-color);
+  color: var(--global-trace-color);
+}
+
+.replay-outcome-card {
+  margin-bottom: 1.25rem;
+}
+
+.replay-score {
+  @include display-face;
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+}
+
+.replay-score-sep {
+  color: var(--global-text-color-light);
+  font-size: 1.1rem;
+}
+
+.replay-verdict {
+  @include mono-face;
+  font-size: 0.82rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid var(--global-divider-color);
+
+  &.correct {
+    color: var(--global-ok-color);
+    border-color: var(--global-ok-color);
+  }
+
+  &.incorrect {
+    color: var(--global-trace-color);
+    border-color: var(--global-trace-color);
+  }
+}
+
+.replay-lessons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.replay-lesson {
+  border: 1px solid var(--global-divider-color);
+  border-radius: 6px;
+  padding: 0.6rem 0.85rem;
+
+  .replay-prose {
+    margin-top: 0.85rem;
+  }
+}
+
+.replay-lesson-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  list-style: none;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+}
+
+.replay-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--global-divider-color);
+
+  button:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+  }
+}
+
+.replay-step-count {
+  @include mono-face;
+  font-size: 0.78rem;
+  color: var(--global-text-color-light);
+}

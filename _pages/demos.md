@@ -88,6 +88,37 @@ nav_order: 4
   </p>
 </section>
 
+<section class="demo-block" id="game-analyst-replay">
+  <p class="channel-label">DEMO.03</p>
+  <h2>Multi-agent debate replay — Game Analyst</h2>
+  <p class="demo-intro">
+    <!-- DRAFT-COPY -->
+    One real, recorded run of <a href="/systems/#game-analyst-multiagent">Game Analyst</a>,
+    end to end: five analyst reports, two parallel debates, both judges, the head analyst's
+    cross-check, the final prediction — then the actual final score. Every word below is real
+    model output from that run, unedited, including the one place a tool call failed and the
+    analyst said so instead of inventing a number.
+  </p>
+  <p class="demo-intro">
+    <!-- DRAFT-COPY -->
+    This is a recorded replay, not a live LLM call — a live version needs a key, costs money
+    per visitor, and can fail mid-demo; a transcript is free, fully controllable, and the
+    pacing is deliberate.
+  </p>
+
+  <div id="game-replay-root" data-src="{{ '/assets/data/game_replay/kan_det_20260725.json' | relative_url }}"></div>
+
+  <p class="demo-source-note">
+    Kansas City Royals @ Detroit Tigers, MLB, July 25, 2026 — the pipeline predicted Detroit
+    (63% win probability, projected total 7.0); the Royals won 3–2. Transcript built directly
+    from the run's own SQLite database (<code>analyst_reports</code>, <code>debate_rounds</code>,
+    <code>judge_recommendations</code>, <code>final_analysis</code>, <code>post_game_review</code>,
+    <code>agent_lessons</code> tables) — see <a href="/systems/#game-analyst-multiagent">Game
+    Analyst</a> for the architecture.
+  </p>
+</section>
+
 <script src="{{ '/assets/js/corbin-explorer.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/mnist-saliency.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/mnist-saliency-ui.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/game-replay.js' | relative_url }}"></script>
