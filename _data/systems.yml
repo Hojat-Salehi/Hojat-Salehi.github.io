@@ -77,6 +77,8 @@
       url: https://www.arxiv.org/abs/2409.13133
     - label: "Code"
       url: https://github.com/Hojat-Salehi/CorBin-FL
+    - label: "Try it"
+      url: /demos/#corbin-privacy-explorer
 
 - key: agentic-sysid
   title: "Agentic-SysID"
@@ -192,6 +194,8 @@
   artifact_links:
     - label: "Code"
       url: https://github.com/Hojat-Salehi/game-analyst-multiagent
+    - label: "Watch the replay"
+      url: /demos/#game-analyst-replay
 
 - key: ddim-time-series
   title: "DDIM Time Series"

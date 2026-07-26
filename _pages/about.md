@@ -25,4 +25,7 @@ My research spans information theory (non-interactive source simulation, differe
 {% include hero.html %}
 
 <!-- DRAFT-COPY -->
-Four themes run through the work below: privacy-preserving distributed learning, explainable and graph ML, agentic systems, and generative models for structured data. Each pairs a theoretical result with a working system — [Publications](/publications/) has the papers, [CV](/cv/) has the full history.
+Four themes run through the work below: privacy-preserving distributed learning, explainable and graph ML, agentic systems, and generative models for structured data. Each pairs a theoretical result with a working system.
+
+<!-- DRAFT-COPY -->
+**New here?** Coming from the research side — [Research](/research/) has the plain-English framing behind each paper. Coming from the engineering side — [Systems](/systems/) has real figures and results, and [Demos](/demos/) lets you interact with two of them and replay a third. [Publications](/publications/) has the papers, [CV](/cv/) has the full history, including the decade before the Ph.D.

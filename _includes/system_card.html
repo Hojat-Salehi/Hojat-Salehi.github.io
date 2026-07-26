@@ -42,7 +42,11 @@
       <div class="system-artifact-links">
         <span class="system-artifact-label">Artifact</span>
         {%- for link in system.artifact_links %}
+        {%- if link.url contains '://' -%}
         <a href="{{ link.url }}" target="_blank" rel="noopener noreferrer">{{ link.label }}</a>{%- unless forloop.last %} · {%- endunless %}
+        {%- else -%}
+        <a href="{{ link.url | relative_url }}">{{ link.label }}</a>{%- unless forloop.last %} · {%- endunless %}
+        {%- endif -%}
         {%- endfor %}
       </div>
       {%- endif %}
