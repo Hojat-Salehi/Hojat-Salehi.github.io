@@ -1242,12 +1242,6 @@ body {
 /*******************************************************************************
  * Research page — four theme sections (AGENT_BRIEF.md §6.2).
  ******************************************************************************/
-.research-intro {
-  color: var(--global-text-color-light);
-  max-width: 640px;
-  margin-bottom: 2.5rem;
-}
-
 .research-themes {
   display: flex;
   flex-direction: column;
