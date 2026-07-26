@@ -168,8 +168,10 @@
   result: >
     The system is built to grade itself — every analysis persists to SQLite, and a
     post-game review compares each prediction to the actual final score once the
-    game completes (see `database/schema.sql`). It hasn't been run against a real
-    slate of games yet, so there's no accuracy number to report here. [TK]
+    game completes (see `database/schema.sql`). One real recorded run is up on the
+    <a href="/demos/#game-analyst-replay">Demos</a> page — Royals @ Tigers, MLB,
+    predicted Detroit at 63%, the Royals won 3–2 — but one game isn't a track
+    record. No accuracy number to report until more real runs accumulate. [TK]
 
   figures:
     - image: systems/game-analyst-architecture.png
