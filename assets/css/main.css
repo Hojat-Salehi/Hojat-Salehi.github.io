@@ -1118,20 +1118,9 @@ body {
   }
 }
 /*******************************************************************************
- * Home page body content: the tagline, the work-authorization callout, the
- * CV/email buttons, and the three-card system preview grid below the hero.
+ * Home page body content: the work-authorization callout, the CV/email
+ * buttons, and the three-card system preview grid below the hero.
  ******************************************************************************/
-.home-tagline {
-  font-family: "Fraunces", Georgia, "Times New Roman", serif;
-  font-optical-sizing: auto;
-  font-variation-settings: "SOFT" 30, "WONK" 0;
-  font-size: 1.25rem;
-  font-style: italic;
-  font-weight: 500;
-  margin: 0 0 1.25rem 0;
-  color: var(--global-text-color);
-}
-
 .home-authorization {
   display: inline-block;
   border: 1px solid var(--global-divider-color);
