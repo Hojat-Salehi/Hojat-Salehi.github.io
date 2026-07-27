@@ -1219,6 +1219,24 @@ body {
   color: var(--global-theme-color);
 }
 
+.home-showcase {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 2.5rem;
+  align-items: start;
+  margin: 1.75rem 0 2.5rem 0;
+}
+@media (max-width: 900px) {
+  .home-showcase {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.home-showcase-video .hero-readout {
+  margin-top: 0.75rem;
+}
+
 /*******************************************************************************
  * Systems page — Problem/Approach/Result/Artifact cards (AGENT_BRIEF.md §6.2).
  * Deliberately not a card-grid-of-icons: two-column proof format (prose left,

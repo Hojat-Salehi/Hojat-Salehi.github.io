@@ -216,6 +216,9 @@
 </ul>
 
 <!-- DRAFT-COPY -->
+<p class="home-authorization">Note for industry roles: I am currently authorized to work in the US through OPT (eligible for STEM extension) and require no employer sponsorship.</p>
+
+<!-- DRAFT-COPY -->
 <p>Three systems, with real figures and results:</p>
 
 <div class="home-systems-grid">
@@ -248,44 +251,11 @@
   </div>
 </div>
 
-<!-- DRAFT-COPY -->
-<p class="home-authorization">Note for industry roles: I am currently authorized to work in the US through OPT (eligible for STEM extension) and require no employer sponsorship.</p>
-
-<p class="channel-label">REAL RUN — AGENTIC-SYSID</p>
-
-<!-- DRAFT-COPY -->
-<p>A multi-agent LLM system identifying a white-box model of a pendulum plant, tracking closely under composite excitation — actual plant vs. identified model, below.</p>
-
-<!-- hero.html — the one signature bold element (AGENT_BRIEF.md §5): the real
-     Agentic-SysID pendulum plant vs. identified model, styled as a two-channel
-     readout in the signal/trace accent pair. prefers-reduced-motion swaps to a
-     static frame; the play/pause control is real, not decorative. -->
-<div class="hero-readout">
-  <div class="hero-readout-frame">
-    <video id="hero-pendulum-video" class="hero-readout-media" poster="/assets/img/systems/agentic-sysid-demo-frame.png" muted="" loop="" playsinline="" aria-label="Animation: the actual pendulum plant swinging alongside the white-box model identified by Agentic-SysID, tracking closely under composite excitation.">
-      <source src="/assets/video/agentic-sysid-demo.mp4" type="video/mp4" />
-    </video>
-    <button id="hero-pendulum-toggle" class="hero-readout-toggle" type="button" aria-label="Pause animation">
-      <span aria-hidden="true">❚❚</span>
-    </button>
-  </div>
-  <div class="hero-readout-caption">
-    <span class="hero-channel hero-channel-signal">Actual plant</span>
-    <span class="hero-channel hero-channel-trace">Identified model</span>
-    <span class="hero-readout-note">Agentic-SysID, real run · <a href="/systems/#agentic-sysid">details →</a></span>
-  </div>
-</div>
-
-
-          </div>
-
-          <!-- News -->
-          
-
-          <!-- Selected papers -->
-          <h2><a href="/publications/" style="color: inherit;">selected publications</a></h2>
-          <div class="publications">
-            <ol class="bibliography"><li><!-- _layouts/bib.html -->
+<div class="home-showcase">
+  <div class="home-showcase-papers">
+    <h2><a href="/publications/" style="color: inherit;">selected publications</a></h2>
+    <div class="publications">
+      <ol class="bibliography"><li><!-- _layouts/bib.html -->
       <div class="row">
         <div class="col-sm-2 abbr"><abbr class="badge">T-IT</abbr></div>
 
@@ -371,10 +341,7 @@
         
 
         Zhuomin Chen,&nbsp;J. Ni,&nbsp;<em>Hojat Allah Salehi</em>, and
-          <span
-              class="more-authors"
-              title="click to view 4 more authors"
-              onclick="
+          <span class="more-authors" title="click to view 4 more authors" onclick="
                 var element = $(this);
                 element.attr('title', '');
                 var more_authors_text = element.text() == '4 more authors' ? 'Xu Zheng, E. Schafir, F. Shirani, Dongsheng Luo' : '4 more authors';
@@ -385,8 +352,7 @@
                     clearInterval(textAdder);
                   }
               }, '10');
-              "
-          >4 more authors</span></div>
+              ">4 more authors</span></div>
 
         <!-- Journal/Book title and date -->
         
@@ -423,10 +389,7 @@
         
 
         Zhuomin Chen,&nbsp;<em>Hojat Allah Salehi</em>,&nbsp;Esteban Schafir, and
-          <span
-              class="more-authors"
-              title="click to view 6 more authors"
-              onclick="
+          <span class="more-authors" title="click to view 6 more authors" onclick="
                 var element = $(this);
                 element.attr('title', '');
                 var more_authors_text = element.text() == '6 more authors' ? 'Xu Zheng, Jiaxing Zhang, Hua Wei, Jingchao Ni, Farhad Shirani, Dongsheng Luo' : '6 more authors';
@@ -437,8 +400,7 @@
                     clearInterval(textAdder);
                   }
               }, '10');
-              "
-          >6 more authors</span></div>
+              ">6 more authors</span></div>
 
         <!-- Journal/Book title and date -->
         
@@ -475,10 +437,7 @@
         
 
         <em>Hojat Allah Salehi</em>,&nbsp;Md Jueal Mia,&nbsp;S. Sandeep Pradhan, and
-          <span
-              class="more-authors"
-              title="click to view 2 more authors"
-              onclick="
+          <span class="more-authors" title="click to view 2 more authors" onclick="
                 var element = $(this);
                 element.attr('title', '');
                 var more_authors_text = element.text() == '2 more authors' ? 'Farhad Shirani, M. Hadi Amini' : '2 more authors';
@@ -489,8 +448,7 @@
                     clearInterval(textAdder);
                   }
               }, '10');
-              "
-          >2 more authors</span></div>
+              ">2 more authors</span></div>
 
         <!-- Journal/Book title and date -->
         
@@ -517,8 +475,42 @@
         </div>
       </div>
 </li></ol>
+    </div>
+  </div>
+  <div class="home-showcase-video">
+    <p class="channel-label">REAL RUN — AGENTIC-SYSID</p>
+    <!-- DRAFT-COPY -->
+    <p>A multi-agent LLM system identifying a white-box model of a pendulum plant, tracking closely under composite excitation — actual plant vs. identified model, below.</p>
+    <!-- hero.html — the one signature bold element (AGENT_BRIEF.md §5): the real
+     Agentic-SysID pendulum plant vs. identified model, styled as a two-channel
+     readout in the signal/trace accent pair. prefers-reduced-motion swaps to a
+     static frame; the play/pause control is real, not decorative. -->
+<div class="hero-readout">
+  <div class="hero-readout-frame">
+    <video id="hero-pendulum-video" class="hero-readout-media" poster="/assets/img/systems/agentic-sysid-demo-frame.png" muted="" loop="" playsinline="" aria-label="Animation: the actual pendulum plant swinging alongside the white-box model identified by Agentic-SysID, tracking closely under composite excitation.">
+      <source src="/assets/video/agentic-sysid-demo.mp4" type="video/mp4" />
+    </video>
+    <button id="hero-pendulum-toggle" class="hero-readout-toggle" type="button" aria-label="Pause animation">
+      <span aria-hidden="true">❚❚</span>
+    </button>
+  </div>
+  <div class="hero-readout-caption">
+    <span class="hero-channel hero-channel-signal">Actual plant</span>
+    <span class="hero-channel hero-channel-trace">Identified model</span>
+    <span class="hero-readout-note">Agentic-SysID, real run · <a href="/systems/#agentic-sysid">details →</a></span>
+  </div>
+</div>
+
+  </div>
+</div>
+
           </div>
 
+          <!-- News -->
+          
+
+          <!-- Selected papers -->
+          
 
           <!-- Site guide -->
           <p>Exploring the site:</p>
