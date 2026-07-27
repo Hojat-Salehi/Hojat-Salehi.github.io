@@ -36,7 +36,7 @@ My current research focuses on four areas, always pairing a theoretical result w
 * **[Generative Models for Structured Data](/research/#generative-structured-data):** mathematically grounded approaches to synthetic data generation.
 
 <!-- DRAFT-COPY -->
-<p class="home-authorization">Note for industry roles: I am currently authorized to work in the US through OPT (eligible for STEM extension) and require no employer sponsorship.</p>
+<p class="home-authorization">I am currently authorized to work in the US through OPT (eligible for STEM extension) and require no employer sponsorship.</p>
 
 <!-- DRAFT-COPY -->
 Three systems, with real figures and results:
