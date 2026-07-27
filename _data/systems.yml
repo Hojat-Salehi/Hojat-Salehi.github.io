@@ -110,7 +110,7 @@
     of their true, hidden values (K_u: 20.000 → 20.571, +2.9%; K_d: 0.400 → 0.404,
     +1.0%; K_s: 29.430 → 29.943, +1.7%). Experiments-per-run and fidelity-ladder
     descent rate across a broader set of plants aren't tracked yet — clone it and
-    point it at your own plant to find out. [TK]
+    point it at your own plant to find out.
 
   figures:
     - image: systems/agentic-sysid-flowchart.png
@@ -173,7 +173,7 @@
     game completes (see `database/schema.sql`). One real recorded run is up on the
     <a href="/demos/#game-analyst-replay">Demos</a> page — Royals @ Tigers, MLB,
     predicted Detroit at 63%, the Royals won 3–2 — but one game isn't a track
-    record. No accuracy number to report until more real runs accumulate. [TK]
+    record. No accuracy number to report until more real runs accumulate.
 
   figures:
     - image: systems/game-analyst-architecture.png

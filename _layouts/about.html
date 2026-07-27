@@ -52,6 +52,11 @@ layout: default
             {%- include selected_papers.html %}
           {%- endif %}
 
+          <!-- Site guide -->
+          {% if page.site_guide -%}
+            {%- include site_guide.html %}
+          {%- endif %}
+
           <!-- Social -->
           {%- if page.social %}
             <div class="social">

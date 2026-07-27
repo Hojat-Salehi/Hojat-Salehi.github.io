@@ -2,7 +2,7 @@
 layout: about
 title: Home
 permalink: /
-subtitle: "Ph.D. Candidate in Computer Science — Bridging Information Theory, Agentic AI, and Industrial Automation"
+subtitle: "Ph.D. Candidate in Computer Science — Bridging Information Theory, Machine Learning, Agentic AI, and Industrial Automation"
 
 profile:
   align: right
@@ -17,6 +17,7 @@ profile:
 
 news: false
 selected_papers: true
+site_guide: true
 social: true
 ---
 
@@ -24,25 +25,15 @@ social: true
 <p class="home-tagline">I build systems that reason, and then I prove they actually do what they claim.</p>
 
 <!-- DRAFT-COPY -->
-<p class="home-authorization">Note for industry roles: I am currently authorized to work in the US through OPT (eligible for STEM extension) and require no employer sponsorship.</p>
-
-<!-- DRAFT-COPY -->
 Before my Ph.D., I spent a decade working in industrial control engineering and automation. That hands-on experience is where my instinct for verifiable, robust AI comes from — when you build systems for the physical world, theoretical guarantees matter.
 
 <!-- DRAFT-COPY -->
 My current research focuses on four areas, always pairing a theoretical result with a working system:
 
-* **[Information theory of distributed and private learning](/research/#information-theory):** applying information theory to build differentially private federated learning mechanisms using common randomness (e.g., CorBin-FL).
-* **[Explainable graph machine learning](/research/#explainable-graph-ml):** addressing structural distribution shifts and creating explanation-preserving augmentations for semi-supervised learning.
-* **[Agentic systems](/research/#agentic-systems):** multi-agent decision-making systems for real-time physical plant identification (e.g., Agentic-SysID).
-* **[Generative models for structured data](/research/#generative-structured-data):** mathematically grounded approaches to synthetic data generation.
-
-<p class="channel-label">REAL RUN — AGENTIC-SYSID</p>
-
-<!-- DRAFT-COPY -->
-A multi-agent LLM system identifying a white-box model of a pendulum plant, tracking closely under composite excitation — actual plant vs. identified model, below.
-
-{% include hero.html %}
+* **[Agentic AI & System Identification](/research/#agentic-systems):** multi-agent LLM systems — including retrieval-augmented (RAG) pipelines — for real-time decision-making and physical plant identification (e.g., Agentic-SysID, Game Analyst).
+* **[Explainable Graph Machine Learning](/research/#explainable-graph-ml):** addressing structural distribution shifts and creating explanation-preserving augmentations for semi-supervised learning.
+* **[Privacy-Preserving Distributed Learning](/research/#information-theory):** applying information theory to build differentially private federated learning mechanisms using common randomness (e.g., CorBin-FL).
+* **[Generative Models for Structured Data](/research/#generative-structured-data):** mathematically grounded approaches to synthetic data generation.
 
 <!-- DRAFT-COPY -->
 Three systems, with real figures and results:
@@ -78,11 +69,11 @@ Three systems, with real figures and results:
 </div>
 
 <!-- DRAFT-COPY -->
-Exploring the site:
+<p class="home-authorization">Note for industry roles: I am currently authorized to work in the US through OPT (eligible for STEM extension) and require no employer sponsorship.</p>
 
-<ul class="page-toc">
-  <li><a href="/research/">Research</a> — the plain-English framing behind the theory.</li>
-  <li><a href="/publications/">Publications</a> — the peer-reviewed papers.</li>
-  <li><a href="/systems/">Systems</a> — real figures and code.</li>
-  <li><a href="/demos/">Demos</a> — interact with live deployments of the work.</li>
-</ul>
+<p class="channel-label">REAL RUN — AGENTIC-SYSID</p>
+
+<!-- DRAFT-COPY -->
+A multi-agent LLM system identifying a white-box model of a pendulum plant, tracking closely under composite excitation — actual plant vs. identified model, below.
+
+{% include hero.html %}
