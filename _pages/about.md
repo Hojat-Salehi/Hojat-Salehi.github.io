@@ -16,7 +16,7 @@ profile:
     </div>
 
 news: false
-selected_papers: true
+selected_papers: false
 site_guide: true
 social: true
 ---
@@ -34,6 +34,9 @@ My current research focuses on four areas, always pairing a theoretical result w
 * **[Explainable Graph Machine Learning](/research/#explainable-graph-ml):** addressing structural distribution shifts and creating explanation-preserving augmentations for semi-supervised learning.
 * **[Privacy-Preserving Distributed Learning](/research/#information-theory):** applying information theory to build differentially private federated learning mechanisms using common randomness (e.g., CorBin-FL).
 * **[Generative Models for Structured Data](/research/#generative-structured-data):** mathematically grounded approaches to synthetic data generation.
+
+<!-- DRAFT-COPY -->
+<p class="home-authorization">Note for industry roles: I am currently authorized to work in the US through OPT (eligible for STEM extension) and require no employer sponsorship.</p>
 
 <!-- DRAFT-COPY -->
 Three systems, with real figures and results:
@@ -68,12 +71,17 @@ Three systems, with real figures and results:
   </div>
 </div>
 
-<!-- DRAFT-COPY -->
-<p class="home-authorization">Note for industry roles: I am currently authorized to work in the US through OPT (eligible for STEM extension) and require no employer sponsorship.</p>
-
-<p class="channel-label">REAL RUN — AGENTIC-SYSID</p>
-
-<!-- DRAFT-COPY -->
-A multi-agent LLM system identifying a white-box model of a pendulum plant, tracking closely under composite excitation — actual plant vs. identified model, below.
-
-{% include hero.html %}
+<div class="home-showcase">
+  <div class="home-showcase-papers">
+    <h2><a href="{{ '/publications/' | relative_url }}" style="color: inherit;">selected publications</a></h2>
+    <div class="publications">
+      {% bibliography -f papers -q @*[selected=true]* %}
+    </div>
+  </div>
+  <div class="home-showcase-video">
+    <p class="channel-label">REAL RUN — AGENTIC-SYSID</p>
+    <!-- DRAFT-COPY -->
+    <p>A multi-agent LLM system identifying a white-box model of a pendulum plant, tracking closely under composite excitation — actual plant vs. identified model, below.</p>
+    {% include hero.html %}
+  </div>
+</div>

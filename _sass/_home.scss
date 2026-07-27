@@ -103,3 +103,23 @@
     color: var(--global-theme-color);
   }
 }
+
+// Selected publications (left) beside the Agentic-SysID hero video (right) --
+// the video's own column is narrower than the hero's usual max-width, so it
+// stays left-aligned rather than stretching to fill unused space.
+.home-showcase {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 2.5rem;
+  align-items: start;
+  margin: 1.75rem 0 2.5rem 0;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.home-showcase-video .hero-readout {
+  margin-top: 0.75rem;
+}
