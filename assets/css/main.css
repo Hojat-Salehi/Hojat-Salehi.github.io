@@ -999,6 +999,25 @@ body {
   flex-shrink: 0;
 }
 
+.post-description .page-toc {
+  list-style: none;
+  margin: 0.75rem 0 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.post-description .page-toc li {
+  line-height: 1.5;
+}
+.post-description .page-toc a {
+  color: var(--global-theme-color);
+  font-weight: 600;
+}
+.post-description .page-toc a:hover {
+  color: var(--global-hover-color);
+}
+
 /*******************************************************************************
  * Home page hero — the one signature bold element (AGENT_BRIEF.md §5): the
  * real Agentic-SysID pendulum, actual vs. identified, as a two-channel
@@ -1100,12 +1119,6 @@ body {
  * Deliberately not a card-grid-of-icons: two-column proof format (prose left,
  * figures in a sticky right rail), per the NOTES.md layout concept.
  ******************************************************************************/
-.systems-intro {
-  color: var(--global-text-color-light);
-  max-width: 640px;
-  margin-bottom: 2.5rem;
-}
-
 .systems-list {
   display: flex;
   flex-direction: column;
