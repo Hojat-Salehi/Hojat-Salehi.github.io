@@ -8,13 +8,13 @@ nav_order: 5
 ---
 <div class="publications">
 
-<h2 class="year">Journal</h2>
+<h2 class="pub-group">Journal</h2>
 {% bibliography -f papers -q @article %}
 
-<h2 class="year">Conference</h2>
+<h2 class="pub-group">Conference</h2>
 {% bibliography -f papers -q @inproceedings %}
 
-<h2 class="year">Under Review &amp; Preprints</h2>
+<h2 class="pub-group">Under Review &amp; Preprints</h2>
 {% bibliography -f papers -q @unpublished %}
 
 </div>
