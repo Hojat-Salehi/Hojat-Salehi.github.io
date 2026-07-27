@@ -1133,10 +1133,14 @@ body {
 }
 
 .home-authorization {
-  border-left: 2px solid var(--global-theme-color);
-  padding-left: 1rem;
+  display: inline-block;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 6px;
+  background: var(--global-code-bg-color);
+  padding: 0.6rem 1rem;
   margin: 0 0 1.5rem 0;
-  font-size: 0.92rem;
+  font-size: 0.85rem;
+  line-height: 1.5;
   color: var(--global-text-color-light);
 }
 
