@@ -30,3 +30,29 @@ body {
     flex-shrink: 0;
   }
 }
+
+// Page-level table of contents (used in place of a plain subtitle on pages
+// with distinct, anchor-linked sections -- Research, Systems, Demos).
+// Nested inside .post-description, so selectors here need to out-specify
+// that rule's own `.post-description a { color: inherit; }` (base.scss).
+.post-description .page-toc {
+  list-style: none;
+  margin: 0.75rem 0 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  li {
+    line-height: 1.5;
+  }
+
+  a {
+    color: var(--global-theme-color);
+    font-weight: 600;
+
+    &:hover {
+      color: var(--global-hover-color);
+    }
+  }
+}

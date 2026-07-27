@@ -3,6 +3,14 @@ layout: page
 title: research
 permalink: /research/
 description: Four themes, each paired with the papers behind it and the system that puts it to work.
+subtitle: >
+  <p>Four themes, each paired with the papers behind it:</p>
+  <ul class="page-toc">
+    <li><a href="#information-theory">Information Theory</a> — correlated randomness for private learning, and why quantum entanglement helps two parties coordinate without talking.</li>
+    <li><a href="#explainable-graph-ml">Explainable / Graph ML</a> — what breaks in a GNN's explanations when the input distribution shifts, and how to fix it.</li>
+    <li><a href="#agentic-systems">Agentic Systems</a> — giving LLM agents explicit escalation logic instead of open-ended autonomy.</li>
+    <li><a href="#generative-structured-data">Generative Models</a> — diffusion models applied to time series and graph structure, not just images.</li>
+  </ul>
 nav: true
 nav_order: 2
 ---

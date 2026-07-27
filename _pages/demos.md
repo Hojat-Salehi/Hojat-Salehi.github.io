@@ -3,12 +3,16 @@ layout: page
 title: demos
 permalink: /demos/
 description: Interactive demos, built from real experiment data -- no fabricated curves, no live backend.
+subtitle: >
+  <p>Three demos, built from real data:</p>
+  <ul class="page-toc">
+    <li><a href="#corbin-privacy-explorer">Privacy/Accuracy Explorer</a> — an interactive chart of CorBin-FL's accuracy against every baseline, across privacy budgets.</li>
+    <li><a href="#mnist-saliency">In-Browser Saliency</a> — draw a digit, watch two CNNs classify it live and show what they're actually looking at.</li>
+    <li><a href="#game-analyst-replay">Debate Replay</a> — step through one real recorded run of the multi-agent sports analyst, prediction to final score.</li>
+  </ul>
 nav: true
 nav_order: 4
 ---
-
-<!-- DRAFT-COPY -->
-<p class="systems-intro">Interactive, not decorative -- every number here comes straight from a real experiment log or the paper's own results tables.</p>
 
 <section class="demo-block" id="corbin-privacy-explorer">
   <p class="channel-label">DEMO.01</p>
