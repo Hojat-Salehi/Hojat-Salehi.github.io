@@ -158,7 +158,7 @@
           <h1 class="post-title">
            <span class="font-weight-bold">Hojat Salehi</span>
           </h1>
-          <p class="desc">Ph.D. Candidate in Computer Science — Bridging Information Theory, Agentic AI, and Industrial Automation</p>
+          <p class="desc">Ph.D. Candidate in Computer Science — Bridging Information Theory, Machine Learning, Agentic AI, and Industrial Automation</p>
         </header>
 
         <article>
@@ -203,45 +203,17 @@
 <p class="home-tagline">I build systems that reason, and then I prove they actually do what they claim.</p>
 
 <!-- DRAFT-COPY -->
-<p class="home-authorization">Note for industry roles: I am currently authorized to work in the US through OPT (eligible for STEM extension) and require no employer sponsorship.</p>
-
-<!-- DRAFT-COPY -->
 <p>Before my Ph.D., I spent a decade working in industrial control engineering and automation. That hands-on experience is where my instinct for verifiable, robust AI comes from — when you build systems for the physical world, theoretical guarantees matter.</p>
 
 <!-- DRAFT-COPY -->
 <p>My current research focuses on four areas, always pairing a theoretical result with a working system:</p>
 
 <ul>
-  <li><strong><a href="/research/#information-theory">Information theory of distributed and private learning</a>:</strong> applying information theory to build differentially private federated learning mechanisms using common randomness (e.g., CorBin-FL).</li>
-  <li><strong><a href="/research/#explainable-graph-ml">Explainable graph machine learning</a>:</strong> addressing structural distribution shifts and creating explanation-preserving augmentations for semi-supervised learning.</li>
-  <li><strong><a href="/research/#agentic-systems">Agentic systems</a>:</strong> multi-agent decision-making systems for real-time physical plant identification (e.g., Agentic-SysID).</li>
-  <li><strong><a href="/research/#generative-structured-data">Generative models for structured data</a>:</strong> mathematically grounded approaches to synthetic data generation.</li>
+  <li><strong><a href="/research/#agentic-systems">Agentic AI &amp; System Identification</a>:</strong> multi-agent LLM systems — including retrieval-augmented (RAG) pipelines — for real-time decision-making and physical plant identification (e.g., Agentic-SysID, Game Analyst).</li>
+  <li><strong><a href="/research/#explainable-graph-ml">Explainable Graph Machine Learning</a>:</strong> addressing structural distribution shifts and creating explanation-preserving augmentations for semi-supervised learning.</li>
+  <li><strong><a href="/research/#information-theory">Privacy-Preserving Distributed Learning</a>:</strong> applying information theory to build differentially private federated learning mechanisms using common randomness (e.g., CorBin-FL).</li>
+  <li><strong><a href="/research/#generative-structured-data">Generative Models for Structured Data</a>:</strong> mathematically grounded approaches to synthetic data generation.</li>
 </ul>
-
-<p class="channel-label">REAL RUN — AGENTIC-SYSID</p>
-
-<!-- DRAFT-COPY -->
-<p>A multi-agent LLM system identifying a white-box model of a pendulum plant, tracking closely under composite excitation — actual plant vs. identified model, below.</p>
-
-<!-- hero.html — the one signature bold element (AGENT_BRIEF.md §5): the real
-     Agentic-SysID pendulum plant vs. identified model, styled as a two-channel
-     readout in the signal/trace accent pair. prefers-reduced-motion swaps to a
-     static frame; the play/pause control is real, not decorative. -->
-<div class="hero-readout">
-  <div class="hero-readout-frame">
-    <video id="hero-pendulum-video" class="hero-readout-media" poster="/assets/img/systems/agentic-sysid-demo-frame.png" muted="" loop="" playsinline="" aria-label="Animation: the actual pendulum plant swinging alongside the white-box model identified by Agentic-SysID, tracking closely under composite excitation.">
-      <source src="/assets/video/agentic-sysid-demo.mp4" type="video/mp4" />
-    </video>
-    <button id="hero-pendulum-toggle" class="hero-readout-toggle" type="button" aria-label="Pause animation">
-      <span aria-hidden="true">❚❚</span>
-    </button>
-  </div>
-  <div class="hero-readout-caption">
-    <span class="hero-channel hero-channel-signal">Actual plant</span>
-    <span class="hero-channel hero-channel-trace">Identified model</span>
-    <span class="hero-readout-note">Agentic-SysID, real run · <a href="/systems/#agentic-sysid">details →</a></span>
-  </div>
-</div>
 
 <!-- DRAFT-COPY -->
 <p>Three systems, with real figures and results:</p>
@@ -277,14 +249,33 @@
 </div>
 
 <!-- DRAFT-COPY -->
-<p>Exploring the site:</p>
+<p class="home-authorization">Note for industry roles: I am currently authorized to work in the US through OPT (eligible for STEM extension) and require no employer sponsorship.</p>
 
-<ul class="page-toc">
-  <li><a href="/research/">Research</a> — the plain-English framing behind the theory.</li>
-  <li><a href="/publications/">Publications</a> — the peer-reviewed papers.</li>
-  <li><a href="/systems/">Systems</a> — real figures and code.</li>
-  <li><a href="/demos/">Demos</a> — interact with live deployments of the work.</li>
-</ul>
+<p class="channel-label">REAL RUN — AGENTIC-SYSID</p>
+
+<!-- DRAFT-COPY -->
+<p>A multi-agent LLM system identifying a white-box model of a pendulum plant, tracking closely under composite excitation — actual plant vs. identified model, below.</p>
+
+<!-- hero.html — the one signature bold element (AGENT_BRIEF.md §5): the real
+     Agentic-SysID pendulum plant vs. identified model, styled as a two-channel
+     readout in the signal/trace accent pair. prefers-reduced-motion swaps to a
+     static frame; the play/pause control is real, not decorative. -->
+<div class="hero-readout">
+  <div class="hero-readout-frame">
+    <video id="hero-pendulum-video" class="hero-readout-media" poster="/assets/img/systems/agentic-sysid-demo-frame.png" muted="" loop="" playsinline="" aria-label="Animation: the actual pendulum plant swinging alongside the white-box model identified by Agentic-SysID, tracking closely under composite excitation.">
+      <source src="/assets/video/agentic-sysid-demo.mp4" type="video/mp4" />
+    </video>
+    <button id="hero-pendulum-toggle" class="hero-readout-toggle" type="button" aria-label="Pause animation">
+      <span aria-hidden="true">❚❚</span>
+    </button>
+  </div>
+  <div class="hero-readout-caption">
+    <span class="hero-channel hero-channel-signal">Actual plant</span>
+    <span class="hero-channel hero-channel-trace">Identified model</span>
+    <span class="hero-readout-note">Agentic-SysID, real run · <a href="/systems/#agentic-sysid">details →</a></span>
+  </div>
+</div>
+
 
           </div>
 
@@ -527,6 +518,17 @@
       </div>
 </li></ol>
           </div>
+
+
+          <!-- Site guide -->
+          <p>Exploring the site:</p>
+
+<ul class="page-toc">
+  <li><a href="/research/">Research</a> — the plain-English framing behind the theory.</li>
+  <li><a href="/publications/">Publications</a> — the peer-reviewed papers.</li>
+  <li><a href="/systems/">Systems</a> — real figures and code.</li>
+  <li><a href="/demos/">Demos</a> — interact with live deployments of the work.</li>
+</ul>
 
 
           <!-- Social -->
