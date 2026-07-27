@@ -31,11 +31,10 @@ body {
   }
 }
 
-// Page-level table of contents (used in place of a plain subtitle on pages
-// with distinct, anchor-linked sections -- Research, Systems, Demos).
-// Nested inside .post-description, so selectors here need to out-specify
-// that rule's own `.post-description a { color: inherit; }` (base.scss).
-.post-description .page-toc {
+// Page-level table of contents: used in place of a plain subtitle on pages
+// with distinct, anchor-linked sections (Research, Systems, Demos), and reused
+// as-is for the Home page's "exploring the site" router.
+.page-toc {
   list-style: none;
   margin: 0.75rem 0 0 0;
   padding: 0;
@@ -46,13 +45,18 @@ body {
   li {
     line-height: 1.5;
   }
+}
 
-  a {
-    color: var(--global-theme-color);
-    font-weight: 600;
+// Link color/weight repeated at two specificities: plain `.page-toc a` covers
+// Home (default `a` there is already theme-colored, so this just adds
+// weight), while `.post-description .page-toc a` is needed to out-specify
+// that rule's own `.post-description a { color: inherit; }` (base.scss).
+.post-description .page-toc a,
+.page-toc a {
+  color: var(--global-theme-color);
+  font-weight: 600;
 
-    &:hover {
-      color: var(--global-hover-color);
-    }
+  &:hover {
+    color: var(--global-hover-color);
   }
 }
