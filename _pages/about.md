@@ -22,7 +22,7 @@ social: true
 ---
 
 <!-- DRAFT-COPY -->
-Before my Ph.D., I spent a decade working in industrial control engineering and automation. That hands-on experience is where my instinct for verifiable, robust AI comes from — when you build systems for the physical world, theoretical guarantees matter.
+In the decade before my Ph.D., I worked as a research fellow developing second-order gradient-based optimization methods for control problems in hybrid dynamical systems and legged robots, then built an ML pipeline for stock-market time-series prediction using LSTMs, with a stretch of industrial control engineering in between. That decade gave me both the theoretical grounding and the hands-on implementation skill I've carried into every project since: proving a result on paper, then shipping the system that has to hold up in practice.
 
 <!-- DRAFT-COPY -->
 My current research focuses on four areas, always pairing a theoretical result with a working system:
