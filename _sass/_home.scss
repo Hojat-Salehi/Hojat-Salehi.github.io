@@ -1,16 +1,7 @@
 /*******************************************************************************
- * Home page body content: the tagline, the work-authorization callout, the
- * CV/email buttons, and the three-card system preview grid below the hero.
+ * Home page body content: the work-authorization callout, the CV/email
+ * buttons, and the three-card system preview grid below the hero.
  ******************************************************************************/
-
-.home-tagline {
-  @include display-face;
-  font-size: 1.25rem;
-  font-style: italic;
-  font-weight: 500;
-  margin: 0 0 1.25rem 0;
-  color: var(--global-text-color);
-}
 
 .home-authorization {
   display: inline-block;

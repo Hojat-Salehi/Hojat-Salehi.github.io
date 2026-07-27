@@ -22,9 +22,6 @@ social: true
 ---
 
 <!-- DRAFT-COPY -->
-<p class="home-tagline">I build systems that reason, and then I prove they actually do what they claim.</p>
-
-<!-- DRAFT-COPY -->
 Before my Ph.D., I spent a decade working in industrial control engineering and automation. That hands-on experience is where my instinct for verifiable, robust AI comes from — when you build systems for the physical world, theoretical guarantees matter.
 
 <!-- DRAFT-COPY -->
