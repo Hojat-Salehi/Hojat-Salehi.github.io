@@ -8,8 +8,6 @@ Source for [hojatsalehi.com](https://hojatsalehi.com) (custom domain via `CNAME`
 - `_bibliography/papers.bib` — single source of truth for the Publications page (edit this file, nothing else, to add/update a paper)
 - `_data/cv.yml` — CV page content
 - `assets/pdf/` — CV PDF download
-- `NOTES.md` — design decisions and rejected alternatives
-- `QUESTIONS.md` — open questions blocking full launch
 
 ## Build
 
