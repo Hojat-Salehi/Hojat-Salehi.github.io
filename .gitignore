@@ -9,3 +9,8 @@ _site
 Gemfile.lock
 vendor
 
+# Internal working notes -- not for public repo browsing, already excluded
+# from the built site itself via _config.yml's exclude: list.
+NOTES.md
+QUESTIONS.md
+
