@@ -18,7 +18,7 @@ keywords: Hojat Salehi, Hojat Allah Salehi, information theory, differential pri
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon: favicon.png  # site.icon gets '/assets/img/' prepended automatically — don't include the folder here
 
-url: https://hojat-salehi.github.io # base hostname; swap to https://hojatsalehi.com if/when the domain is purchased (principal: staying on github.io for now)
+url: https://hojatsalehi.com # custom domain, purchased 2026-07-27; hojat-salehi.github.io redirects here once GitHub Pages DNS check passes
 baseurl: # empty: this is a <username>.github.io user site, served at the domain root, not a project subpath
 last_updated: false # set to true if you want to display last updated in the footer
 impressum_path:  # set to path to include impressum link in the footer, use the same path as permalink in a page, helps to conform with EU GDPR

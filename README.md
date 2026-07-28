@@ -1,6 +1,6 @@
 # Hojat Allah Salehi — personal site
 
-Source for [hojat-salehi.github.io](https://hojat-salehi.github.io) (moving to hojatsalehi.com once purchased). Built on [al-folio](https://github.com/alshedivat/al-folio) v0.9.0, heavily customized.
+Source for [hojatsalehi.com](https://hojatsalehi.com) (custom domain via `CNAME`; `hojat-salehi.github.io` redirects here). Built on [al-folio](https://github.com/alshedivat/al-folio) v0.9.0, heavily customized.
 
 ## Structure
 
