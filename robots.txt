@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://hojat-salehi.github.io/sitemap.xml
+Sitemap: https://hojatsalehi.com/sitemap.xml
