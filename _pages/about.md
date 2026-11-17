@@ -9,7 +9,7 @@ profile:
   image: profile.jpg
   image_circular: false
   address: >
-    <p>Currently finishing my Ph.D. at Florida International University (Expected 2026). My work pairs rigorous theoretical results with working, deployable systems.</p>
+    <p>Currently finishing my Ph.D. at Florida International University (Expected Spring 2027). My work pairs rigorous theoretical results with working, deployable systems.</p>
     <div class="home-cta">
       <a href="/cv/" class="home-cta-btn home-cta-btn--primary">View Full CV</a>
       <a href="mailto:hsalehi@fiu.edu" id="home-cta-email" class="home-cta-btn" aria-live="polite">Get in Touch</a>
