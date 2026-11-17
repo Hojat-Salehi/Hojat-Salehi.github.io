@@ -80,6 +80,83 @@
     - label: "Try it"
       url: /demos/#corbin-privacy-explorer
 
+- key: cpq-vehicular-frl
+  title: "Private Vehicular FRL"
+  tagline: "Federated reinforcement learning for vehicle routing — one private bit per parameter, post-quantum signed"
+  repo: https://github.com/Hojat-Salehi/cpq-vehicular-frl
+  paper: https://arxiv.org/abs/2610.41055
+
+  problem: >
+    Vehicles can learn a better routing policy together through federated reinforcement
+    learning without ever centralizing their trajectories — but their model updates still
+    leak where they came from, the wireless uplink to the road-side unit is narrow and
+    lossy, and every update has to be authenticated against attackers who may one day
+    have quantum computers. Adding independent privacy noise, full-precision updates, and
+    post-quantum signatures on top of each other makes each of those problems worse.
+
+  approach: >
+    Correlated private quantization (CPQ) brings the CorBin-FL idea to the vehicular
+    setting: paired vehicles quantize their deep-Q-network updates to one bit per
+    parameter using shared randomness, so the privacy noise cancels at the road-side unit
+    instead of piling up — with the same per-parameter privacy guarantee and the same
+    one-bit cost as independent quantization. A tunable variant (CPQ-λ) mixes shared and
+    independent randomness, and Rényi-DP accounting gives vector-level local privacy for an
+    upload even when pairings are revealed. Updates are signed with ML-DSA-44, Falcon-512,
+    or SLH-DSA, and the whole loop is co-simulated in SUMO (traffic) and ns-3 (packet-level
+    IEEE 802.11p).
+
+  result: >
+    One-bit updates shrink the signed uplink from 113.76 KB to 8.65 KB with ML-DSA-44
+    (92.4% smaller), which raises the mean number of verified updates aggregated per round
+    from 19.6 to 26.5 over 802.11p. On that same channel at ε = 1, CPQ cuts mean travel time
+    by 14.3% relative to independent quantization (167.0 s vs. 194.9 s), and under ideal communication at ε = 2 it reaches 118.6 s
+    against 111.8 s with no privacy at all. At ε = 0.3, a vehicle-origin inference attack
+    drops from 91% accuracy without privacy to 30% against CPQ (chance: 10%).
+
+  figures:
+    - image: systems/cpq-vfrl-architecture.png
+      alt: >
+        Architecture diagram: SUMO traffic simulation feeding N vehicle clients, each running
+        local DQN training, a privacy mechanism (CPQ, CPQ-λ, LDP-FL, Gaussian, Laplace), and
+        post-quantum signing; updates travel over an ns-3 simulated channel to a road-side
+        unit that verifies signatures, reconstructs parameters, and aggregates.
+      caption: >
+        Each vehicle trains a DQN routing policy locally in SUMO, privatizes its update,
+        and signs it with a post-quantum scheme. The road-side unit verifies every
+        signature, rejects invalid updates, and aggregates the rest into the global model
+        — with the V2I link itself simulated packet-by-packet in ns-3.
+      source: "github.com/Hojat-Salehi/cpq-vehicular-frl docs/architecture.png (resized)"
+    - image: systems/cpq-vfrl-learning-ideal.png
+      alt: >
+        Five-panel plot of mean trip duration versus federated aggregation round at privacy
+        budgets 0.3, 0.5, 1, 2, and 5, comparing CPQ, CPQ-λ, LDP-FL, Gaussian, Laplace, and
+        no privacy; CPQ tracks closest to the no-privacy curve at most budgets.
+      caption: >
+        Mean trip duration during training under ideal communication (lower is better).
+        CPQ (solid blue) stays closest to the no-privacy curve across privacy budgets,
+        while Gaussian noise at the same budget barely learns at ε = 0.3.
+      source: "github.com/Hojat-Salehi/cpq-vehicular-frl docs/fig2_learning_ideal.png (Fig. 2 of the paper, resized)"
+
+  table:
+    caption: "Over 802.11p with ML-DSA-44 signatures at ε = 1 (mean of 5 seeds)"
+    source: "github.com/Hojat-Salehi/cpq-vehicular-frl README.md, Main results"
+    headers: ["Method", "Travel time (s)", "Arrival (%)", "Uplink delivered (%)", "Verified updates / round"]
+    rows:
+      - ["No privacy", "152.6", "80.4", "75.7", "19.6"]
+      - ["CPQ", "167.0", "79.8", "99.4", "26.5"]
+      - ["CPQ-λ (λ = 0.75)", "177.2", "75.8", "99.5", "26.1"]
+      - ["LDP-FL", "194.9", "72.8", "99.4", "26.5"]
+      - ["Gaussian", "290.3", "51.8", "74.0", "20.6"]
+      - ["Laplace", "218.4", "66.4", "75.9", "20.4"]
+
+  artifact_links:
+    - label: "Paper (arXiv)"
+      url: https://arxiv.org/abs/2610.41055
+    - label: "Code"
+      url: https://github.com/Hojat-Salehi/cpq-vehicular-frl
+    - label: "Results archive (Zenodo)"
+      url: https://doi.org/10.5281/zenodo.23693204
+
 - key: agentic-sysid
   title: "Agentic-SysID"
   tagline: "A multi-agent pipeline that identifies control-ready models under an experiment budget"

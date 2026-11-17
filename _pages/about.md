@@ -36,7 +36,7 @@ My current research focuses on four areas, always pairing a theoretical result w
 <p class="home-authorization">I am currently authorized to work in the US through OPT (eligible for STEM extension) and require no employer sponsorship.</p>
 
 <!-- DRAFT-COPY -->
-Three systems, with real figures and results:
+Four systems, with real figures and results:
 
 <div class="home-systems-grid">
   <div class="home-system-card">
@@ -46,6 +46,15 @@ Three systems, with real figures and results:
     <div class="home-system-links">
       <a href="/systems/#corbinfl">View System</a>
       <a href="https://github.com/Hojat-Salehi/CorBin-FL">GitHub</a>
+    </div>
+  </div>
+  <div class="home-system-card">
+    <img src="{{ '/assets/img/systems/cpq-vfrl-architecture.png' | relative_url }}" alt="Architecture diagram of private federated reinforcement learning for vehicle routing: SUMO-simulated vehicles, one-bit private updates, post-quantum signing, and road-side-unit aggregation.">
+    <h3>Private Vehicular FRL</h3>
+    <p>Vehicles learn routing together: one private bit per parameter, post-quantum signed.</p>
+    <div class="home-system-links">
+      <a href="/systems/#cpq-vehicular-frl">View System</a>
+      <a href="https://github.com/Hojat-Salehi/cpq-vehicular-frl">GitHub</a>
     </div>
   </div>
   <div class="home-system-card">

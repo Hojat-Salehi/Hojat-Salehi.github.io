@@ -41,6 +41,10 @@
           contents:
             - "Introduced correlated distributed quantization for federated learning, improving accuracy over prior methods."
             - "Validated on CIFAR10, FEMNIST, Shakespeare, and Sent140 (CNN, ResNet18, LSTM, Transformer) on multiple A100s, achieving high communication efficiency by transmitting one bit per model weight."
+        - title: "Private Federated RL with Post-Quantum Authentication for Vehicular Networks"
+          contents:
+            - "Extended correlated private quantization to federated deep Q-learning for vehicle routing, co-simulated in SUMO and ns-3 (IEEE 802.11p) with post-quantum signatures (ML-DSA, Falcon, SLH-DSA)."
+            - "One-bit updates cut the signed uplink by 92.4% and reduced mean travel time by 14.3% versus independent quantization at the same privacy budget."
         - title: "Explanation-Preserving Augmentation for Semi-Supervised Graph Representation Learning"
           contents:
             - "Developed a semantics-preserving graph augmentation technique leveraging GNN explainers, with theoretical analysis of its gains over prior methods."
