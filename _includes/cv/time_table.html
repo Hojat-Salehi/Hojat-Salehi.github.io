@@ -34,6 +34,11 @@
                 {% endfor %}
               </ul>
             {% endif %}
+            {% if content.links %}
+              <p class="cv-entry-links ml-1 ml-md-4">
+                {% for link in content.links %}<a href="{{ link.url | relative_url }}">{{ link.label }}</a>{% unless forloop.last %} · {% endunless %}{% endfor %}
+              </p>
+            {% endif %}
             {% if content.items %}
               <ul class="items">
                 {% for item in content.items %}

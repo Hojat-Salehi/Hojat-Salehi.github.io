@@ -21,3 +21,24 @@
     margin-top: 0;
   }
 }
+
+// CV page: same bibliography, rendered inside a CV card.
+.cv-publications {
+  h2.pub-group {
+    font-size: 0.95rem;
+    margin-top: 1.75rem;
+  }
+  ol.bibliography {
+    padding-left: 0;
+  }
+}
+
+.cv-publications-more,
+.cv-entry-links {
+  font-size: 0.9rem;
+  margin: 0.5rem 0 0 0;
+
+  a {
+    color: var(--global-theme-color);
+  }
+}

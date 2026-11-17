@@ -1,0 +1,16 @@
+{%- comment -%}
+  CV-page publications block. Rendered from the same _bibliography/papers.bib as
+  the Publications page, so there's one source of truth -- never hand-copy entries here.
+{%- endcomment -%}
+<div class="publications cv-publications">
+  <h2 class="pub-group">Journal</h2>
+  {% bibliography -f papers -q @article %}
+
+  <h2 class="pub-group">Conference</h2>
+  {% bibliography -f papers -q @inproceedings %}
+
+  <h2 class="pub-group">Under Review &amp; Preprints</h2>
+  {% bibliography -f papers -q @unpublished %}
+
+  <p class="cv-publications-more"><a href="{{ '/publications/' | relative_url }}">Publications page →</a></p>
+</div>

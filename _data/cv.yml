@@ -75,6 +75,9 @@
         - "Researched gradient-based optimization methods: applied a second-order gradient-based technique to solve optimal control problems in hybrid dynamical systems."
         - "Developed advanced control strategies for bipedal and monopod robots: extended the hybrid minimum principle (HMP) to control a monopod robot for maximum jumping height."
 
+- title: Publications
+  type: publications
+
 - title: Projects
   type: time_table
   contents:
@@ -83,16 +86,29 @@
       description:
         - "Built a multi-agent LLM pipeline (Intake, Modeler, Estimator, Validation) that turns a natural-language plant description into a control-ready model with uncertainty bounds and a validity region, under a constrained experiment budget."
         - "Designed a physics-first fidelity ladder that escalates from white-box to grey-box or black-box surrogates only on validation evidence, with every experiment routed through a guarded, budget-enforced Plant API; on a pendulum benchmark, identified all three hidden physical parameters within 1–3%."
+      links:
+        - label: "Code"
+          url: https://github.com/Hojat-Salehi/Agentic-SysID
+        - label: "System"
+          url: /systems/#agentic-sysid
     - title: "Multi-Agent Sports Game Analysis (LangGraph)"
       year: 2026
       description:
         - "Built a LangGraph-orchestrated multi-agent pipeline for NBA/MLB game analysis with parallel adversarial debates (win probability, total points), each converged by a judge and cross-validated by a head analyst."
         - "Closed the loop with a post-game accuracy review that writes semantically retrieved lessons to a per-agent ChromaDB memory, across a mixed OpenAI/Anthropic LLM routing layer with SQLite persistence."
+      links:
+        - label: "Code"
+          url: https://github.com/Hojat-Salehi/game-analyst-multiagent
+        - label: "System"
+          url: /systems/#game-analyst-multiagent
     - title: "Detection of DDoS Attacks using SVM and Logistic Regression"
       year: Jan 2023 – Sep 2023
       description:
         - "Built an SVM/Logistic-Regression DDoS classifier on the CIC-DDoS2019 dataset (SMOTE-balanced) and on self-generated traffic captured via hping3/Wireshark."
         - "Achieved high accuracy and low false-positive rates across both datasets, showing real-world applicability."
+      links:
+        - label: "Code"
+          url: https://github.com/Hojat-Salehi/ML_DDOS_Detector
     - title: "A Genetic Algorithm and Tabu Search Method for Supply Chain Problems"
       year: Mar 2019 – Sep 2019
       description:
