@@ -379,6 +379,16 @@ footer.sticky-bottom {
         color: var(--global-card-bg-color) !important;
         background-color: var(--global-theme-color) !important;
       }
+
+      // Long ranges like "Aug 2023 – Spring 2027 (expected)" wrap inside the
+      // year column instead of overflowing onto the entry title.
+      .cv-year-badge {
+        display: inline-block;
+        min-width: 75px;
+        max-width: 100%;
+        white-space: normal;
+        line-height: 1.35;
+      }
     }
   }
 }
