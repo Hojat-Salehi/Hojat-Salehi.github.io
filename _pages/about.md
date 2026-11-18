@@ -25,8 +25,9 @@ social: true
 Before my Ph.D., I worked as a research fellow developing second-order gradient-based optimization methods for control problems in hybrid dynamical systems and legged robots, then built an ML pipeline for stock-market time-series prediction using LSTMs, with a stretch of industrial control engineering in between. That work gave me both the theoretical grounding and the hands-on implementation skill I've carried into every project since: proving a result on paper, then shipping the system that has to hold up in practice.
 
 <!-- DRAFT-COPY -->
-My current research focuses on four areas, always pairing a theoretical result with a working system:
+My current research focuses on five areas, always pairing a theoretical result with a working system:
 
+* **[Mixture of Experts for Foundation-Model Fine-Tuning](/research/#moe-finetuning):** routing between task-specialized LoRA experts when one model must serve data that mixes several tasks, with a convex program that recovers the experts — +2.9 points overall and +3.7 for the worst-served clients (FedSEE).
 * **[Agentic AI & System Identification](/research/#agentic-systems):** multi-agent LLM systems — including retrieval-augmented (RAG) pipelines — for real-time decision-making and physical plant identification (e.g., Agentic-SysID, Game Analyst).
 * **[Explainable Graph Machine Learning](/research/#explainable-graph-ml):** addressing structural distribution shifts and creating explanation-preserving augmentations for semi-supervised learning.
 * **[Privacy-Preserving Distributed Learning](/research/#information-theory):** applying information theory to build differentially private federated learning mechanisms using common randomness (e.g., CorBin-FL).

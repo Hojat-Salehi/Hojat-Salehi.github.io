@@ -45,6 +45,10 @@
           contents:
             - "Extended correlated private quantization to federated deep Q-learning for vehicle routing, co-simulated in SUMO and ns-3 (IEEE 802.11p) with post-quantum signatures (ML-DSA, Falcon, SLH-DSA)."
             - "One-bit updates cut the signed uplink by 92.4% and reduced mean travel time by 14.3% versus independent quantization at the same privacy budget."
+        - title: "Mixture of LoRA Experts for Foundation-Model Fine-Tuning (FedSEE)"
+          contents:
+            - "Proved when routing between task-specialized LoRA experts beats any single adapted model for data mixing several tasks (task optima forming a simplex), and derived a convex program that recovers the experts from mixed model updates."
+            - "Fine-tuned RoBERTa-large on six GLUE/SuperGLUE tasks with a mixture-aware, KL-calibrated router across clients with different task mixes: +2.9 points accuracy overall and +3.7 for the worst-served quarter of clients, avoiding baselines' negative transfer."
         - title: "Explanation-Preserving Augmentation for Semi-Supervised Graph Representation Learning"
           contents:
             - "Developed a semantics-preserving graph augmentation technique leveraging GNN explainers, with theoretical analysis of its gains over prior methods."
@@ -120,6 +124,8 @@
     - title: Analytical & Technical
       items:
         - Machine Learning
+        - Mixture of Experts (MoE)
+        - Foundation-Model Fine-Tuning (LoRA / PEFT)
         - Differential Privacy / Federated Learning
         - Graph Neural Networks
         - Graph Representation Learning

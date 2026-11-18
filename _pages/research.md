@@ -2,11 +2,12 @@
 layout: page
 title: research
 permalink: /research/
-description: Four themes, each paired with the papers behind it and the system that puts it to work.
+description: Five themes, each paired with the papers behind it and the system that puts it to work.
 subtitle: >
-  <p>Four themes, each paired with the papers behind it:</p>
+  <p>Five themes, each paired with the papers behind it:</p>
   <ul class="page-toc">
     <li><a href="#information-theory">Information Theory</a> — correlated randomness for private learning (from theory to vehicular networks), and why quantum entanglement helps two parties coordinate without talking.</li>
+    <li><a href="#moe-finetuning">Mixture of Experts &amp; Foundation-Model Fine-Tuning</a> — routing between task-specialized LoRA experts instead of forcing one adapter to fit every task.</li>
     <li><a href="#explainable-graph-ml">Explainable / Graph ML</a> — what breaks in a GNN's explanations when the input distribution shifts, and how to fix it.</li>
     <li><a href="#agentic-systems">Agentic Systems</a> — giving LLM agents explicit escalation logic instead of open-ended autonomy.</li>
     <li><a href="#generative-structured-data">Generative Models</a> — diffusion models applied to time series and graph structure, not just images.</li>
@@ -34,15 +35,12 @@ nav_order: 2
           randomness instead of independent randomness — into a practical privacy mechanism for
           federated learning, and a follow-up carries it into a deployed setting: vehicles that
           learn a routing policy with federated reinforcement learning, upload one private bit per
-          parameter, and sign every update with post-quantum signatures. A separate line asks what
-          a federated model should even be when each client's data mixes several latent tasks —
-          and shows that routing to task-aligned experts can beat any single adapted model.
+          parameter, and sign every update with post-quantum signatures.
         </p>
         <ul class="theme-papers">
           <li><span class="venue-badge">T-IT 2025</span> <a href="https://ieeexplore.ieee.org/document/11121661">On Non-Interactive Simulation of Distributed Sources with Finite Alphabets</a></li>
           <li><span class="venue-badge">ISIT 2025</span> <a href="https://arxiv.org/abs/2402.00242">Quantum Advantage in Non-Interactive Source Simulation</a></li>
           <li><span class="venue-badge">arXiv</span> <a href="https://arxiv.org/abs/2610.41055">Communication-Efficient Private Federated Reinforcement Learning with Post-Quantum Authentication for Vehicular Networks</a></li>
-          <li><span class="venue-badge">arXiv</span> <a href="https://arxiv.org/abs/2610.00580">From Task Mixtures to Specialized Experts</a></li>
           <li><span class="venue-badge">Preprint</span> <a href="https://www.arxiv.org/abs/2409.13133">CorBin-FL: A Differentially Private Federated Learning Mechanism using Common Randomness</a></li>
         </ul>
         <p class="theme-system-link">Systems: <a href="/systems/#corbinfl">CorBin-FL →</a> · <a href="/systems/#cpq-vehicular-frl">Private Vehicular FRL →</a></p>
@@ -54,8 +52,44 @@ nav_order: 2
     </div>
   </section>
 
+  <section class="research-theme" id="moe-finetuning">
+    <p class="channel-label">CH.2 — Mixture of Experts &amp; Fine-Tuning</p>
+    <h2>Mixture of experts for foundation-model fine-tuning</h2>
+    <div class="research-theme-body">
+      <div class="research-theme-prose">
+        <!-- DRAFT-COPY -->
+        <p>
+          Fine-tuning a foundation model for one task is routine. Fine-tuning it for data that
+          mixes several latent tasks is not: a single adapter ends up averaging tasks that pull in
+          different directions, and some of them lose. This work asks when a
+          <strong>mixture of task-specialized LoRA experts</strong>, with a router choosing between
+          them per input, provably beats any single adapted model — and answers it geometrically:
+          the best model for a task mixture is a convex combination of the per-task optima, and
+          when those optima form a simplex, routing to the right experts wins.
+        </p>
+        <p>
+          FedSEE turns that into a <strong>fine-tuning method for foundation models</strong>. A
+          convex program recovers the task experts from mixed model updates using a small set of
+          task-labeled reference samples; a mixture-aware router, calibrated with a KL term,
+          decides which experts each input uses; and an always-on shared LoRA expert carries what
+          the tasks have in common. Fine-tuning RoBERTa-large across six GLUE/SuperGLUE tasks,
+          with data spread over clients whose task mixes differ (a federated setting), it improves
+          accuracy by 2.9 points overall and 3.7 points for the worst-served quarter of clients,
+          and avoids the negative transfer seen in the baselines.
+        </p>
+        <ul class="theme-papers">
+          <li><span class="venue-badge">arXiv</span> <a href="https://arxiv.org/abs/2610.00580">From Task Mixtures to Specialized Experts</a></li>
+        </ul>
+      </div>
+      <figure class="research-theme-figure">
+        <img src="{{ '/assets/img/systems/fedsee-overview.png' | relative_url }}" alt="FedSEE overview in three panels: clients with mixed task data upload adapted models; the server recovers one expert per task from the mixed uploads using task-labeled reference sets, shown as a simplex with experts at the vertices; each client then routes inputs between a frozen base model, a shared component, and LoRA task experts with mixture-aware calibration." loading="lazy">
+        <figcaption>Mixed updates sit inside a simplex whose vertices are the task experts; recover the vertices, then route each input to the experts it needs. Fig. 2 of the paper.</figcaption>
+      </figure>
+    </div>
+  </section>
+
   <section class="research-theme" id="explainable-graph-ml">
-    <p class="channel-label">CH.2 — Explainable / Graph ML</p>
+    <p class="channel-label">CH.3 — Explainable / Graph ML</p>
     <h2>Explainable and graph ML</h2>
     <!-- DRAFT-COPY -->
     <p>
@@ -81,7 +115,7 @@ nav_order: 2
   </section>
 
   <section class="research-theme" id="agentic-systems">
-    <p class="channel-label">CH.3 — Agentic Systems</p>
+    <p class="channel-label">CH.4 — Agentic Systems</p>
     <h2>Agentic systems</h2>
     <div class="research-theme-body">
       <div class="research-theme-prose">
@@ -110,7 +144,7 @@ nav_order: 2
   </section>
 
   <section class="research-theme" id="generative-structured-data">
-    <p class="channel-label">CH.4 — Generative Models</p>
+    <p class="channel-label">CH.5 — Generative Models</p>
     <h2>Generative models for structured data</h2>
     <div class="research-theme-body">
       <div class="research-theme-prose">
