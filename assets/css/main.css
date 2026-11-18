@@ -1170,11 +1170,16 @@ body {
 
 .home-systems-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.75rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
   margin: 1.75rem 0 2.5rem 0;
 }
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
+  .home-systems-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
   .home-systems-grid {
     grid-template-columns: 1fr;
   }
@@ -2093,6 +2098,24 @@ body {
 }
 .publications h2.pub-group:first-child {
   margin-top: 0;
+}
+
+.cv-publications h2.pub-group {
+  font-size: 0.95rem;
+  margin-top: 1.75rem;
+}
+.cv-publications ol.bibliography {
+  padding-left: 0;
+}
+
+.cv-publications-more,
+.cv-entry-links {
+  font-size: 0.9rem;
+  margin: 0.5rem 0 0 0;
+}
+.cv-publications-more a,
+.cv-entry-links a {
+  color: var(--global-theme-color);
 }
 
 /*# sourceMappingURL=main.css.map */

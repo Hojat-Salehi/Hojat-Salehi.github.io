@@ -145,7 +145,7 @@
           <header class="post-header">
             <h1 class="post-title">research</h1>
             <div class="post-description"><p>Four themes, each paired with the papers behind it:</p> <ul class="page-toc">
-  <li><a href="#information-theory">Information Theory</a> — correlated randomness for private learning, and why quantum entanglement helps two parties coordinate without talking.</li>
+  <li><a href="#information-theory">Information Theory</a> — correlated randomness for private learning (from theory to vehicular networks), and why quantum entanglement helps two parties coordinate without talking.</li>
   <li><a href="#explainable-graph-ml">Explainable / Graph ML</a> — what breaks in a GNN's explanations when the input distribution shifts, and how to fix it.</li>
   <li><a href="#agentic-systems">Agentic Systems</a> — giving LLM agents explicit escalation logic instead of open-ended autonomy.</li>
   <li><a href="#generative-structured-data">Generative Models</a> — diffusion models applied to time series and graph structure, not just images.</li>
@@ -171,14 +171,20 @@
           randomness gives a genuine, provable advantage — not just a faster way to the same answer.
           <a href="/systems/#corbinfl">CorBin-FL</a> turns a version of that same idea — correlated
           randomness instead of independent randomness — into a practical privacy mechanism for
-          federated learning.
+          federated learning, and a follow-up carries it into a deployed setting: vehicles that
+          learn a routing policy with federated reinforcement learning, upload one private bit per
+          parameter, and sign every update with post-quantum signatures. A separate line asks what
+          a federated model should even be when each client's data mixes several latent tasks —
+          and shows that routing to task-aligned experts can beat any single adapted model.
         </p>
         <ul class="theme-papers">
           <li><span class="venue-badge">T-IT 2025</span> <a href="https://ieeexplore.ieee.org/document/11121661">On Non-Interactive Simulation of Distributed Sources with Finite Alphabets</a></li>
           <li><span class="venue-badge">ISIT 2025</span> <a href="https://arxiv.org/abs/2402.00242">Quantum Advantage in Non-Interactive Source Simulation</a></li>
+          <li><span class="venue-badge">arXiv</span> <a href="https://arxiv.org/abs/2610.41055">Communication-Efficient Private Federated Reinforcement Learning with Post-Quantum Authentication for Vehicular Networks</a></li>
+          <li><span class="venue-badge">arXiv</span> <a href="https://arxiv.org/abs/2610.00580">From Task Mixtures to Specialized Experts</a></li>
           <li><span class="venue-badge">Preprint</span> <a href="https://www.arxiv.org/abs/2409.13133">CorBin-FL: A Differentially Private Federated Learning Mechanism using Common Randomness</a></li>
         </ul>
-        <p class="theme-system-link">System: <a href="/systems/#corbinfl">CorBin-FL →</a></p>
+        <p class="theme-system-link">Systems: <a href="/systems/#corbinfl">CorBin-FL →</a> · <a href="/systems/#cpq-vehicular-frl">Private Vehicular FRL →</a></p>
       </div>
       <figure class="research-theme-figure">
         <img src="/assets/img/systems/corbinfl-pca.png" alt="PCA projection of per-coordinate quantization error, comparing CorBin-FL's correlated binary quantization against independent binary quantization." loading="lazy" />
@@ -197,16 +203,18 @@
       was trained on. This work asks what breaks when they're not: the TPAMI paper
       characterizes how GNN explanations degrade under structural distribution shift, and the
       AAAI paper proposes an augmentation strategy that keeps explanations stable under exactly
-      that kind of shift. A companion preprint replaces the binary (included/excluded) view of
-      which features matter with a continuous, learned re-weighting, and LM²otifs applies the
-      same explainability lens to a different domain — detecting authorship in text by finding
-      the motifs a model actually relies on.
+      that kind of shift. The NeurIPS 2026 paper tackles a mismatch at the heart of most explainers —
+      models are trained on unweighted graphs but explained through soft, weighted edge masks — by
+      explaining a robust surrogate trained with iterative re-weighting instead of the original
+      model. The EACL 2027 Findings paper applies the same explainability lens to a different domain:
+      detecting machine-generated text by representing it as a graph and finding the structural
+      motifs a model actually relies on.
     </p>
     <ul class="theme-papers">
       <li><span class="venue-badge">TPAMI 2026</span> <a href="https://ieeexplore.ieee.org/abstract/document/11505765">Addressing Structural Distribution Shift in Explanations for Graph Neural Networks</a></li>
       <li><span class="venue-badge">AAAI 2026</span> <a href="https://ojs.aaai.org/index.php/AAAI/article/view/39183">Explanation-Preserving Augmentation for Semi-Supervised Graph Representation Learning</a></li>
-      <li><span class="venue-badge">Preprint</span> From Binary to Continuous: Stochastic Re-Weighting for Robust Graph Explanation</li>
-      <li><span class="venue-badge">Preprint</span> LM²otifs: An Explainable Framework for Text Authorship Detection</li>
+      <li><span class="venue-badge">NeurIPS 2026</span> <a href="https://arxiv.org/abs/2508.01925">Robust Surrogate Modeling for Explainable Graph Neural Networks</a></li>
+      <li><span class="venue-badge">EACL 2027 Findings</span> Towards Structurally Graph-Based Explainable Machine-Generated Text Detection <em>(to appear)</em></li>
     </ul>
     <!-- No figure here yet: no repo/paper PDF for this theme in this environment to pull a real one from. Not fabricating a placeholder. -->
   </section>

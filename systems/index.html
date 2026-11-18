@@ -144,8 +144,9 @@
 
           <header class="post-header">
             <h1 class="post-title">systems</h1>
-            <div class="post-description"><p>Four systems, each with a real figure and a sourced result:</p> <ul class="page-toc">
+            <div class="post-description"><p>Five systems, each with a real figure and a sourced result:</p> <ul class="page-toc">
   <li><a href="#corbinfl">CorBin-FL</a> — differentially private federated learning, one bit per weight.</li>
+  <li><a href="#cpq-vehicular-frl">Private Vehicular FRL</a> — vehicles learn routing together: one private bit per parameter, post-quantum signed.</li>
   <li><a href="#agentic-sysid">Agentic-SysID</a> — a multi-agent pipeline that identifies control-ready models under an experiment budget.</li>
   <li><a href="#game-analyst-multiagent">Game Analyst</a> — adversarial multi-agent debate for NBA/MLB game analysis, graded against real outcomes.</li>
   <li><a href="#ddim-time-series">DDIM Time Series</a> — treating tomorrow's price movement as an image-inpainting problem.</li>
@@ -220,6 +221,69 @@
         <img src="/assets/img/systems/corbinfl-pca.png" alt="PCA projection of per-coordinate quantization error across model weight coordinates, comparing CorBin-FL's correlated binary quantization against independent binary quantization.
 " loading="lazy" />
         <figcaption>PCA of the quantization error added to each weight coordinate. CorBin-FL's shared-randomness noise (left) concentrates tightly around zero and cancels out when the server aggregates client updates; independent per-client noise (right) spreads broadly and only partially cancels.
+</figcaption>
+      </figure>
+    </div>
+  </div>
+</article>
+<!-- system_card.html — Problem / Approach / Result / Artifact card, per AGENT_BRIEF.md §6.2 -->
+<!-- Two-column proof format (NOTES.md): PARA content left, figures in a sticky right rail. -->
+<article class="system-card" id="cpq-vehicular-frl">
+  <header class="system-card-header">
+    <p class="channel-label">SYS.0</p>
+    <h3>Private Vehicular FRL</h3><p class="system-tagline">Federated reinforcement learning for vehicle routing — one private bit per parameter, post-quantum signed</p>
+  </header>
+
+  <div class="system-card-body">
+    <div class="system-card-prose">
+      <dl class="system-par">
+        <dt>Problem</dt>
+        <dd>Vehicles can learn a better routing policy together through federated reinforcement learning without ever centralizing their trajectories — but their model updates still leak where they came from, the wireless uplink to the road-side unit is narrow and lossy, and every update has to be authenticated against attackers who may one day have quantum computers. Adding independent privacy noise, full-precision updates, and post-quantum signatures on top of each other makes each of those problems worse.
+</dd>
+        <dt>Approach</dt>
+        <dd>Correlated private quantization (CPQ) brings the CorBin-FL idea to the vehicular setting: paired vehicles quantize their deep-Q-network updates to one bit per parameter using shared randomness, so the privacy noise cancels at the road-side unit instead of piling up — with the same per-parameter privacy guarantee and the same one-bit cost as independent quantization. A tunable variant (CPQ-λ) mixes shared and independent randomness, and Rényi-DP accounting gives vector-level local privacy for an upload even when pairings are revealed. Updates are signed with ML-DSA-44, Falcon-512, or SLH-DSA, and the whole loop is co-simulated in SUMO (traffic) and ns-3 (packet-level IEEE 802.11p).
+</dd>
+        <dt>Result</dt>
+        <dd>One-bit updates shrink the signed uplink from 113.76 KB to 8.65 KB with ML-DSA-44 (92.4% smaller), which raises the mean number of verified updates aggregated per round from 19.6 to 26.5 over 802.11p. On that same channel at ε = 1, CPQ cuts mean travel time by 14.3% relative to independent quantization (167.0 s vs. 194.9 s), and under ideal communication at ε = 2 it reaches 118.6 s against 111.8 s with no privacy at all. At ε = 0.3, a vehicle-origin inference attack drops from 91% accuracy without privacy to 30% against CPQ (chance: 10%).
+</dd>
+      </dl>
+      <div class="system-table-wrap"><p class="system-table-caption">Over 802.11p with ML-DSA-44 signatures at ε = 1 (mean of 5 seeds)</p>
+        <table class="system-table">
+          <thead>
+            <tr><th>Method</th><th>Travel time (s)</th><th>Arrival (%)</th><th>Uplink delivered (%)</th><th>Verified updates / round</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>No privacy</td><td>152.6</td><td>80.4</td><td>75.7</td><td>19.6</td>
+            </tr>
+            <tr><td>CPQ</td><td>167.0</td><td>79.8</td><td>99.4</td><td>26.5</td>
+            </tr>
+            <tr><td>CPQ-λ (λ = 0.75)</td><td>177.2</td><td>75.8</td><td>99.5</td><td>26.1</td>
+            </tr>
+            <tr><td>LDP-FL</td><td>194.9</td><td>72.8</td><td>99.4</td><td>26.5</td>
+            </tr>
+            <tr><td>Gaussian</td><td>290.3</td><td>51.8</td><td>74.0</td><td>20.6</td>
+            </tr>
+            <tr><td>Laplace</td><td>218.4</td><td>66.4</td><td>75.9</td><td>20.4</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="system-artifact-links">
+        <span class="system-artifact-label">Artifact</span><a href="https://arxiv.org/abs/2610.41055" target="_blank" rel="noopener noreferrer">Paper (arXiv)</a> ·<a href="https://github.com/Hojat-Salehi/cpq-vehicular-frl" target="_blank" rel="noopener noreferrer">Code</a> ·<a href="https://doi.org/10.5281/zenodo.23693204" target="_blank" rel="noopener noreferrer">Results archive (Zenodo)</a>
+      </div>
+    </div>
+    <div class="system-card-figures">
+      <figure class="system-figure">
+        <img src="/assets/img/systems/cpq-vfrl-architecture.png" alt="Architecture diagram: SUMO traffic simulation feeding N vehicle clients, each running local DQN training, a privacy mechanism (CPQ, CPQ-λ, LDP-FL, Gaussian, Laplace), and post-quantum signing; updates travel over an ns-3 simulated channel to a road-side unit that verifies signatures, reconstructs parameters, and aggregates.
+" loading="lazy" />
+        <figcaption>Each vehicle trains a DQN routing policy locally in SUMO, privatizes its update, and signs it with a post-quantum scheme. The road-side unit verifies every signature, rejects invalid updates, and aggregates the rest into the global model — with the V2I link itself simulated packet-by-packet in ns-3.
+</figcaption>
+      </figure>
+      <figure class="system-figure">
+        <img src="/assets/img/systems/cpq-vfrl-learning-ideal.png" alt="Five-panel plot of mean trip duration versus federated aggregation round at privacy budgets 0.3, 0.5, 1, 2, and 5, comparing CPQ, CPQ-λ, LDP-FL, Gaussian, Laplace, and no privacy; CPQ tracks closest to the no-privacy curve at most budgets.
+" loading="lazy" />
+        <figcaption>Mean trip duration during training under ideal communication (lower is better). CPQ (solid blue) stays closest to the no-privacy curve across privacy budgets, while Gaussian noise at the same budget barely learns at ε = 0.3.
 </figcaption>
       </figure>
     </div>
